@@ -2,3 +2,29 @@ extends ../layout.pug
 
 block variables
   - var template = 'our-team'
+
+block content
+  header.teamHeader
+    span
+      h1 our
+      h2 (awesome)
+    h1 team
+
+  main#teamContent
+    section.topBlurb.hasEmoji
+      h2 stuff and things
+
+    section.teamMemojis
+      p stuff goes here that will take awhile to get
+    
+    .teamMemberInfoPopup
+      button.closeInfoPopup 
+      .teamMemberContent 
+        .memojiContainer
+        span
+          h2 name
+          h3 title
+        p somethig abot me
+        .teamMemberSocial
+          h4 i love social bitch
+          a.solidButton(href="/") insta bitch

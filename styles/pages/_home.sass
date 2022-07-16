@@ -1,0 +1,103 @@
+@use './utils/forward' as *
+
+header.homeHeader
+	display: flex
+	justify-content: center
+	align-items: center
+
+	.smallTextContainer
+		display: flex
+		align-items: baseline
+		justify-content: space-between
+
+	h1.onText
+		text-align: right
+
+	h2
+		text-align: right
+
+	.homeSplitLeft
+		margin-right: 4rem
+
+section#schedule
+	display: flex
+	justify-content: flex-start
+	
+.scheduleBlurb
+	max-width: 50ch
+
+#scheduleRows
+	width: 100%
+	max-width: 50rem
+
+div.scheduleEntry
+	display: flex
+	justify-content: space-between
+	align-items: baseline
+	padding-top: .5rem
+	border-top: 1px solid
+
+	&.todaysTheDay
+		position: relative
+
+		&:before
+			content: ''
+			background: red
+			width: 1.5rem
+			height: 2rem
+			display: block
+			top: 0
+			left: 0
+			bottom: 0
+			margin-top: auto
+			margin-bottom: auto
+			position: absolute
+
+		h4, p
+			font-weight: 600
+
+		h4
+			transform: translateX(3rem)
+
+	&:not(:last-child)
+		margin-bottom: 1.5rem
+
+section.imageDuo
+	display: flex
+	justify-content: center
+	flex-wrap: wrap
+
+	img:not(:last-child)
+		margin-right: 2rem
+
+section#testimonials
+
+.testimonialEntryContent
+	border: solid 1px
+	max-width: 40rem
+	padding: 3rem
+	border-radius: 1rem
+
+.testimonialInitialsContainer
+	display: flex
+	width: 4.5rem
+	height: 4.5rem
+	border-radius: 2.25rem
+	justify-content: center
+	align-items: center
+	background: $pale
+	
+	p
+		line-height: 1
+		color: $dark
+
+section#servicesMarquee
+
+	.servicesLink
+		background: 
+
+	span.marqueeRow
+		display: flex
+
+		h1
+			margin-right: .25em

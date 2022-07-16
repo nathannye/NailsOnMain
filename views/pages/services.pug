@@ -5,5 +5,35 @@ block variables
 
 block content
 
-  main.servicesContent
-    
+  main.serviceContent
+
+    section.topBlurb.hasEmoji
+      h2 Colors? Designs? Just a good old fashioned mani-pedi? We do it all! 
+      .emoji
+
+    section#serviceListContainer 
+      .serviceEntry
+        .serviceSmallTop
+          .headingWithThumbnailContainer
+            img.serviceImageThumbnail
+            h2 ThingName
+          h4 whitty tagline
+          button.hasArrow.dropdown(aria-label="toggle dropdown")
+        .serviceDetails
+          .serviceImages
+            //- Make sure this works for mobile, switches to a draggable
+            .serviceImageContainer
+              img(src="", alt="")
+              .mobileImageIndicator
+                span.currentImageNumber 04
+                span.separator /
+                span.totalImageNumber 06
+              .desktopImageIndicator
+                span.indicatorStrip 
+                span.indicatorStrip.active
+          .serviceDescriptionContainer
+            .serviceDescription
+              h3 service title
+              p stuff about it
+              h4.priceEntry starts at 24$
+

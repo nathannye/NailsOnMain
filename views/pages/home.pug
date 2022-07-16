@@ -1,76 +1,70 @@
 extends ../layout.pug
 
 block variables
-	- var template = 'home'
+  - var template = 'home';
 
 block content
-	header.homeHeader 
-		.homeSplitLeft
-			div
-				h2 Beauty By
-				h4 est 2010
-			div 
-				h1 Nails
-				h1 on
-				img
-		.homeSplitRight
-			h1 Main
-			img
+  header.homeHeader 
+    .homeSplitLeft
+      .smallTextContainer
+        h4 est. 2010
+        h2 Beauty By
+      div 
+        h1 Nails
+        h1.onText on
+        img
+    .homeSplitRight
+      h1 Main
+      img
 
-	main.homeContent
-		section#schedule
-			div
-				h2 Schedule an appointment today!
-				a.linkButton(href="tel:248-922-7590") call us today!
-			div#scheduleRows
-				div.scheduleEntry
-					h4 Monday
-					p 9:30 - 10:30
-				div.scheduleEntry.todaysTheDay
-					h4 Monday
-					p 9:30 - 10:30
-		section.imageDuo
-			img(src="", alt="")
-			img(src="", alt="")
-		section#servicesMarquee
-			.servicesLink
-				a.linkButton(href="/services") see our services! 
-			span.marqueeRow
-				h1 Acrylics
-				h1 Manicures 
-				h1 Dips
-				h1 Gels
-				h1 Frenches
-		
-		section#testimonials
-			.testimonialHeadingContainer
-				h2 We do some really great work, but don’t just take our word for it…
-				//- need to generate this link from g-business
-				a.linkButton(href="/") drop us a review!
-			
-			#testimonialSliderContainer
-				.testimonialDraggerCursor
+  main.homeContent
+    section#schedule
+      .scheduleBlurb
+        h2 Schedule an appointment today!
+        a.solidButton(href='tel:248-922-7590') call us today!
+      #scheduleRows
+        .scheduleEntry
+          h4 Monday
+          p 9:30 - 10:30
+        .scheduleEntry.todaysTheDay
+          h4 Monday
+          p 9:30 - 10:30
+    section.imageDuo
+      img(src='', alt='')
+      img(src='', alt='')
+    section#servicesMarquee
+      .servicesLink
+        a.solidButton(href='/services') see our services!
+      span.marqueeRow
+        h1 Acrylics
+        h1 Manicures
+        h1 Dips
+        h1 Gels
+        h1 Frenches
 
-				#testimonialSlider
-					.testimonialEntry
-						.testimonialInitialsContainer
-							p DD
-						.testimonialTextContainer
-							h3 Diane Bailey
-							p nice things ppl say here
-						.testimonialEmoji
-							p emoji here
+    section#testimonials
+      .testimonialHeadingContainer
+        h2 We do some really great work, but don’t just take our word for it…
+        //- need to generate this link from g-business
+        a.solidButton(href='/') drop us a review!
 
-		section.imageDuo
-		
-		section#notesAtBottom
-			.notesEntry
-				h3 plz let us know
-				p the reasonable reason why
-			
-					
+      #testimonialSliderContainer
+        .testimonialDraggerCursor
+          #testimonialSlider
+            .testimonialEntryContainer
+              .testimonialEntryContent
+                .testimonialInitialsContainer
+                  p DD
+                .testimonialTextContainer
+                  h3 Diane Bailey
+                  p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
+                .testimonialEmoji
+                  p emoji here
+              h4 1/4
 
+    section.imageDuo
 
-				
-
-			
+    section#notesAtBottom
+      .notesEntry
+        h3 plz let us know
+        p the reasonable reason why

@@ -1,0 +1,28 @@
+@use './utils/forward' as *
+
+nav.desktopNav
+  position: fixed
+  display: flex
+  justify-content: space-between
+  top: 0
+  align-items: center
+  left: 0
+  width: 100%
+  padding: 2rem 4rem
+
+  ul
+    display: flex
+
+    li
+      margin-right: 1.5rem
+      display: block
+
+      &:last-child
+        margin-right: 2rem
+
+  .navItems
+    display: flex
+    align-items: center
+    
+    a.solidButton
+      margin: 0

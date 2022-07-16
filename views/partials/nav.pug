@@ -1,20 +1,25 @@
 nav.desktopNav 
+  .logo
+    p logo
 
-    .mobileMenuContainer
-        p lil symbol
+  .navItems
+    ul.navLinks
+      li 
+        a(href='/home') Home
+      li
+        a(href='/about') About
+      li
+        a(href='/services') Services
+      li
+        a(href='/our-team') Our Team
 
-    .logo
-        p logo
+    a.solidButton(href='tel:248-922-7590') call us!
 
-    .navItems
-        ul.navLinks
-            li 
-                a(href="/home") Home 
-            li
-                a(href="/about") About
-            li
-                a(href="/services") Services
-            li
-                a(href="/our-team") Our Team
+button.mobileMenuButton lil icon for burger menu
 
-        a.linkButton(href="tel:248-922-7590")
+.mobileMenuContainer
+  .mobileMenuContent
+    h3 funny thing
+    .mobileLinksContainer
+      a.mobileNavLink(href='/')
+      a.mobileNavLink.hasEmoji(href='tel:')
