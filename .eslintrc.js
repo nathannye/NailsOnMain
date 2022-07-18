@@ -5,6 +5,7 @@ module.exports = {
     ecmaVersion: 2021,
     sourceType: 'module',
   },
+  plugins: ['import', 'promise', 'standard'],
   globals: {
     IS_DEVELOPMENT: 'readonly',
   },

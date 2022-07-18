@@ -1,0 +1,18 @@
+$z-indexes: ('modal', 'preloader', 'cursor', 'nav', 'mobile-menu', 'main', 'header', 'footer')
+
+@function z($element)
+  @if index($z-indexes, $element)
+    @return (length($z-indexes) - index($z-indexes, $element)) + 1
+  @else 
+    @warn 'No item "#{$element} in this list"'
+
+    @return null
+
+$totalCols: 8
+
+@function gridCols($col)
+  @return percentage($col/$totalCols)
+
+@for $i from 1 through $totalCols
+  .col-#{$i} 
+    // width: gridCols($i);  

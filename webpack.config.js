@@ -106,8 +106,7 @@ module.exports = {
 
       {
         test: /\.(glsl|frag|vert)$/,
-        loader: 'raw-loader',
-        exclude: /node_modules/,
+        type: 'asset/resource',
       },
 
       {

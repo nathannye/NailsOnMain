@@ -1,27 +1,26 @@
 extends ../layout.pug
 
 block variables
-    - var template = 'about'
+  - var template = 'about';
 
 block content
-    main#aboutContent
-        section.topBlurb
-            h2 welcome shitfucker
-            p we were founded in whenver the fuck
+  main#aboutContent
+    section.topBlurb
+      h2 welcome to this page
+      p we were founded in whenver the fuck
 
-        section#locationContainer 
-            h2 next to this shti
-            div#mapboxContainer
-            .addressContainer
-                h4 addy line 1
-                h4 addy line 2
+    section#locationContainer 
+      h2 next to this
+      #mapboxContainer
+      .addressContainer
+        h4 address line 1
+        h4 address line 2
 
-        section#valuesContainer
-            .valuesEmojiContainer
-                h2 vallys
-                .valuesEmojis 
-                    img(src="", alt="")
-            .valueEntry
-                h3 title of this value
-                p little about it
-                
+    section#valuesContainer
+      .valuesEmojiContainer
+        h2 vallys
+        .valuesEmojis 
+          img(src='', alt='')
+      .valueEntry
+        h3 title of this value
+        p little about it

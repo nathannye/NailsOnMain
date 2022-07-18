@@ -13,7 +13,7 @@ nav.desktopNav
       li
         a(href='/our-team') Our Team
 
-    a.solidButton(href='tel:248-922-7590') call us!
+    a.solidButton.inverted(href='tel:248-922-7590') call us!
 
 button.mobileMenuButton lil icon for burger menu
 
@@ -21,5 +21,8 @@ button.mobileMenuButton lil icon for burger menu
   .mobileMenuContent
     h3 funny thing
     .mobileLinksContainer
-      a.mobileNavLink(href='/')
-      a.mobileNavLink.hasEmoji(href='tel:')
+      a.mobileNavLink(href='/') Home
+      a.mobileNavLink.active(href='/') Services
+      a.mobileNavLink(href='/') Our Team
+      a.mobileNavLink(href='/') About
+      a.mobileNavLink.hasEmoji(href='tel:') Call Us!

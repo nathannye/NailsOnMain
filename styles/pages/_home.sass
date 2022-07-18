@@ -3,14 +3,13 @@
 header.homeHeader
 	display: flex
 	justify-content: center
-	align-items: center
-
+	align-items: flex-start
 	.smallTextContainer
 		display: flex
 		align-items: baseline
 		justify-content: space-between
 
-	h1.onText
+	.nailsOnText
 		text-align: right
 
 	h2
@@ -19,16 +18,26 @@ header.homeHeader
 	.homeSplitLeft
 		margin-right: 4rem
 
+		img
+			margin-top: 2rem
+
+	.homeSplitRight
+		margin-top: 9rem
+
+		img
+			margin-top: 12rem
+
 section#schedule
 	display: flex
-	justify-content: flex-start
+	margin: auto
+	width: 90vw
 	
 .scheduleBlurb
 	max-width: 50ch
 
 #scheduleRows
 	width: 100%
-	max-width: 50rem
+	// max-width: 50rem
 
 div.scheduleEntry
 	display: flex
@@ -42,8 +51,9 @@ div.scheduleEntry
 
 		&:before
 			content: ''
-			background: red
+			// background-image: url(./nomArrow.svg)
 			width: 1.5rem
+			background-repeat: no-repeat
 			height: 2rem
 			display: block
 			top: 0
@@ -72,11 +82,58 @@ section.imageDuo
 
 section#testimonials
 
+div.testimonialHeadingContainer
+	width: 25vw
+	min-width: 290px
+
+div#testimonialSlider
+	display: flex
+	height: 75vh
+	overflow-x: hidden
+
+	.testimonialEntryContainer
+		align-self: flex-start
+		margin-right: $gutter
+
+	@media screen and (min-width: 768px)
+
+		.testimonialEntryContainer:nth-child(1), .testimonialEntryContainer:nth-child(4)
+			align-self: center
+
+		.testimonialEntryContainer:nth-child(2)
+			align-self: flex-start
+
+		.testimonialEntryContainer:nth-child(3)
+			align-self: flex-end
+
+.testimonialDraggerCursor
+	position: absolute
+	top: 0
+	left: 0
+	@include flexCenter
+
+	.dragArrow
+		width: 1.5rem
+
+		&.right
+			transform: rotate(-90deg)
+		
+		&.left
+			transform: rotate(90deg)
+
+	.dragInstructionCircle
+		width: 6.5rem
+		height: 6.5rem
+		background: $pale
+		border-radius: 6.5rem
+
 .testimonialEntryContent
-	border: solid 1px
+	border: solid 1px $pale
+	background: $dark
 	max-width: 40rem
 	padding: 3rem
 	border-radius: 1rem
+	margin-bottom: 1rem
 
 .testimonialInitialsContainer
 	display: flex
@@ -92,9 +149,21 @@ section#testimonials
 		color: $dark
 
 section#servicesMarquee
+	position: relative
+	overflow-x: hidden
 
 	.servicesLink
-		background: 
+		// background: $dark
+		position: absolute
+		top: 0
+		@include flexCenter
+		bottom: 0
+		right: 0
+		left: 0
+		margin: auto
+
+		.solidButton
+			margin: 0
 
 	span.marqueeRow
 		display: flex

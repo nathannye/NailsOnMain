@@ -9,13 +9,13 @@ block content
       .smallTextContainer
         h4 est. 2010
         h2 Beauty By
-      div 
+      .nailsOnText 
         h1 Nails
         h1.onText on
-        img
+        img(src='./image.jpg')
     .homeSplitRight
       h1 Main
-      img
+      img(src='./image.jpg')
 
   main.homeContent
     section#schedule
@@ -43,24 +43,47 @@ block content
         h1 Frenches
 
     section#testimonials
+      .testimonialDraggerCursor
+        .dragArrow.left
+        .dragInstructionCircle
+        .dragArrow.right
       .testimonialHeadingContainer
         h2 We do some really great work, but don’t just take our word for it…
         //- need to generate this link from g-business
         a.solidButton(href='/') drop us a review!
 
       #testimonialSliderContainer
-        .testimonialDraggerCursor
-          #testimonialSlider
-            .testimonialEntryContainer
-              .testimonialEntryContent
-                .testimonialInitialsContainer
-                  p DD
-                .testimonialTextContainer
-                  h3 Diane Bailey
-                  p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
-                .testimonialEmoji
-                  p emoji here
-              h4 1/4
+        #testimonialSlider
+          .testimonialEntryContainer
+            .testimonialEntryContent
+              .testimonialInitialsContainer
+                p DD
+              .testimonialTextContainer
+                h3 Diane Bailey
+                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
+              .testimonialEmoji
+                p emoji here
+            h4 1/4
+          .testimonialEntryContainer
+            .testimonialEntryContent
+              .testimonialInitialsContainer
+                p DD
+              .testimonialTextContainer
+                h3 Diane Bailey
+                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
+              .testimonialEmoji
+                p emoji here
+            h4 1/4
+          .testimonialEntryContainer
+            .testimonialEntryContent
+              .testimonialInitialsContainer
+                p DD
+              .testimonialTextContainer
+                h3 Diane Bailey
+                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
+              .testimonialEmoji
+                p emoji here
+            h4 1/4
 
     section.imageDuo
 

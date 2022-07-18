@@ -1,27 +1,29 @@
 footer 
-  .headingContainer
-    h2 lets get shit going
+  .footerHeadingContainer
+    h2 footer header
     a.solidButton(href='tel:248-922-7590') same number
-  .footerLocationStrip 
-    h3 stuff
-    span.haEmoji
-      p addy line 1
-      br
-      p addy line 2
-  .footerMenuStrip 
-    h3 title
-    .footerMenuLinksContainer
-      a.nakedLink(href='/') linkName
+  .footerContentContainer
+    .footerCols
+      .footerLocationCol
+        h3 stuff
+        span.haEmoji
+          p addy line 1
+          br
+          p addy line 2
+      .footerMenuCol
+        h3 title
+        .footerMenuLinksContainer
+          a.nakedLink(href='/') linkName
 
-  .footerSocialStrip
-    h3 social
-    .footerSocialLinksContainer
-      a.nakedLink(href='/') insta
-
-  .footerLowerInfo
-    a.naked.credit(
-      href='https://nye.design/',
-      target='_blank',
-      rel='noreferrer'
-    )
-    a.nakedLink.privacyPolicy(href='/')
+      .footerSocialCol
+        h3 social
+        .footerSocialLinksContainer
+          a.nakedLink(href='/') insta
+    .footerLowerInfo
+      a.nakedLink.credit(
+        href='https://nye.design/',
+        target='_blank',
+        rel='noreferrer'
+      ) Website by Nathan Nye
+      a.nakedLink.privacyPolicy(href='/') Privacy Policy
+      p.copyright copyright 2022

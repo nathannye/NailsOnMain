@@ -1,0 +1,74 @@
+@use './utils/forward' as *
+
+header.servicesHeader
+  @include flexCenter
+
+  div.headingContainer
+    display: flex
+
+    h1:nth-child(2)
+      margin-top: .5em
+
+.serviceEntry
+  border-top: 1px solid $pale
+  padding-top: .75rem
+  margin-bottom: 12rem
+  width: calc(100% - 4rem)
+  margin-left: auto
+  margin-right: auto
+
+.serviceSmallTop
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+.headingWithThumbnailContainer
+  display: flex
+  width: 33%
+
+  img.serviceImageThumbnail
+    width: 5rem
+    height: 5rem
+    border-radius: 5rem
+
+.serviceDetails
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  align-items: flex-start
+  margin-top: 2rem
+
+  & > *
+    min-width: 260px
+
+.serviceImages
+  width: 33%
+
+.desktopImageIndicator
+  display: flex
+  width: 50%
+  justify-content: center
+
+  & > .indicatorStrip:not(:last-child)
+    margin-right: 2rem
+
+button.indicatorStrip
+  height: .25rem
+  border: none
+  flex-grow: 1
+  transition: $anim
+  background: $pale
+
+  &:hover
+    flex-grow: 2
+    transition: $anim
+
+  &.active
+    background: $purple
+
+.serviceDescriptionContainer 
+  width: 3%
+  flex-grow: 1
+
+.priceEntry
+  margin-top: 2rem

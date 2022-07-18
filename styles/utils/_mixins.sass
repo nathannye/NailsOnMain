@@ -1,0 +1,18 @@
+$minWidth: 39rem
+$maxWidth: 192rem
+
+@function createPreferredClamp($minFont, $maxFont, $maxWidth, $minWidth)
+  $slope: calc(($maxFont - $minFont) / ($maxWidth - $minWidth))
+  $intersect: calc((-1 * $minWidth * $slope) + $minFont)
+
+  $v: ($slope * 100)
+
+  @return calc($intersect + ($v * 1vw))
+
+@mixin flexCenter
+  display: flex
+  justify-content: center
+  align-items: center
+
+@mixin createClamp($minFont, $maxFont)
+  font-size: clamp($minFont, createPreferredClamp($minFont, $maxFont, $maxWidth, $minWidth),$maxFont)

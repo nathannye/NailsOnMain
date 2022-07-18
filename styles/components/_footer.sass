@@ -1,0 +1,37 @@
+@use './utils/forward' as *
+
+footer
+  width: 100%
+  background: $purple
+  padding-top: 4rem
+  padding-bottom: 2rem
+  padding-left: 4rem 
+  padding-right: 4rem
+  display: flex
+  align-items: flex-start
+
+  a.solidButton
+    background: $pale
+    color: $purple
+
+.footerHeadingContainer
+  flex-grow: .375
+
+.footerContentContainer
+  flex-grow: .5
+
+.footerCols
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+  
+.footerLocationCol, a.credit, .footerSocialCol, p.copyright
+  width: 25%
+
+.footerMenuCol, a.privacyPolicy
+  width: 11%
+
+.footerLowerInfo
+  display: flex
+  justify-content: space-between
+  margin-top: 18rem
