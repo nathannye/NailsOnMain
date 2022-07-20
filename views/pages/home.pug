@@ -17,10 +17,14 @@ block content
       h1 Main
       img(src='./image.jpg')
 
+    .headerGradientContainer
+
   main.homeContent
     section#schedule
       .scheduleBlurb
-        h2 Schedule an appointment today!
+        h2 Schedule an
+          br 
+          | appointment today!
         a.solidButton(href='tel:248-922-7590') call us today!
       #scheduleRows
         .scheduleEntry
@@ -30,17 +34,19 @@ block content
           h4 Monday
           p 9:30 - 10:30
     section.imageDuo
-      img(src='', alt='')
-      img(src='', alt='')
+      figure 
+        img(src='./image.jpg')
+      figure
+        img(src='./image.jpg')
     section#servicesMarquee
       .servicesLink
         a.solidButton(href='/services') see our services!
       span.marqueeRow
-        h1 Acrylics
-        h1 Manicures
-        h1 Dips
-        h1 Gels
-        h1 Frenches
+        span Acrylics
+        span Manicures
+        span Dips
+        span Gels
+        span Frenches
 
     section#testimonials
       .testimonialDraggerCursor
@@ -86,6 +92,11 @@ block content
             h4 1/4
 
     section.imageDuo
+      figure 
+        img(src='./image.jpg')
+
+      figure
+        img(src='./image.jpg')
 
     section#notesAtBottom
       .notesEntry

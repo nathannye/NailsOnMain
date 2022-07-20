@@ -1,0 +1,79 @@
+@use './utils/forward' as *
+
+header#aboutHeader
+  @include flexCenter
+
+  .headingContainer
+    width: col(6)
+    max-width: 75rem
+
+    h1:first-child
+      text-align: left
+    
+    h1:last-child
+      text-align: right
+
+main#aboutContent
+  .topBlurb
+    @media screen and (min-width: 768px)
+      width: col(4)
+      margin-left: col(3)
+      margin-right: col(1)
+
+section#location
+
+  #mapboxContainer
+    width: 100%
+    background: black
+    height: 35rem
+    
+  h3
+    margin-right: 0
+
+  @media screen and (min-width: 768px)
+    width: col(4)
+    margin-left: col(1)
+
+section#ourValues
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+
+  @media screen and (min-width: 768px)
+    margin-left: col(1)
+    flex-direction: row
+
+.valuesHeadingContainer
+  display: flex
+  flex-direction: row
+  width: 100%
+  margin-right: 4rem
+
+  @media screen and (min-width: 768px)
+    flex-direction: column
+    width: col(2)
+
+.valuesEmojis
+  display: flex
+  align-items: center
+
+  img:not(:last-child)
+    margin-right: 1rem
+    width: 2.5rem
+    height: 2.5rem
+
+.valuesContainer
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+
+  @media screen and (min-width: 768px)
+    flex-direction: row
+    width: col(4)
+
+.valueEntry
+  width: 100%
+  margin-bottom: 4rem
+
+  @media screen and (min-width:768px)
+    width: col(4)

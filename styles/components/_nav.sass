@@ -2,7 +2,7 @@
 
 nav.desktopNav
   position: fixed
-  display: flex
+  display: none
   justify-content: space-between
   top: 0
   z-index: z('nav')
@@ -10,6 +10,9 @@ nav.desktopNav
   left: 0
   width: 100%
   padding: 2rem 4rem
+
+  @media screen and (min-width: 768px)
+    display: flex
 
   ul
     display: flex
@@ -31,15 +34,15 @@ nav.desktopNav
 button.mobileMenuButton
   z-index: z('nav')
   position: fixed
-  top: 0
-  left: 0
+  top: 2rem
+  left: 2rem
 
   @media screen and (min-width: 768px)
     display: none
 
 div.mobileMenuContainer
   background: $dark
-  display: flex
+  display: none
   position: fixed
   top: 0
   left: 0
@@ -50,18 +53,27 @@ div.mobileMenuContainer
   z-index: z('mobile-menu')
   padding-left: 2rem
   padding-right: 2rem
-  padding-bottom: 15rem
+  padding-bottom: 12rem
 
   a
-    text-transform: uppercase
-    @include createClamp(4rem, 5rem)
+    font-family: $serif
+    font-size: 6.5rem
+    line-height: 1
+
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+
+    &.active
+      opacity: .5
+      @include hasStaticArrow(1.5rem)
+        
 
   @media screen and (min-width: 768px)
     display: none
 
 .mobileLinksContainer
   display: flex
-  margin-top: $gutter
+  margin-top: 2rem
   flex-direction: column
 
   a:nth-child(1), a:nth-child(2), a:nth-child(3)

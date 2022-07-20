@@ -4,23 +4,41 @@ block variables
   - var template = 'about';
 
 block content
-  main#aboutContent
-    section.topBlurb
-      h2 welcome to this page
-      p we were founded in whenver the fuck
+  header#aboutHeader
+    .headingContainer
+      h1 A little bit
+      h1 about us!
+    .headerGradientContainer
 
-    section#locationContainer 
-      h2 next to this
-      #mapboxContainer
-      .addressContainer
-        h4 address line 1
-        h4 address line 2
+  .contentContainer
+    .contentCurve
+    main#aboutContent
+      section.topBlurb
+        h2 Welcome to Beauty by Nails on Main! 12 years and going strong, thanks to our clients.
+        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur! Commodi laudantium esse magni magnam vitae laboriosam quia labore officia ducimus perferendis, illo tempora ut suscipit quisquam. Labore, expedita ex!
 
-    section#valuesContainer
-      .valuesEmojiContainer
-        h2 vallys
-        .valuesEmojis 
-          img(src='', alt='')
-      .valueEntry
-        h3 title of this value
-        p little about it
+      section#location
+        h2 next to this
+        #mapboxContainer
+        .addressContainer
+          h3 address line 1
+          h3 address line 2
+
+      section#ourValues
+        .valuesHeadingContainer
+          h2 Our Values
+          .valuesEmojis 
+            img(src='', alt='')
+
+        .valuesContainer
+          .valueEntry
+            h3 title of this value
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!
+
+          .valueEntry
+            h3 title of this value
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!
+
+          .valueEntry
+            h3 title of this value
+            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!

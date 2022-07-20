@@ -6,9 +6,15 @@ footer
   padding-top: 4rem
   padding-bottom: 2rem
   padding-left: 4rem 
-  padding-right: 4rem
+  @include createClamp(2rem, 4rem, padding-left)
+  @include createClamp(2rem, 4rem, padding-right)
   display: flex
+  z-index: z('footer')
+  flex-direction: column
   align-items: flex-start
+
+  @media screen and (min-width: 768px)
+    flex-direction: row
 
   a.solidButton
     background: $pale
@@ -16,10 +22,18 @@ footer
 
 .footerHeadingContainer
   flex-grow: .375
+  margin-bottom: 4rem
+  
+  @media screen and (min-width:768px)
+    margin-bottom: 0
+    width: col(3)
 
 .footerContentContainer
-  flex-grow: .5
+  width: 100%
 
+  @media screen and (min-width:768px)
+    flex-grow: .5
+    width: unset
 .footerCols
   display: flex
   align-items: flex-start
@@ -34,4 +48,7 @@ footer
 .footerLowerInfo
   display: flex
   justify-content: space-between
-  margin-top: 18rem
+  margin-top: 4rem
+
+  @media screen and (min-width:768px)
+    margin-top: 18rem

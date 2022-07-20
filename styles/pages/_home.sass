@@ -4,6 +4,7 @@ header.homeHeader
 	display: flex
 	justify-content: center
 	align-items: flex-start
+
 	.smallTextContainer
 		display: flex
 		align-items: baseline
@@ -15,59 +16,58 @@ header.homeHeader
 	h2
 		text-align: right
 
-	.homeSplitLeft
-		margin-right: 4rem
+.homeSplitLeft
+	@include createClamp(2rem, 4rem, margin-right)
 
-		img
-			margin-top: 2rem
+	img
+		margin-top: 2rem
 
-	.homeSplitRight
-		margin-top: 9rem
+.homeSplitRight
+	margin-top: 9rem
 
-		img
-			margin-top: 12rem
+	img
+		margin-top: 12rem
 
 section#schedule
 	display: flex
-	margin: auto
-	width: 90vw
+	flex-direction: column
+	margin-left: auto
+	margin-right: auto
+	width: 100%
+
+	@media screen and (min-width: 768px)
+		flex-direction: row
+		width: col(6)
 	
 .scheduleBlurb
-	max-width: 50ch
+	margin-bottom: 4rem
+
+	@media screen and (min-width: 768px)
+		margin-right: col(1)
+		margin-bottom: 0
 
 #scheduleRows
-	width: 100%
-	// max-width: 50rem
+	flex-grow: 1
+	min-width: 35rem
 
 div.scheduleEntry
 	display: flex
+	flex-wrap: nowrap
 	justify-content: space-between
 	align-items: baseline
 	padding-top: .5rem
 	border-top: 1px solid
+	flex-grow: 1
 
 	&.todaysTheDay
 		position: relative
-
-		&:before
-			content: ''
-			// background-image: url(./nomArrow.svg)
-			width: 1.5rem
-			background-repeat: no-repeat
-			height: 2rem
-			display: block
-			top: 0
-			left: 0
-			bottom: 0
-			margin-top: auto
-			margin-bottom: auto
-			position: absolute
 
 		h4, p
 			font-weight: 600
 
 		h4
 			transform: translateX(3rem)
+			@include hasStaticArrow(1rem)
 
 	&:not(:last-child)
 		margin-bottom: 1.5rem
@@ -75,27 +75,57 @@ div.scheduleEntry
 section.imageDuo
 	display: flex
 	justify-content: center
-	flex-wrap: wrap
 
-	img:not(:last-child)
+	figure 
+		width: col(4)
+		height: 50vh
+
+		img
+			object-fit: cover
+			width: 100%
+			height: 100%
+
+	figure:not(:last-child)
 		margin-right: 2rem
+		margin-top: col(2)
+
+		@media screen and (min-width: 768px)
+			margin-top: col(1)
+
+	&.stack
+		
+
 
 section#testimonials
 
 div.testimonialHeadingContainer
-	width: 25vw
-	min-width: 290px
+	flex-grow: 1
+	
+	@media screen and (min-width: 768px)
+		width: col(3)
+		max-width: 45rem
+
+div#testimonialSliderContainer
+	width: 100%
+	overflow-x: hidden
 
 div#testimonialSlider
 	display: flex
 	height: 75vh
+	width: 300%
 	overflow-x: hidden
 
 	.testimonialEntryContainer
 		align-self: flex-start
-		margin-right: $gutter
+		margin-right: 2rem
+		width: 80vw
+		max-width: 38rem
+		
+		@media screen and (min-width: 768px)
+			
 
 	@media screen and (min-width: 768px)
+		width: 100%
 
 		.testimonialEntryContainer:nth-child(1), .testimonialEntryContainer:nth-child(4)
 			align-self: center
@@ -130,10 +160,9 @@ div#testimonialSlider
 .testimonialEntryContent
 	border: solid 1px $pale
 	background: $dark
-	max-width: 40rem
 	padding: 3rem
 	border-radius: 1rem
-	margin-bottom: 1rem
+	margin-bottom: .5rem
 
 .testimonialInitialsContainer
 	display: flex
@@ -150,7 +179,7 @@ div#testimonialSlider
 
 section#servicesMarquee
 	position: relative
-	overflow-x: hidden
+	overflow: hidden
 
 	.servicesLink
 		// background: $dark
@@ -168,5 +197,10 @@ section#servicesMarquee
 	span.marqueeRow
 		display: flex
 
-		h1
+		span
 			margin-right: .25em
+			@include createFontClamp(8rem, 16rem)
+			font-family: $serif
+			line-height: 1
+			letter-spacing: -.03em  
+			font-weight: 200

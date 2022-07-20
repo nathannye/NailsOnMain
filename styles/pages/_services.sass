@@ -1,74 +1,157 @@
 @use './utils/forward' as *
 
 header.servicesHeader
-  @include flexCenter
+	@include flexCenter
+	overflow-x: hidden
 
-  div.headingContainer
-    display: flex
+	div.headingContainer
+		display: flex
 
-    h1:nth-child(2)
-      margin-top: .5em
+		h1:nth-child(2)
+			margin-top: .5em
+
+	.headerGradientContainer
+
+section#serviceList
+	
+	@media screen and (min-width: 768px)
+		width: col(8)
+		margin-right: auto
+		margin-left: auto
 
 .serviceEntry
-  border-top: 1px solid $pale
-  padding-top: .75rem
-  margin-bottom: 12rem
-  width: calc(100% - 4rem)
-  margin-left: auto
-  margin-right: auto
+	border-top: 1px solid $pale
+	padding-top: .75rem
+	margin-bottom: 12rem
+	max-width: 150rem
+
+	h2
+		margin-bottom: 0
+
+	button
+		margin-left: auto
 
 .serviceSmallTop
-  display: flex
-  justify-content: flex-start
-  align-items: center
+	display: flex
+	justify-content: flex-start
+	align-items: center
+	margin-bottom: 2rem
 
 .headingWithThumbnailContainer
-  display: flex
-  width: 33%
+	display: flex
+	padding-right: 4rem
 
-  img.serviceImageThumbnail
-    width: 5rem
-    height: 5rem
-    border-radius: 5rem
+	@media screen and (min-width: 768px)
+		width: col(3)
+
+img.serviceImageThumbnail
+	width: 4.25rem
+	object-fit: cover
+	height: 4.25rem
+	overflow: hidden
+	border-radius: 5rem
+	margin-right: 2rem
+	margin-top: .5rem
+
+.serviceImagesSliderContainer
+	overflow-x: hidden
+
+.serviceImagesSlider
+	position: relative
+	display: flex
+	overflow-x: hidden
+	width: 100%
+	height: 30rem
+	
+
+	@media screen and (min-width: 768px)
+		display: block
+
+	img
+		position: relative
+		top: 0
+		left: 0
+		width: 84vw
+		height: 100%
+		object-fit: cover 
+
+		&:not(:last-child)
+			margin-right: 2rem
+
+		@media screen and (min-width: 768px)
+			position: absolute
+			width: 100%
+
+			&:not(:last-child)
+				margin-right: 0
 
 .serviceDetails
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-  align-items: flex-start
-  margin-top: 2rem
+	display: flex
+	justify-content: center
+	flex-wrap: wrap
+	align-items: flex-start
+	margin-top: 2rem
+	flex-direction: column
 
-  & > *
-    min-width: 260px
+	@media screen and (min-width: 768px)
+		flex-direction: row
 
 .serviceImages
-  width: 33%
+	padding-right: 4rem
+
+	@media screen and (min-width: 768px)
+		width: col(3)
 
 .desktopImageIndicator
-  display: flex
-  width: 50%
-  justify-content: center
+	display: none
+	margin-top: 2rem
+	padding-right: 2rem
+	padding-left: 2rem
+	margin-left: auto
+	margin-right: auto
+	max-width: 30rem
 
-  & > .indicatorStrip:not(:last-child)
-    margin-right: 2rem
+	& > .indicatorStrip:not(:last-child)
+		margin-right: 1.5rem
+
+	@media screen and (min-width: 768px)
+		display: flex
+		justify-content: center
+
+.mobileImageIndicator
+	display: block
+	margin-top: 1rem
+	margin-left: 1rem
+
+	@media screen and (min-width: 768px)
+		display: none
 
 button.indicatorStrip
-  height: .25rem
-  border: none
-  flex-grow: 1
-  transition: $anim
-  background: $pale
+	height: .25rem
+	border: none
+	border-radius: 4rem
+	flex-grow: 1
+	transition: $anim
+	background: $pale
 
-  &:hover
-    flex-grow: 2
-    transition: $anim
+	&:hover
+		flex-grow: 2
+		transition: $anim
 
-  &.active
-    background: $purple
+	&.active
+		background: $purple
 
 .serviceDescriptionContainer 
-  width: 3%
-  flex-grow: 1
+	flex-grow: 1
+	margin-top: 4rem
+
+	@media screen and (min-width:768px)
+		width: col(2)
+		margin-top:0
+
+		&:nth-child(even)
+			margin-right: 4rem
 
 .priceEntry
-  margin-top: 2rem
+	margin-top: 1.5rem
+	margin-right: 1rem

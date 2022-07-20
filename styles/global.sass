@@ -3,13 +3,14 @@
 
 @use './base/reset'
 @use './pages/home'
+@use './pages/about'
 @use './pages/services'
+@use './pages/our-team'
 
 @use './components/nav'
 @use './components/cookie'
 @use './components/footer'
 @use './components/preloader'
-
 
 html
 	background: $dark
@@ -18,71 +19,77 @@ html
 	font-family: $sans
 	overflow-x: hidden
 
-	// @media screen and (max-width: 1024px)
-	// 	font-size: calc(100vw / 1024 * 10)
+.contentContainer
+	background: $dark
 
-	// @media screen and (max-width: 768px)
-	// 	font-size: calc(100vw / 768 * 10)
+body
+	overflow-x: hidden
 
 // Typography
 h1
-	@include createClamp(8rem, 16rem)
+	@include createFontClamp(8rem, 16rem)
 	font-family: $serif
 	font-weight: 200
 	line-height: 1
 	letter-spacing: -.03em  
 
 h2
-	@include createClamp(4rem, 5rem)
+	@include createFontClamp(4rem, 5rem)
 	line-height: 1.05
 	font-family: $serif
 	font-weight: 200
 	letter-spacing: -.03em
-
+	margin-bottom: 1.5rem
 
 h3
-	@include createClamp(1.8rem, 2.25rem)
+	@include createFontClamp(1.8rem, 2.25rem)
 	font-family: $sans
 	font-weight: 400
 	margin-bottom: .5rem
 	letter-spacing: -.02em
 
 a, button
-	@include createClamp(1.3rem, 1.75rem)
+	@include createFontClamp(1.3rem, 1.75rem)
 	font-family: $sans
 	font-weight: 300
 	cursor: pointer 
 
 h4
 	text-transform: uppercase
+	letter-spacing: .06em
+	@include createFontClamp(1.3rem, 1.5rem)
+
+p
+	@include createFontClamp(1.7rem, 2rem)
 
 p, h4
 	font-family: $sans
 	font-weight: 300
 	color: $gry
-	@include createClamp(1.6rem, 2rem)
+	
 
 a
 	text-decoration: none
 	display: inline-block
 	color: $pale
 
-	&.solidButton
-		margin-top: 1.5rem
-		padding: .75rem 2.25rem
-		font-size: 1.3rem
-		background: $purple
-		color: $pale
-		text-transform: uppercase
-		border-radius: 6rem
-
-		&.inverted
-			color: $purple
-			background: $pale
-
 	&.nakedLink
 		text-decoration: underline
 		color: $gry
+
+.solidButton
+	margin-top: 1.5rem
+	padding: .75rem 2.25rem
+	font-size: 1.3rem
+	background: $purple
+	color: $pale
+	text-transform: uppercase
+	border-radius: 6rem
+	border: none
+
+	&.inverted
+		color: $purple
+		background: $pale
 
 .outlineBubble
 	border-radius: 6rem 
@@ -99,28 +106,43 @@ header
 	position: relative
 	min-height: 50vh
 	z-index: z('header')
+	overflow: hidden
+	padding-top: 20rem
 
-	// &::after
-	// 	width: 140vw
-	// 	display: block
-	// 	position: absolute
-	// 	top: -200px
-	// 	right: 0
-	// 	z-index: -1
-	// 	margin-left: auto
-	// 	margin-right: auto
-	// 	left: 0
-	// 	height: 140vh
-	// 	background-image: $conical
-	// 	filter: blur(240px)
-	// 	content: ''
+	&:not(#homeHeader)
+		padding-bottom: 10rem
+
+.headerGradientContainer
+	width: 100vw
+	display: block
+	position: absolute
+	top: -10%
+	right: 0
+	z-index: -1
+	margin-left: auto
+	margin-right: auto
+	height: 200vh
+	background-image: $conical
+	// filter: blur(240px)
+	content: ''
 		
 main
 	background: $dark
 	padding-top: 10rem
+	@include createClamp(2rem, 4rem, padding-left)
+	z-index: z('main')
+	@include createClamp(2rem, 4rem, padding-right)
+	max-width: 150rem
+	margin-left: auto
+	margin-right: auto
 
 img
 	border-radius: 2rem
 
 .topBlurb
-	margin-left: 33%
+	margin-left: 0
+	width: 100%
+
+	@media screen and (min-width: 768px)
+		margin-left: col(3)
+		width: col(4)

@@ -1,5 +1,6 @@
 $minWidth: 39rem
 $maxWidth: 192rem
+$totalColumns: 8
 
 @function createPreferredClamp($minFont, $maxFont, $maxWidth, $minWidth)
   $slope: calc(($maxFont - $minFont) / ($maxWidth - $minWidth))
@@ -14,5 +15,32 @@ $maxWidth: 192rem
   justify-content: center
   align-items: center
 
-@mixin createClamp($minFont, $maxFont)
+// Take col width, divide by columns, get %
+@function col($colWidth)
+  $w: percentage($colWidth / $totalColumns)
+  @return $w
+
+@mixin createFontClamp($minFont, $maxFont)
   font-size: clamp($minFont, createPreferredClamp($minFont, $maxFont, $maxWidth, $minWidth),$maxFont)
+
+@mixin createClamp($minVal, $maxVal, $property)
+  #{$property}: clamp($minVal, createPreferredClamp($minVal, $maxVal, $maxWidth, $minWidth),$maxVal)
+
+@function getClampVal($minVal, $maxVal)
+  @return clamp($minVal, createPreferredClamp($minVal, $maxVal, $maxWidth, $minWidth),$maxVal)
+
+@mixin hasStaticArrow($width)
+  &
+    position: relative
+    transform: translate(1rem + $width)
+
+  &:before
+    content: ''
+    width: $width
+    height: 100%
+    position: absolute
+    left: 0
+    display: block
+    top: 50%
+    transform: translateY(-50%) 
+    // background-image: url('../../app/assets/images/image.jpg')
