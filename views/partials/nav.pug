@@ -4,16 +4,11 @@ nav.desktopNav
 
   .navItems
     ul.navLinks
-      li 
-        a(href='/home') Home
-      li
-        a(href='/about') About
-      li
-        a(href='/services') Services
-      li
-        a(href='/our-team') Our Team
+      each link in menu.data.links
+        li
+        a(href=link.link.url)= link.link_label
 
-    a.solidButton.inverted(href='tel:248-922-7590') call us!
+    a.solidButton.inverted(href='tel:' + contact.data.phone_number) call us!
 
 button.mobileMenuButton.solidButton =
 
@@ -21,8 +16,7 @@ button.mobileMenuButton.solidButton =
   .mobileMenuContent
     h3 funny thing
     .mobileLinksContainer
-      a.mobileNavLink(href='/') Home
-      a.mobileNavLink.active(href='/') Services
-      a.mobileNavLink(href='/') Our Team
-      a.mobileNavLink(href='/') About
-      a.mobileNavLink.hasEmoji(href='tel:') Call Us!
+      each link in menu.data.links
+        a.mobileNavLink(href=link.link.url)= link.link_label
+
+      a.mobileNavLink.hasEmoji(href='tel:' + contact.data.phone_number) Call us!

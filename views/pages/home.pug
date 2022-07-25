@@ -4,101 +4,80 @@ block variables
   - var template = 'home';
 
 block content
-  header.homeHeader 
-    .homeSplitLeft
-      .smallTextContainer
-        h4 est. 2010
-        h2 Beauty By
-      .nailsOnText 
-        h1 Nails
-        h1.onText on
-        img(src='./image.jpg')
-    .homeSplitRight
-      h1 Main
-      img(src='./image.jpg')
-
-    .headerGradientContainer
-
-  main.homeContent
-    section#schedule
-      .scheduleBlurb
-        h2 Schedule an
-          br 
-          | appointment today!
-        a.solidButton(href='tel:248-922-7590') call us today!
-      #scheduleRows
-        .scheduleEntry
-          h4 Monday
-          p 9:30 - 10:30
-        .scheduleEntry.todaysTheDay
-          h4 Monday
-          p 9:30 - 10:30
-    section.imageDuo
-      figure 
-        img(src='./image.jpg')
-      figure
-        img(src='./image.jpg')
-    section#servicesMarquee
-      .servicesLink
-        a.solidButton(href='/services') see our services!
-      span.marqueeRow
-        span Acrylics
-        span Manicures
-        span Dips
-        span Gels
-        span Frenches
-
-    section#testimonials
-      .testimonialDraggerCursor
-        .dragArrow.left
-        .dragInstructionCircle
-        .dragArrow.right
-      .testimonialHeadingContainer
-        h2 We do some really great work, but don’t just take our word for it…
-        //- need to generate this link from g-business
-        a.solidButton(href='/') drop us a review!
-
-      #testimonialSliderContainer
-        #testimonialSlider
-          .testimonialEntryContainer
-            .testimonialEntryContent
-              .testimonialInitialsContainer
-                p DD
-              .testimonialTextContainer
-                h3 Diane Bailey
-                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
-              .testimonialEmoji
-                p emoji here
-            h4 1/4
-          .testimonialEntryContainer
-            .testimonialEntryContent
-              .testimonialInitialsContainer
-                p DD
-              .testimonialTextContainer
-                h3 Diane Bailey
-                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
-              .testimonialEmoji
-                p emoji here
-            h4 1/4
-          .testimonialEntryContainer
-            .testimonialEntryContent
-              .testimonialInitialsContainer
-                p DD
-              .testimonialTextContainer
-                h3 Diane Bailey
-                p Hands down THE BEST nail salon I have ever been to. Friendly atmosphere, along with outstanding, quality nails. I highly recommend them!
-              .testimonialEmoji
-                p emoji here
-            h4 1/4
-
-    section.imageDuo
-      figure 
+  #homeWrapper
+    header.homeHeader 
+      .homeSplitLeft
+        .smallTextContainer
+          h4 est. 2010
+          h2 Beauty By
+        .nailsOnText 
+          h1 Nails
+          h1.onText on
+          img(src='./image.jpg')
+      .homeSplitRight
+        h1 Main
         img(src='./image.jpg')
 
-      figure
-        img(src='./image.jpg')
+      .headerGradientContainer
 
-    section#notesAtBottom
-      .notesEntry
-        h3 plz let us know
-        p the reasonable reason why
+    main.homeContent
+      each section in home.data.body
+        if section.slice_type == 'hours'
+          section#schedule
+            .scheduleBlurb
+              h2= section.primary.heading
+              a.solidButton(href='tel:')= section.primary.button_text
+            #scheduleRows
+              each item in section.items
+                .scheduleEntry
+                  h4= item.schedule_day
+                  p
+                    if item.store_status === true
+                      span= item.opening_time
+                      span &#32;–&#32;
+                      span= item.closing_time
+                    if item.store_status === false
+                      span Closed
+
+        if section.slice_type == "services_sidescroller"
+          section#servicesMarquee
+            .servicesLink
+              a.solidButton(href='/services')= section.primary.button_text
+            each item, i in section.items
+              span.marqueeRow
+                span= item.service_name
+
+        if section.slice_type == "reviews"
+          section#testimonials
+            .testimonialDraggerCursor
+              .dragArrow.left
+              .dragInstructionCircle
+              .dragArrow.right
+            .testimonialHeadingContainer
+              h2= section.primary.heading
+              //- need to generate this link from g-business
+              a.solidButton(href='/')= section.primary.button_text
+
+            #testimonialSliderContainer
+              #testimonialSlider
+                each review, i in section.items
+                  .testimonialEntryContainer
+                    .testimonialEntryContent
+                      .testimonialInitialsContainer
+                        //- p= review.name_of_reviewer
+                      .testimonialTextContainer
+                        h3= review.name_of_reviewer
+                        p= review.review_text
+                      .testimonialEmoji
+                        p emoji here
+                    .mobileReviewIndicatorContainer
+                      h4= i
+                        | /
+                        = section.items.length
+
+        if section.slice_type == "note"
+          section#notesAtBottom
+            each note in section.items
+              .notesEntry
+                h3= note.note_title
+                p= note.note_text

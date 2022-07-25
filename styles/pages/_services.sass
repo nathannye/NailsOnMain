@@ -87,8 +87,7 @@ img.serviceImageThumbnail
 
 .serviceDetails
 	display: flex
-	justify-content: center
-	flex-wrap: wrap
+	justify-content: flex-start
 	align-items: flex-start
 	margin-top: 2rem
 	flex-direction: column
@@ -142,14 +141,34 @@ button.indicatorStrip
 		background: $purple
 
 .serviceDescriptionContainer 
-	flex-grow: 1
+	width: 100%
 	margin-top: 4rem
+	display: flex
+	flex-direction: column
 
 	@media screen and (min-width:768px)
-		width: col(2)
-		margin-top:0
+		width: col(4)
+		flex-direction: row
+		margin-top: 0
+		flex-grow: 1
+		flex-wrap: wrap
 
-		&:nth-child(even)
+.serviceDescription
+	width: 100%
+
+	&:not(:last-child)
+		margin-bottom: 4rem
+
+		@media screen and (min-width: 768px)
+			margin-bottom: 0
+
+	@media screen and (min-width: 768px)
+		width: calc(col(4) - 4rem)
+		
+	&:nth-child(odd)
+		margin-right: 0
+
+		@media screen and (min-width: 768px)
 			margin-right: 4rem
 
 .priceEntry

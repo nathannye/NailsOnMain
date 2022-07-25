@@ -1,11 +1,13 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
-const config = require('./webpack.config');
+import { merge } from 'webpack-merge';
+import path from 'path';
+import config from './webpack.config.js';
 
-module.exports = merge(config, {
+const buildCOnfig = merge(config, {
   mode: 'production',
 
   output: {
     path: path.join(__dirname, 'public'),
   },
 });
+
+export default buildConfig;

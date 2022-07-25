@@ -1,29 +1,31 @@
 footer 
   .footerHeadingContainer
-    h2 Great nails dont happen by accident, they happen by appointment
-    a.solidButton(href='tel:248-922-7590') same number
+    h2= footer.data.heading
+    a.solidButton(href='tel:' + contact.data.phone_number)= contact.data.phone_number
   .footerContentContainer
     .footerCols
       .footerLocationCol
-        h3 whre were at
+        h3 Where we're at:
         span.haEmoji
-          p addy line 1
+          p= contact.data.address_line_1
           br 
-          | addy line 2
+          p= contact.data.address_line_2
       .footerMenuCol
-        h3 menu
+        h3 Menu
         .footerMenuLinksContainer
-          a.nakedLink(href='/') linkName
+          each link in menu.data.links
+            a.nakedLink(href=link.link.url)= link.link_label
 
       .footerSocialCol
-        h3 social
+        h3 Social
         .footerSocialLinksContainer
-          a.nakedLink(href='/') insta
+          each link in contact.data.social_media
+            a.nakedLink(href=link.social_media_link.url)= link.social_media_label
     .footerLowerInfo
       a.nakedLink.credit(
         href='https://nye.design/',
         target='_blank',
         rel='noreferrer'
       ) Website by Nathan Nye
-      a.nakedLink.privacyPolicy(href='/') Privacy Policy
-      p.copyright copyright 2022
+      a.nakedLink.privacyPolicy(href='/privacy-policy') Privacy Policy
+      p.copyright= 'Copyright' + ' © ' + year

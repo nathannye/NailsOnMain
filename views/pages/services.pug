@@ -4,95 +4,56 @@ block variables
   - var template = 'services';
 
 block content
-  header.servicesHeader
-    .headingContainer
-      h1 Our
-      h1 Services
+  #servicesWrapper
+    header.servicesHeader
+      .headingContainer
+        h1 Our
+        h1 Services
 
-    .headerGradientContainer
+      .headerGradientContainer
 
-  main.serviceContent
-    section.topBlurb.hasEmoji
-      h2 Colors? Designs? Just a good old fashioned mani-pedi? We do it all!
-      .emoji
+    main.serviceContent
+      section.topBlurb.hasEmoji
+        h2 Colors? Designs? Just a good old fashioned mani-pedi? We do it all!
+        .emoji
 
-    section#serviceList
-      .serviceEntry
-        .serviceSmallTop
-          .headingWithThumbnailContainer
-            img.serviceImageThumbnail(src='./image.jpg', alt='')
-            h2 Acrylics
-          h4 whitty tagline
-          button.hasArrow.dropdown(aria-label='toggle dropdown')
-        .serviceDetails
-          .serviceImages
-            //- Make sure this works for mobile, switches to a draggable
-            .serviceImageContainer
-              .serviceImagesSliderContainer
-                .serviceImagesSlider
-                  img(src='./image.jpg', alt='')
-                  img(src='./image.jpg', alt='')
-                  img(src='./image.jpg', alt='')
-                  img(src='./image.jpg', alt='')
-              .mobileImageIndicator
-                span.currentImageNumber 04
-                span.separator /
-                span.totalImageNumber 06
-              .desktopImageIndicator
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip.active
-          .serviceDescriptionContainer
-            .serviceDescription
-              h3 Acrylic Fill
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis, soluta sit provident non adipisci accusantium in nobis quod deserunt, rem dolores vero veniam sequi delectus tenetur voluptate alias et!
-              .pricesContainer
-                h4.priceEntry.outlineBubble starts at 24$
-                h4.priceEntry.outlineBubble starts at 24$
-          .serviceDescriptionContainer
-            .serviceDescription
-              h3 Acrylic Fill
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis, soluta sit provident non adipisci accusantium in nobis quod deserunt, rem dolores vero veniam sequi delectus tenetur voluptate alias et!
-              .pricesContainer
-                h4.priceEntry.outlineBubble starts at 24$
-                h4.priceEntry.outlineBubble starts at 24$
-      .serviceEntry
-        .serviceSmallTop
-          .headingWithThumbnailContainer
-            img.serviceImageThumbnail
-            h2 Additional
-          h4 whitty tagline
-          button.hasArrow.dropdown(aria-label='toggle dropdown')
-        .serviceDetails
-          .serviceImages
-            //- Make sure this works for mobile, switches to a draggable
-            .serviceImageContainer
-              img(src='', alt='')
-              .mobileImageIndicator
-                span.currentImageNumber 04
-                span.separator /
-                span.totalImageNumber 06
-              .desktopImageIndicator
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip
-                button.indicatorStrip.active
-          .serviceDescriptionContainer
-            .serviceDescription
-              h3 Acrylic Fill
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis, soluta sit provident non adipisci accusantium in nobis quod deserunt, rem dolores vero veniam sequi delectus tenetur voluptate alias et!
-              .pricesContainer
-                h4.priceEntry.outlineBubble starts at 24$
-                h4.priceEntry.outlineBubble starts at 24$
-          .serviceDescriptionContainer
-            .serviceDescription
-              h3 Acrylic Fill
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui blanditiis, soluta sit provident non adipisci accusantium in nobis quod deserunt, rem dolores vero veniam sequi delectus tenetur voluptate alias et!
-              .pricesContainer
-                h4.priceEntry.outlineBubble starts at 24$
-                h4.priceEntry.outlineBubble starts at 24$
+      section#serviceList
+        each service, i in s
+          .serviceEntry
+            .serviceSmallTop
+              .headingWithThumbnailContainer
+                img.serviceImageThumbnail(src='./image.jpg', alt='')
+                h2= service.data.service_name
+              h4= service.data.service_tagline
+              button.hasArrow.dropdown(aria-label='toggle dropdown')
+            .serviceDetails
+              .serviceImages
+                //- Make sure this works for mobile, switches to a draggable
+                .serviceImageContainer
+                  .serviceImagesSliderContainer
+                    .serviceImagesSlider
+                      each image in service.data.images
+                        figure
+                          img(src=image.url, alt=image.alt)
+                  .mobileImageIndicator
+                    span.currentImageNumber= i
+                    span.separator /
+                    span.totalImageNumber= service.data.images.length
+                  .desktopImageIndicator
+                    if service.data.images
+                      each image in service.data.images
+                        button.indicatorStrip
+              .serviceDescriptionContainer
+                each detail in service.data.service_details
+                  .serviceDescription
+                    h3= detail.service_subhead
+                    p= detail.service_description
+                    .pricesContainer
+                      h4.priceEntry.outlineBubble 
+                        span starts at $
+                        span= detail.starting_price
+                      if detail.addition
+                        h4.priceEntry.outlineBubble 
+                          span= detail.addition
+                          span &#32;—&#32;$
+                          span= detail.addition_pricing

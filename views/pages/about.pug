@@ -4,41 +4,36 @@ block variables
   - var template = 'about';
 
 block content
-  header#aboutHeader
-    .headingContainer
-      h1 A little bit
-      h1 about us!
-    .headerGradientContainer
+  #aboutWrapper
+    header#aboutHeader
+      .headingContainer
+        h1 A little bit
+        h1 about us!
+      .headerGradientContainer
 
-  .contentContainer
-    .contentCurve
-    main#aboutContent
-      section.topBlurb
-        h2 Welcome to Beauty by Nails on Main! 12 years and going strong, thanks to our clients.
-        p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur! Commodi laudantium esse magni magnam vitae laboriosam quia labore officia ducimus perferendis, illo tempora ut suscipit quisquam. Labore, expedita ex!
+    .contentContainer
+      .contentCurve
+      main#aboutContent
+        section.topBlurb
+          h2= about.data.small_blurb
+          p= about.data.blurb_description
 
-      section#location
-        h2 next to this
-        #mapboxContainer
-        .addressContainer
-          h3 address line 1
-          h3 address line 2
+        section#location
+          h2 next to this
+          #mapboxContainer
+          .addressContainer
+            h3= contact.data.address_line_1
+            h3= contact.data.address_line_2
 
-      section#ourValues
-        .valuesHeadingContainer
-          h2 Our Values
-          .valuesEmojis 
-            img(src='', alt='')
-
-        .valuesContainer
-          .valueEntry
-            h3 title of this value
-            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!
-
-          .valueEntry
-            h3 title of this value
-            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!
-
-          .valueEntry
-            h3 title of this value
-            p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dignissimos, consequatur!
+        each section in about.data.body
+          if section.slice_type="values"
+            section#ourValues
+              .valuesHeadingContainer
+                h2 Our Values
+                .valuesEmojis 
+                  img(src='', alt='')
+              .valuesContainer
+                each item in section.items
+                  .valueEntry
+                    h3= item.value_title
+                    p= item.value_description

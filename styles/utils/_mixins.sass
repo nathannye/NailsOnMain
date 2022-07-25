@@ -17,7 +17,7 @@ $totalColumns: 8
 
 // Take col width, divide by columns, get %
 @function col($colWidth)
-  $w: percentage($colWidth / $totalColumns)
+  $w: percentage(calc($colWidth / $totalColumns))
   @return $w
 
 @mixin createFontClamp($minFont, $maxFont)

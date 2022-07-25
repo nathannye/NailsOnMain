@@ -5,6 +5,7 @@
   "author": "Nathan Nye",
   "license": "ISC",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
@@ -33,6 +34,7 @@
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-optipng": "^8.0.0",
+    "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss-loader": "^7.0.1",
     "prettier": "^2.7.1",

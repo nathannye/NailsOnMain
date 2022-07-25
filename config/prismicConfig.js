@@ -1,12 +1,9 @@
-// node-fetch is used to make network requests to the Prismic Rest API.
-// In Node.js Prismic projects, you must provide a fetch method to the
-// Prismic client.
-const fetch = (...args) =>
-  import('node-fetch').then(({ default: fetch }) => fetch(...args));
-const prismic = require('@prismicio/client');
+import fetch from 'node-fetch';
+import * as prismic from '@prismicio/client';
+import 'dotenv/config';
 
-const repoName = 'nails-on-main'; // Fill in your repository name.
-const accessToken = process.env.PRISMIC_ACCESS_TOKEN; // If your repository is private, add an access token.
+const repoName = process.env.PRISMIC_REPO_NAME;
+const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
 
 const routes = [
   {
@@ -14,29 +11,23 @@ const routes = [
     path: '/',
   },
   {
-    type: 'our_team',
-    path: '/our-team',
+    type: 'about_us',
+    path: '/about',
   },
   {
     type: 'services',
     path: '/services',
   },
   {
-    type: 'about',
-    path: '/about',
+    type: 'our_team',
+    path: '/our-team',
   },
 ];
 
-module.exports = {
-  client: prismic.createClient(repoName, {
-    fetch,
-    accessToken,
-    routes,
-  }),
-};
+const client = prismic.createClient(repoName, {
+  fetch,
+  accessToken,
+  routes,
+});
 
-// export const client = prismic.createClient(repoName, {
-//   fetch,
-//   accessToken,
-//   routes,
-// });
+export default client;
