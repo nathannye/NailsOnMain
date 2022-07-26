@@ -22,7 +22,7 @@ block content
           .serviceEntry
             .serviceSmallTop
               .headingWithThumbnailContainer
-                img.serviceImageThumbnail(src='./image.jpg', alt='')
+                img.serviceImageThumbnail(data-src='./image.jpg', alt='')
                 h2= service.data.service_name
               h4= service.data.service_tagline
               button.hasArrow.dropdown(aria-label='toggle dropdown')
@@ -34,7 +34,7 @@ block content
                     .serviceImagesSlider
                       each image in service.data.images
                         figure
-                          img(src=image.url, alt=image.alt)
+                          img(data-src=image.url, alt=image.alt)
                   .mobileImageIndicator
                     span.currentImageNumber= i
                     span.separator /

@@ -64,6 +64,9 @@ const config = {
     }),
 
     new CleanWebpackPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
   ],
 
   module: {

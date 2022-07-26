@@ -1,5 +1,4 @@
-import Page from '../classes/page.js';
-
+import Page from '../classes/Page.js';
 
 export default class Home extends Page {
   constructor() {
@@ -8,8 +7,24 @@ export default class Home extends Page {
       element: '#homeWrapper',
       elements: {
         marqueeRow: '.marqueeRow',
-        reviewSlider: '.testimonialSliderContainer',
+        nav: document.querySelector('nav.desktopNav'),
+        mobileNav: document.querySelector('.mobileMenuContainer'),
+        reviewSlider: '#testimonialSliderContainer',
+        dates: '.scheduleEntry > h4',
+        dateEntry: '.scheduleEntry',
       },
     });
   }
+
+  create() {
+    super.create();
+
+    // this.setActiveDate();
+  }
+
+  // setActiveDate() {
+  //   let today = new Date().getDay();
+  //   console.log(today);
+  //   console.log(this.elements);
+  // }
 }

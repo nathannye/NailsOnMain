@@ -1,4 +1,4 @@
-import Page from '../classes/page.js';
+import Page from '../classes/Page.js';
 
 export default class Services extends Page {
   constructor() {

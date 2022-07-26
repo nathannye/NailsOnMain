@@ -13,10 +13,10 @@ block content
         .nailsOnText 
           h1 Nails
           h1.onText on
-          img(src='./image.jpg')
+          img(data-src='./image.jpg')
       .homeSplitRight
         h1 Main
-        img(src='./image.jpg')
+        img(data-src='./image.jpg')
 
       .headerGradientContainer
 
@@ -26,7 +26,7 @@ block content
           section#schedule
             .scheduleBlurb
               h2= section.primary.heading
-              a.solidButton(href='tel:')= section.primary.button_text
+              a.solidButton.nonNavLink(href='tel:' + contact.data.phone_number)= section.primary.button_text
             #scheduleRows
               each item in section.items
                 .scheduleEntry
