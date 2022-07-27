@@ -38,8 +38,9 @@ html(lang='en')
     include ./partials/cookie-notification
 
     section#content(data-template=template)
-      block content
+      .scrollWrapper
+        block content
 
-    include ./partials/footer
+        include ./partials/footer
 
-    script(data-src='main.js', type='module')
+    script(src='main.js', type='module')

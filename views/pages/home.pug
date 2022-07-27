@@ -13,10 +13,16 @@ block content
         .nailsOnText 
           h1 Nails
           h1.onText on
-          img(data-src='./image.jpg')
+          img(
+            data-src=home.data.top_image_left.url,
+            alt=home.data.top_image_left.alt
+          )
       .homeSplitRight
         h1 Main
-        img(data-src='./image.jpg')
+        img(
+          data-src=home.data.top_image_right.url,
+          alt=home.data.top_image_right.alt
+        )
 
       .headerGradientContainer
 
@@ -71,7 +77,7 @@ block content
                       .testimonialEmoji
                         p emoji here
                     .mobileReviewIndicatorContainer
-                      h4= i
+                      h4= i + 1
                         | /
                         = section.items.length
 
