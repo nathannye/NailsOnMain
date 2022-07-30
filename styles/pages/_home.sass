@@ -16,6 +16,11 @@ header.homeHeader
 	h2
 		text-align: right
 
+	img
+		height: 42rem
+		width: 100%
+		object-fit: cover
+
 .homeSplitLeft
 	@include createClamp(2rem, 4rem, margin-right)
 
@@ -67,7 +72,7 @@ div.scheduleEntry
 
 		h4
 			transform: translateX(3rem)
-			@include hasStaticArrow(1rem)
+			@include hasStaticArrow(2rem)
 
 	&:not(:last-child)
 		margin-bottom: 1.5rem
@@ -92,10 +97,6 @@ section.imageDuo
 		@media screen and (min-width: 768px)
 			margin-top: col(1)
 
-	&.stack
-		
-
-
 section#testimonials
 
 div.testimonialHeadingContainer
@@ -111,8 +112,7 @@ div#testimonialSliderContainer
 
 div#testimonialSlider
 	display: flex
-	height: 75vh
-	width: 300%
+	width: 600%
 	overflow-x: hidden
 
 	.testimonialEntryContainer
@@ -122,24 +122,24 @@ div#testimonialSlider
 		max-width: 38rem
 		
 		@media screen and (min-width: 768px)
-			
+			margin-right: 7rem
 
 	@media screen and (min-width: 768px)
-		width: 100%
 
 		.testimonialEntryContainer:nth-child(1), .testimonialEntryContainer:nth-child(4)
 			align-self: center
 
-		.testimonialEntryContainer:nth-child(2)
+		.testimonialEntryContainer:nth-child(2n)
 			align-self: flex-start
 
 		.testimonialEntryContainer:nth-child(3)
 			align-self: flex-end
 
 .testimonialDraggerCursor
-	position: absolute
-	top: 0
-	left: 0
+	position: fixed
+	pointer-events: none
+	z-index: z('main')
+	transform: translate(-50%, -50%)
 	@include flexCenter
 
 	.dragArrow
@@ -179,12 +179,29 @@ div#testimonialSlider
 
 section#servicesMarquee
 	position: relative
-	overflow: hidden
+	overflow-x: hidden
+
+	&:after, &:before
+		position: absolute
+		height: 100%
+		pointer-events: none
+		left: 0
+		top: 0
+		content: ''
+		z-index: z('main')
+		background: linear-gradient(90deg, rgba(42,39,43, 1) 0%, rgba(42,39,43, 0) 100%)
+		width: 12vw
+
+	&:before
+		right: 0
+		left: unset
+		transform: scaleX(-1)
 
 	.servicesLink
 		// background: $dark
 		position: absolute
 		top: 0
+		z-index: z('main')
 		@include flexCenter
 		bottom: 0
 		right: 0
@@ -195,12 +212,18 @@ section#servicesMarquee
 			margin: 0
 
 	span.marqueeRow
-		display: flex
+		display: inline-flex
+		flex-wrap: nowrap
+		white-space: nowrap
+		align-items: baseline
+		overflow: hidden
 
 		span
-			margin-right: .25em
+			margin-right: .65ch
 			@include createFontClamp(8rem, 16rem)
 			font-family: $serif
 			line-height: 1
+			white-space: nowrap
+			overflow: hidden
 			letter-spacing: -.03em  
 			font-weight: 200

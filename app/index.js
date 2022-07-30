@@ -49,7 +49,7 @@ class App {
     await this.page.animateOut();
     const request = await window.fetch(url);
 
-    window.scrollTo({ top: 0 });
+    // window.scrollTo({ top: 0 });
     if (request.status === 200) {
       const html = await request.text();
       const div = document.createElement('div');

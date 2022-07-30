@@ -9,9 +9,8 @@ block content
       .headingContainer
         h1 Our
         h1 Services
-
       .headerGradientContainer
-
+      .topCurve
     main.serviceContent
       section.topBlurb.hasEmoji
         h2 Colors? Designs? Just a good old fashioned mani-pedi? We do it all!
@@ -34,7 +33,10 @@ block content
                     .serviceImagesSlider
                       each image in service.data.images
                         figure
-                          img(data-src=image.url, alt=image.alt)
+                          img(
+                            data-src=image.service_image.url,
+                            alt=image.service_image.alt
+                          )
                   .mobileImageIndicator
                     span.currentImageNumber= i
                     span.separator /

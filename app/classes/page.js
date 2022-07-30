@@ -39,13 +39,43 @@ export default class Page {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
   }
 
-  animateIn() {
+  animateOut() {
     return new Promise((resolve) => {
-      gsap.from(this.element, {
-        autoAlpha: 0,
-        duration: 1,
+      this.tl = gsap.timeline({
         onComplete: resolve,
       });
+
+      this.tl.to(
+        '.scrollWrapper',
+        {
+          autoAlpha: 0,
+          y: -35,
+          ease: 'power4.in',
+          duration: 0.75,
+        },
+        0
+      );
+    });
+  }
+
+  animateIn() {
+    return new Promise((resolve) => {
+      this.tl = gsap.timeline({
+        onStart: () => {},
+        onComplete: resolve,
+      });
+
+      this.tl
+        .call(function () {
+          window.scrollTo({ top: 0 });
+        }, 0)
+
+        .fromTo(
+          '.scrollWrapper',
+          { autoAlpha: 0, y: -35 },
+          { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+          0.05
+        );
     });
   }
 
@@ -57,7 +87,7 @@ export default class Page {
         wrapper: '#content',
       });
     } else if (this.smooth) {
-      // if it has been created, kill it, and make it new
+      // if it has been created, kill it, and make a new one
       this.smooth.kill();
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
@@ -66,16 +96,5 @@ export default class Page {
     }
 
     ScrollTrigger.refresh();
-  }
-
-  animateOut() {
-    return new Promise((resolve) => {
-      gsap.to(this.element, {
-        autoAlpha: 0,
-        duration: 1,
-        duration: 1,
-        onComplete: resolve,
-      });
-    });
   }
 }

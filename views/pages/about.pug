@@ -10,30 +10,28 @@ block content
         h1 A little bit
         h1 about us!
       .headerGradientContainer
+      .topCurve
+    main#aboutContent
+      section.topBlurb
+        h2= about.data.small_blurb
+        p= about.data.blurb_description
 
-    .contentContainer
-      .contentCurve
-      main#aboutContent
-        section.topBlurb
-          h2= about.data.small_blurb
-          p= about.data.blurb_description
+      section#location
+        h2 next to this
+        #mapboxContainer
+        .addressContainer
+          h3= contact.data.address_line_1
+          h3= contact.data.address_line_2
 
-        section#location
-          h2 next to this
-          #mapboxContainer
-          .addressContainer
-            h3= contact.data.address_line_1
-            h3= contact.data.address_line_2
-
-        each section in about.data.body
-          if section.slice_type="values"
-            section#ourValues
-              .valuesHeadingContainer
-                h2 Our Values
-                .valuesEmojis 
-                  img(data-src='', alt='')
-              .valuesContainer
-                each item in section.items
-                  .valueEntry
-                    h3= item.value_title
-                    p= item.value_description
+      each section in about.data.body
+        if section.slice_type="values"
+          section#ourValues
+            .valuesHeadingContainer
+              h2 Our Values
+              .valuesEmojis 
+                img(data-src='', alt='')
+            .valuesContainer
+              each item in section.items
+                .valueEntry
+                  h3= item.value_title
+                  p= item.value_description

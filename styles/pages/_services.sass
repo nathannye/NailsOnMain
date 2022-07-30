@@ -24,6 +24,7 @@ section#serviceList
 	padding-top: .75rem
 	margin-bottom: 12rem
 	max-width: 150rem
+	
 
 	h2
 		margin-bottom: 0
@@ -36,6 +37,14 @@ section#serviceList
 	justify-content: flex-start
 	align-items: center
 	margin-bottom: 2rem
+
+	button.hasArrow
+		width: 2rem
+		height: 100%
+		background: transparent
+		background-repeat: no-repeat
+		background-position: 100%
+		background-image: url('~/shared/nomArrow.svg')
 
 .headingWithThumbnailContainer
 	display: flex
@@ -91,6 +100,7 @@ img.serviceImageThumbnail
 	align-items: flex-start
 	margin-top: 2rem
 	flex-direction: column
+	overflow-y: hidden
 
 	@media screen and (min-width: 768px)
 		flex-direction: row

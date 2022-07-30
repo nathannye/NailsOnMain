@@ -25,7 +25,7 @@ block content
         )
 
       .headerGradientContainer
-
+      .topCurve
     main.homeContent
       each section in home.data.body
         if section.slice_type == 'hours'
@@ -49,9 +49,34 @@ block content
           section#servicesMarquee
             .servicesLink
               a.solidButton(href='/services')= section.primary.button_text
-            each item, i in section.items
-              span.marqueeRow
-                span= item.service_name
+            //- each item, i in section.items
+            span.marqueeRow
+              span Acrylics
+              span Manicures
+              span Dips
+              span Gels
+            span.marqueeRow
+              span Pedicures
+              span Frenches
+              span Designs
+              span Polish
+            span.marqueeRow
+              span Fills
+              span Lashes
+              span Dips
+              span Milk-Honey Pedi
+              span Acrylics
+            span.marqueeRow
+              span Gel Polish
+              span Acrylic Sets
+              span Gels
+              span Colors
+            span.marqueeRow
+              span Nail Art
+              span Toes
+              span Polish Changes
+              span Mani-Pedi
+              //- span= item.service_name
 
         if section.slice_type == "reviews"
           section#testimonials
