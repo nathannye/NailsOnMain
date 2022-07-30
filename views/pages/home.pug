@@ -45,6 +45,18 @@ block content
                     if item.store_status === false
                       span Closed
 
+        if section.slice_type == 'two_images'
+          section.imageDuo
+            figure
+              img(
+                data-src=section.primary.left_image.url,
+                alt=section.primary.left_image.alt
+              )
+            figure
+              img(
+                data-src=section.primary.right_image.url,
+                alt=section.primary.right_image.alt
+              )
         if section.slice_type == "services_sidescroller"
           section#servicesMarquee
             .servicesLink
@@ -108,6 +120,7 @@ block content
 
         if section.slice_type == "note"
           section#notesAtBottom
+            h2= section.primary.heading
             each note in section.items
               .notesEntry
                 h3= note.note_title
