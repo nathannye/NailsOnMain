@@ -79,12 +79,14 @@ export default class Page {
     });
   }
 
-  createSmoothScroll(content, wrapper) {
+  createSmoothScroll() {
     // if it hasn't been created, make it
     if (!this.smooth) {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '#content',
+        smooth: 1.8,
+        effects: true,
       });
     } else if (this.smooth) {
       // if it has been created, kill it, and make a new one
@@ -92,6 +94,8 @@ export default class Page {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '#content',
+        effects: true,
+        smooth: 1.8,
       });
     }
 

@@ -84,11 +84,16 @@ section.imageDuo
 	figure 
 		width: col(4)
 		height: 50vh
+		position: relative
+		overflow: hidden
 
 		img
 			object-fit: cover
 			width: 100%
-			height: 100%
+			height: 160%
+			position: absolute
+			bottom: 0
+			left: 0
 
 	figure:not(:last-child)
 		margin-right: 2rem
@@ -122,7 +127,7 @@ div#testimonialSlider
 		max-width: 38rem
 		
 		@media screen and (min-width: 768px)
-			margin-right: 7rem
+			margin-right: 4rem
 
 	@media screen and (min-width: 768px)
 
@@ -143,7 +148,11 @@ div#testimonialSlider
 	@include flexCenter
 
 	.dragArrow
-		width: 1.5rem
+		width: 2.5rem
+		height: 2.5rem
+		background-image: url('~/shared/nomArrow.svg')
+		background-repeat: no-repeat
+		background-size: 100%
 
 		&.right
 			transform: rotate(-90deg)
@@ -152,8 +161,8 @@ div#testimonialSlider
 			transform: rotate(90deg)
 
 	.dragInstructionCircle
-		width: 6.5rem
-		height: 6.5rem
+		width: 5.25rem
+		height: 5.25rem
 		background: $pale
 		border-radius: 6.5rem
 

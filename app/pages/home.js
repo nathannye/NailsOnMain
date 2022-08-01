@@ -1,6 +1,5 @@
 import Page from '../classes/Page.js';
 import gsap from 'gsap';
-import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import Draggable from 'gsap/Draggable.js';
 import InertiaPlugin from 'gsap/InertiaPlugin.js';
@@ -12,14 +11,27 @@ export default class Home extends Page {
       element: '#homeWrapper',
       elements: {
         marqueeRows: '.marqueeRow',
+        cursor: '.testimonialDraggerCursor',
+        arrowLeft: '.dragArrow.left',
+        cursorCircle: '.dragInstructionCircle',
+        arrowRight: '.dragArrow.right',
+        testimonials: '#testimonials',
+        allReviews: '.testimonialEntryContainer',
+        marqueeRows: 'span.marqueeRow',
         marqueeContainer: '#servicesMarquee',
-        nav: document.querySelector('nav.desktopNav'),
-        mobileNav: document.querySelector('.mobileMenuContainer'),
+        nav: 'nav.desktopNav',
+        mobileNav: '.mobileMenuContainer',
+        nav: 'nav.desktopNav',
+        mobileNav: '.mobileMenuContainer',
         reviewSlider: '#testimonialSliderContainer',
         dates: '.scheduleEntry > h4',
         dateEntry: '.scheduleEntry',
       },
     });
+  }
+
+  create() {
+    super.create();
     this.getActiveDate();
     this.createTestimonialSlider();
     this.createMarquee();
@@ -39,28 +51,52 @@ export default class Home extends Page {
   createTestimonialSlider() {
     gsap.registerPlugin(Draggable, InertiaPlugin);
 
+    const tracker = InertiaPlugin.track(this.elements.cursor, 'x')[0];
     Draggable.create('#testimonialSlider', {
       type: 'x',
       inertia: true,
       edgeResistance: 0.4,
-      bounds: '#testimonialSliderContainer',
+      bounds: this.elements.reviewSlider,
+      onPress: () => {
+        gsap.to(this.elements.allReviews, {
+          scale: 0.97,
+          ease: 'expo.inOut',
+          duration: 0.4,
+        });
+      },
+      onDrag: () => {
+        let velocityX = tracker.get('x');
+        let maxVelocity = window.innerWidth;
+        let minVelocity = maxVelocity * -1;
+        // console.log(velocityX);
+        let v = gsap.utils.mapRange(minVelocity, maxVelocity, -1, 1, velocityX);
+        gsap.to(this.elements.cursorCircle, {
+          x: v * 7,
+        });
+      },
+      onDragEnd: () => {
+        setTimeout(() => {
+          gsap.quickTo(this.elements.cursorCircle, 'x', {
+            x: 0,
+          });
+        });
+      },
     });
   }
 
   createMarquee() {
-    const rows = document.querySelectorAll('.marqueeRow');
     gsap.registerPlugin(ScrollTrigger);
 
     this.tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '#servicesMarquee',
+        trigger: this.elements.marqueeContainer,
         scrub: true,
         start: 'top bottom',
         end: 'bottom+=20% top',
       },
     });
 
-    rows.forEach((row, i) => {
+    this.elements.marqueeRows.forEach((row, i) => {
       // if divisible by 2 = 0, its even, add an anim to move right
       if (i % 2 == 0) {
         row.anim = gsap.to(
@@ -86,11 +122,75 @@ export default class Home extends Page {
     });
   }
   createCursor() {
-    const cursor = document.querySelector('.testimonialDraggerCursor');
+    gsap.set(this.elements.cursor, {
+      xPercent: -50,
+      yPercent: -50,
+      scale: 0.5,
+      autoAlpha: 0,
+    });
+    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const mouse = { x: pos.x, y: pos.y };
+    const speed = 0.19;
 
-    // window.addEventListener('mousemove', (e) => {
-    //   cursor.style.left = e.pageX + 'px';
-    //   cursor.style.top = e.pageY + document.scrollTop + 'px';
-    // });
+    const xSet = gsap.quickSetter(this.elements.cursor, 'x', 'px');
+    const ySet = gsap.quickSetter(this.elements.cursor, 'y', 'px');
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
+
+    let tl = gsap.timeline({
+      paused: true,
+    });
+
+    tl.to(
+      this.elements.cursor,
+      {
+        scale: 1,
+        autoAlpha: 1,
+        duration: 0.6,
+        ease: 'elastic.out(1, .5)',
+      },
+      0
+    )
+      .from(
+        this.elements.arrowLeft,
+        {
+          autoAlpha: 0,
+          x: 7,
+          ease: 'elastic.out(1, 0.4)',
+          duration: 1,
+        },
+        0.11
+      )
+      .from(
+        this.elements.arrowRight,
+        {
+          autoAlpha: 0,
+          x: -7,
+          ease: 'elastic.out(1, 0.4)',
+          duration: 1,
+        },
+        0.11
+      );
+
+    this.elements.testimonials.addEventListener('mouseenter', (event) => {
+      tl.play();
+    });
+
+    this.elements.testimonials.addEventListener('mouseleave', (event) => {
+      tl.reverse();
+    });
+
+    gsap.ticker.add(() => {
+      // adjust speed for higher refresh monitors
+      const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+
+      pos.x += (mouse.x - pos.x) * dt;
+      pos.y += (mouse.y - pos.y) * dt;
+      xSet(pos.x);
+      ySet(pos.y);
+    });
   }
 }

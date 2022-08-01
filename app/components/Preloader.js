@@ -9,7 +9,7 @@ export default class Preloader extends Component {
       elements: {
         gradient: 'preloaderGradientContainer',
         title: '.preloaderContainer h2',
-        images: document.querySelectorAll('img'),
+        images: 'img',
         number: '.preloaderNumber',
       },
     });
@@ -19,15 +19,14 @@ export default class Preloader extends Component {
   }
 
   createLoader() {
-    each(this.elements.images, (e) => {
-      e.onload = (_) => this.onAssetLoaded(e);
-      e.src = e.getAttribute('data-src');
+    each(this.elements.images, (image) => {
+      image.onload = (_) => this.onAssetLoaded(image);
+      image.src = image.getAttribute('data-src');
     });
   }
 
   onAssetLoaded(image) {
     this.length += 1;
-
     var percentLoaded = this.length / this.elements.images.length;
     this.elements.number.innerHTML = Math.round(percentLoaded * 100) + '%';
 
@@ -54,7 +53,7 @@ export default class Preloader extends Component {
 
   destroy() {
     this.element.parentNode.removeChild(this.element);
-  } 
+  }
 
   animateOut() {}
 }

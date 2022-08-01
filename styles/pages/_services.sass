@@ -24,7 +24,6 @@ section#serviceList
 	padding-top: .75rem
 	margin-bottom: 12rem
 	max-width: 150rem
-	
 
 	h2
 		margin-bottom: 0
@@ -63,19 +62,27 @@ img.serviceImageThumbnail
 	margin-right: 2rem
 	margin-top: .5rem
 
+.serviceImages
+
 .serviceImagesSliderContainer
 	overflow-x: hidden
+	// width: 200%
 
 .serviceImagesSlider
 	position: relative
 	display: flex
-	overflow-x: hidden
 	width: 100%
+	overflow-x: hidden
 	height: 30rem
 	
-
 	@media screen and (min-width: 768px)
 		display: block
+
+	figure
+		display: none
+
+		&.active
+			display: block
 
 	img
 		position: relative

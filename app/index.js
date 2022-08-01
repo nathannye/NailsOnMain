@@ -1,20 +1,24 @@
-import Home from 'pages/home.js';
-import About from 'pages/about.js';
-import OurTeam from 'pages/our-team.js';
-import Services from 'pages/services.js';
+import Home from 'pages/Home.js';
+import About from 'pages/About.js';
+import OurTeam from 'pages/Our-Team.js';
+import Services from 'pages/Services.js';
 import Preloader from './components/Preloader.js';
 import gsap from 'gsap';
 import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import Nav from './components/Nav.js';
+import twemoji from 'twemoji';
 
 class App {
   constructor() {
+    // this.addEventListeners();
+    this.template = window.location.pathname;
     this.createContent();
-    this.createPreloader();
     this.createPages();
+    this.createPreloader();
     this.createNavigationToggle();
     this.addLinkListeners();
+    console.log(this.template);
   }
 
   createPreloader() {
@@ -32,24 +36,38 @@ class App {
   }
 
   createPages() {
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
     this.pages = {
       home: new Home(),
       about: new About(),
       'our-team': new OurTeam(),
       services: new Services(),
     };
+
     this.page = this.pages[this.template];
     this.page.create();
     this.page.createSmoothScroll();
     this.page.animateIn();
+
+    // this.home = new Home(),
+    // this.about = new About(),
+    // this.team = new OurTeam(),
+    // this.services = new Services(),
+
+    // this.pages = {
+    //   '/': this.home,
+    //   '/about': this.about,
+    //   '/our-team': this.team,
+    //   '/services': this.services
+    // };
+
+    this.page = this.pages[this.template];
   }
 
   async onChange(url) {
     await this.page.animateOut();
     const request = await window.fetch(url);
+    const page = this.pages[url];
 
-    // window.scrollTo({ top: 0 });
     if (request.status === 200) {
       const html = await request.text();
       const div = document.createElement('div');
@@ -58,6 +76,8 @@ class App {
 
       const divContent = div.querySelector('#content');
       this.template = divContent.getAttribute('data-template');
+      // this.template = window.location.pathname;
+      console.log(this.template);
 
       this.content.setAttribute(
         'data-template',
@@ -67,9 +87,9 @@ class App {
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
       this.page.create();
+      this.page.registerPlugins();
       this.page.createSmoothScroll();
       this.page.animateIn();
-
       this.addLinkListeners();
     }
   }

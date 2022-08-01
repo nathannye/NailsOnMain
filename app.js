@@ -34,12 +34,6 @@ app.get('/*', async (req, res, next) => {
 
   next();
 });
-
-//- section.imageDuo
-//-   figure
-//-     img(data-src='./image.jpg')
-//-   figure
-//-     img(data-src='./image.jpg')
 app.get('/home', async (req, res) => {
   const home = await client.getSingle('home');
   res.render('pages/home', { home });
@@ -49,13 +43,6 @@ app.get('/', async (req, res) => {
   const home = await client.getSingle('home');
   res.render('pages/home', { home });
 });
-
-// section.imageDuo
-// figure
-//   img(data-src='./image.jpg')
-
-// figure
-//   img(data-src='./image.jpg')
 
 app.get('/about', async (req, res) => {
   const about = await client.getSingle('about_us');
