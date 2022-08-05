@@ -34,16 +34,34 @@ footer
   @media screen and (min-width:768px)
     flex-grow: .5
     width: unset
+
 .footerCols
   display: flex
   align-items: flex-start
   justify-content: space-between
-  
-.footerLocationCol, a.credit, .footerSocialCol, p.copyright
-  width: 25%
+  flex-direction: column
 
-.footerMenuCol, a.privacyPolicy
-  width: 11%
+  & > div:not(:last-child)
+    margin-bottom: 3rem
+
+    @media screen and (min-width:768px)
+      margin-bottom: 0
+
+  .footerLocationCol
+    width: 100%
+
+  @media screen and (min-width:768px)
+    flex-direction: row
+
+    .footerLocationCol, a.credit, .footerSocialCol, p.copyright
+      width: 25%
+
+    .footerMenuCol, a.privacyPolicy
+      width: 11%
+
+.footerMenuLinksContainer
+  display: flex
+  flex-direction: column
 
 .footerLowerInfo
   display: flex

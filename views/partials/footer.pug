@@ -12,15 +12,17 @@ footer
           p= contact.data.address_line_2
       .footerMenuCol
         h3 Menu
-        .footerMenuLinksContainer
+        ul.footerMenuLinksContainer
           each link in menu.data.links
-            a.nakedLink(href=link.link.url)= link.link_label
+            li
+              a.nakedLink(href=link.link.url)= link.link_label
 
       .footerSocialCol
         h3 Social
-        .footerSocialLinksContainer
+        ul.footerSocialLinksContainer
           each link in contact.data.social_media
-            a.nakedLink(href=link.social_media_link.url)= link.social_media_label
+            li
+              a.nakedLink(href=link.social_media_link.url)= link.social_media_label
     .footerLowerInfo
       a.nakedLink.credit(
         href='https://nye.design/',

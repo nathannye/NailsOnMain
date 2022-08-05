@@ -29,13 +29,15 @@ html(lang='en')
     meta(name='og:description', content='')
     meta(name='og:image', content='')
     meta(name='og:url', content='')
-
+    link(
+      href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css',
+      rel='stylesheet'
+    )
     link(href='./main.css', rel='stylesheet')
     title titles
   body 
-    include ./partials/preloader
     include ./partials/nav
-    include ./partials/cookie-notification
+    include ./partials/cookie
 
     .testimonialDraggerCursor
       .dragArrow.left
@@ -47,5 +49,7 @@ html(lang='en')
         block content
 
         include ./partials/footer
+
+        include ./partials/preloader
 
     script(src='main.js', type='module')

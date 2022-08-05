@@ -1,7 +1,6 @@
 @use './utils/forward' as *
 
 div.preloaderContainer
-  background: $dark
   position: fixed
   top: 0
   z-index: z('preloader')
@@ -10,21 +9,27 @@ div.preloaderContainer
   height: 100vh
   @include flexCenter
 
+.preloaderNumber
+  position: fixed
+  bottom: 4rem
+  left: 0
+  right: 0
+  margin-right: auto
+  margin-left: auto
+
 .preloaderTextContainer
   position: absolute
   top: 0
   left: 0
   display: inline
   right: 0
-  z-index: 2
   bottom: 0
   margin: auto
   @include flexCenter
 
 .preloaderGradientContainer
-  height: 60vh
-  width: 60vh
-  z-index: -1
-  border-radius: 4000px
-  background: $conical
-  filter: blur(40px)
+  height: 40vh
+  width: 40vh
+  overflow: hidden
+  
+

@@ -1,93 +1,93 @@
 @use './utils/forward' as *
 
 nav.desktopNav
-  position: fixed
-  display: none
-  justify-content: space-between
-  top: 0
-  z-index: z('nav')
-  align-items: center
-  left: 0
-  width: 100%
-  padding: 2rem 4rem
+	position: fixed
+	display: none
+	justify-content: space-between
+	top: 0
+	z-index: z('nav')
+	align-items: center
+	left: 0
+	width: 100%
+	padding: 2rem 4rem
 
-  @media screen and (min-width: 768px)
-    display: flex
+	@media screen and (min-width: 768px)
+		display: flex
 
-  ul
-    display: flex
+	ul
+		display: flex
 
-    li
-      margin-right: 1.5rem
-      display: block
+		li
+			margin-right: 1.5rem
+			display: block
 
-      &:last-child
-        margin-right: 2rem
+			&:last-child
+				margin-right: 2rem
 
-  .navItems
-    display: flex
-    align-items: center
-    
-    a.solidButton
-      margin: 0 0 0 1.5rem
+	.navItems
+		display: flex
+		align-items: center
+		
+		a.solidButton
+			margin: 0 0 0 1.5rem
 
 button.mobileMenuButton
-  z-index: z('nav')
-  position: fixed
-  top: 2rem
-  left: 2rem
-  padding: 1.75rem 3.5rem !important
+	z-index: z('nav')
+	position: fixed
+	top: 2rem
+	left: 2rem
+	padding: 1.75rem 3.5rem !important
 
-  span.hamburgerLine
-    width: 3rem
-    display: block
-    height: 1px
-    background: $pale
+	span.hamburgerLine
+		width: 3rem
+		display: block
+		height: 1px
+		background: $pale
 
-    &:last-child
-      margin-top: .75rem
+		&:last-child
+			margin-top: .75rem
 
-  @media screen and (min-width: 768px)
-    display: none
+	@media screen and (min-width: 768px)
+		display: none
 
 div.mobileMenuContainer
-  background: $dark
-  display: none
-  position: fixed
-  top: 0
-  left: 0
-  flex-direction: column
-  justify-content: flex-end
-  height: 100vh
-  width: 100%
-  z-index: z('mobile-menu')
-  padding-left: 2rem
-  padding-right: 2rem
-  padding-bottom: 12rem
+	background: $dark
+	position: fixed
+	top: 0
+	left: 0
+	flex-direction: column
+	justify-content: flex-end
+	height: 100vh
+	width: 100%
+	z-index: z('mobile-menu')
+	padding-left: 2rem
+	padding-right: 2rem
+	padding-bottom: 6rem
 
-  a
-    font-family: $serif
-    font-size: 6.5rem
-    line-height: 1
+	a
+		font-family: $serif
+		font-size: 6.5rem
+		line-height: 1
+		transform: perspective(300px)
+		transform-style: preserve-3d
 
-    &:not(:last-child)
-      margin-bottom: 1.5rem
+		&:not(:last-child)
+			margin-bottom: 1.5rem
 
-    &.active
-      opacity: .5
-      @include hasStaticArrow(1.5rem)
-        
-
-  @media screen and (min-width: 768px)
-    display: none
+		&.active
+			opacity: .5
+			// @include hasStaticArrow(1.5rem)
+				
+	@media screen and (min-width: 768px)
+		display: none
 
 .mobileLinksContainer
-  display: flex
-  margin-top: 2rem
-  flex-direction: column
+	display: flex
+	margin-top: 2rem
+	flex-direction: column
 
-  a:nth-child(1), a:nth-child(2), a:nth-child(3)
-    align-self: flex-start
-  
-  a:nth-child(3), a:nth-child(5)
-    align-self: flex-end
+	a:nth-child(1), a:nth-child(2), a:nth-child(3)
+		align-self: flex-start
+	
+	a:nth-child(3), a:nth-child(5)
+		align-self: flex-end

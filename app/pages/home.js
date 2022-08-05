@@ -18,24 +18,34 @@ export default class Home extends Page {
         testimonials: '#testimonials',
         allReviews: '.testimonialEntryContainer',
         marqueeRows: 'span.marqueeRow',
+        reviewerNames: '.testimonialTextContainer h3',
+        reviewerInitials: '.testimonialInitialsContainer p',
         marqueeContainer: '#servicesMarquee',
         nav: 'nav.desktopNav',
+        testimonialEmoji: '.testimonialEmoji p',
+        testimonialEmojiContainer: '.testimonialEmoji',
         mobileNav: '.mobileMenuContainer',
         nav: 'nav.desktopNav',
         mobileNav: '.mobileMenuContainer',
-        reviewSlider: '#testimonialSliderContainer',
+        reviewSliderInner: '#testimonialSlider',
+        reviewSliderContainer: '#testimonialSliderContainer',
         dates: '.scheduleEntry > h4',
         dateEntry: '.scheduleEntry',
+        headerImages: 'header.homeHeader img',
+        headerLargeText:
+          'header.homeHeader .smallTextContainer h2, header.homeHeader .nailsOnText h1, .homeSplitRight h1',
       },
     });
   }
 
   create() {
     super.create();
+    // this.animateIn();
     this.getActiveDate();
     this.createTestimonialSlider();
     this.createMarquee();
     this.createCursor();
+    this.populateReviewInitials();
   }
 
   getActiveDate() {
@@ -56,7 +66,7 @@ export default class Home extends Page {
       type: 'x',
       inertia: true,
       edgeResistance: 0.4,
-      bounds: this.elements.reviewSlider,
+      bounds: this.elements.reviewSliderContainer,
       onPress: () => {
         gsap.to(this.elements.allReviews, {
           scale: 0.97,
@@ -68,7 +78,6 @@ export default class Home extends Page {
         let velocityX = tracker.get('x');
         let maxVelocity = window.innerWidth;
         let minVelocity = maxVelocity * -1;
-        // console.log(velocityX);
         let v = gsap.utils.mapRange(minVelocity, maxVelocity, -1, 1, velocityX);
         gsap.to(this.elements.cursorCircle, {
           x: v * 7,
@@ -192,5 +201,39 @@ export default class Home extends Page {
       xSet(pos.x);
       ySet(pos.y);
     });
+  }
+
+  populateReviewInitials() {
+    this.elements.reviewerNames.forEach((name, i) => {
+      let words = name.innerHTML.split(' ');
+
+      if (words.length === 2) {
+        name.initials = [words[0].charAt(0), words[1].charAt(0)];
+        this.elements.reviewerInitials[
+          i
+        ].innerHTML = `${name.initials[0]}${name.initials[1]}`;
+      } else if (words.length === 1) {
+        name.initials = words[0].chartAt(0);
+        this.elements.reviewerInitials[i].innerHTML = name.initials;
+      }
+    });
+  }
+
+  animateIn() {
+    let tl = gsap.timeline();
+
+    tl.from(this.elements.headerImages, {
+      y: 90,
+      autoAlpha: 0,
+      ease: 'expo.inOut',
+      duration: 1,
+      stagger: 0.1,
+    }).from(
+      this.elements.headerLargeText,
+      {
+        autoAlpha: 0,
+      },
+      0.1
+    );
   }
 }

@@ -46,10 +46,14 @@ h3
 	letter-spacing: -.02em
 
 a, button
-	@include createFontClamp(1.3rem, 1.75rem)
+	@include createFontClamp(1.55rem, 1.75rem)
 	font-family: $sans
 	font-weight: 300
 	cursor: pointer 
+
+ul
+	li:not(:last-child)
+		margin-bottom: .5rem
 
 h4
 	text-transform: uppercase
@@ -94,13 +98,13 @@ a
 	border: 1px solid $pale
 
 section:not(section#content)
-	margin-bottom: 15rem
+	@include createClamp(11rem, 15rem, margin-bottom)
 	margin-right: auto
 	margin-left: auto
 
 header
 	position: relative
-	min-height: 58vh
+	min-height: 88vh
 	z-index: z('header')
 	overflow: hidden
 	padding-top: 20rem
@@ -109,19 +113,33 @@ header
 		padding-bottom: 10rem
 
 .headerGradientContainer
-	width: 100vw
+	width: 150vw
 	display: block
 	position: absolute
 	top: -10%
 	right: 0
+	left: 0
 	z-index: -1
 	margin-left: auto
 	margin-right: auto
 	height: 200vh
-	background-image: $conical
-	// filter: blur(240px)
+	// background-image: $conical
+	filter: blur(50px)
 	content: ''
-		
+
+	.gradient
+		border-radius: 0
+
+.gradient
+	position: relative
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	filter: blur(50px)
+	background: $conical
+	border-radius: 4000px
+
 main
 	background: $dark
 	padding-top: 4.5rem
@@ -152,3 +170,10 @@ img, figure
 	@media screen and (min-width: 768px)
 		margin-left: col(3)
 		width: col(4)
+
+.twemojiReplace
+	visibility: hidden
+
+	img
+		border-radius: 0 !important
+		visibility: visible

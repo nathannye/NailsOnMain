@@ -29,20 +29,20 @@ $totalColumns: 8
 @function getClampVal($minVal, $maxVal)
   @return clamp($minVal, createPreferredClamp($minVal, $maxVal, $maxWidth, $minWidth),$maxVal)
 
-@mixin hasStaticArrow($width)
-  &
-    position: relative
-    transform: translate(1rem + $width)
+// @mixin hasStaticArrow($width)
+//   &
+//     position: relative
+//     transform: translate(1rem + $width)
 
-  &:before
-    content: ''
-    width: $width
-    height: 100%
-    position: absolute
-    left: 0
-    background-repeat: no-repeat
-    display: block
-    top: 50%
-    background-position: 100%
-    transform: translateY(-50%) rotate(-90deg)
-    background-image: url('~/shared/nomArrow.svg')
+//   &:before
+//     content: ''
+//     width: $width
+//     height: 100%
+//     position: absolute
+//     left: 0
+//     background-repeat: no-repeat
+//     display: block
+//     top: 50%
+//     background-position: 100%
+//     transform: translateY(-50%) rotate(-90deg)
+//     background-image: url('~/shared/nomArrow.svg')

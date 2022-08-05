@@ -169,7 +169,6 @@ export default class Services extends Page {
 
           s.btn.forEach((btn, index) => {
             btn.onclick = () => {
-              console.log(index);
               s.img.forEach((img, i) => {
                 img.classList.remove('active');
               });

@@ -27,9 +27,12 @@ block content
         if section.slice_type="values"
           section#ourValues
             .valuesHeadingContainer
-              h2 Our Values
+              h2= section.primary.heading
               .valuesEmojis 
-                img(data-src='', alt='')
+                each emoji in section.items
+                  .twemojiReplace= emoji.value_emoji
+                    p
+
             .valuesContainer
               each item in section.items
                 .valueEntry

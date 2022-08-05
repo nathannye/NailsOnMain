@@ -6,9 +6,16 @@ header.servicesHeader
 
 	div.headingContainer
 		display: flex
+		flex-direction: column
+
+		@media screen and (min-width: 768px)
+			flex-direction: row
 
 		h1:nth-child(2)
-			margin-top: .5em
+			margin-top: 0
+
+			@media screen and (min-width: 768px)
+				margin-top: 0.5em
 
 	.headerGradientContainer
 
@@ -36,6 +43,11 @@ section#serviceList
 	justify-content: flex-start
 	align-items: center
 	margin-bottom: 2rem
+
+	& > h4
+		display: none
+		@media screen and (min-width: 768px)
+			display: block
 
 	button.hasArrow
 		width: 2rem

@@ -72,7 +72,21 @@ div.scheduleEntry
 
 		h4
 			transform: translateX(3rem)
-			@include hasStaticArrow(2rem)
+			position: relative
+
+			&:before
+				content: ''
+				width: 1.25rem
+				height: 100%
+				position: absolute
+				left: -2rem
+				background-repeat: no-repeat
+				display: block
+				top: 50%
+				background-position: center center
+				transform: translateY(-50%) rotate(-90deg)
+				background-size: 100%
+				background-image: url('~/shared/nomArrow.svg')
 
 	&:not(:last-child)
 		margin-bottom: 1.5rem
@@ -111,23 +125,24 @@ div.testimonialHeadingContainer
 		width: col(3)
 		max-width: 45rem
 
+	a.solidButton
+		margin-bottom: 2rem
+
 div#testimonialSliderContainer
-	width: 100%
 	overflow-x: hidden
 
 div#testimonialSlider
 	display: flex
-	width: 600%
 	overflow-x: hidden
 
 	.testimonialEntryContainer
 		align-self: flex-start
 		margin-right: 2rem
 		width: 80vw
-		max-width: 38rem
 		
 		@media screen and (min-width: 768px)
 			margin-right: 4rem
+			width: 25vw
 
 	@media screen and (min-width: 768px)
 
@@ -146,6 +161,10 @@ div#testimonialSlider
 	z-index: z('main')
 	transform: translate(-50%, -50%)
 	@include flexCenter
+	display: none
+
+	@media screen and (min-width: 768px)
+		display: block
 
 	.dragArrow
 		width: 2.5rem
@@ -177,14 +196,23 @@ div#testimonialSlider
 	display: flex
 	width: 4.5rem
 	height: 4.5rem
+	margin-bottom: 1rem
 	border-radius: 2.25rem
 	justify-content: center
 	align-items: center
 	background: $pale
 	
 	p
+		text-transform: uppercase
 		line-height: 1
 		color: $dark
+
+.testimonialEmoji
+	width: 3.25rem
+	overflow: visible
+
+	img
+		width: 100%
 
 section#servicesMarquee
 	position: relative
@@ -240,9 +268,13 @@ section#servicesMarquee
 section#notesAtBottom
 	display: flex
 	align-items: flex-start
+	flex-direction: column
 
-	h2
-		width: col(3)
+	@media screen and (min-width: 768px)
+		flex-direction: row
 
-	.notesEntry
-		width: col(3)
+		h2
+			width: col(3)
+
+		.notesEntry
+			width: col(3)

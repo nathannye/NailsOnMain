@@ -24,9 +24,12 @@ section#location
 
   #mapboxContainer
     width: 100%
+    position: relative
     background: black
     height: 35rem
     
+
+
   h3
     margin-right: 0
 
@@ -36,6 +39,33 @@ section#location
 
 .addressContainer
   margin-top: 1rem
+
+.mapboxgl-ctrl-group button:first-child
+  border-top-left-radius: 1rem
+  border-top-right-radius: 1rem
+
+.mapboxgl-ctrl-group button:last-child
+  border-bottom-left-radius: 1rem
+  border-bottom-right-radius: 1rem
+
+.mapboxgl-ctrl-group:not(:empty)
+  box-shadow: none !important
+  background: $dark
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-in .mapboxgl-ctrl-icon
+  background-image: url('~/shared/zoomInIcon.svg')
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-zoom-out .mapboxgl-ctrl-icon
+  background-image: url('~/shared/zoomOutIcon.svg')
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-compass .mapboxgl-ctrl-icon
+  background-image: url('~/shared/rotateIcon.svg')
+
+.mapboxgl-ctrl button .mapboxgl-ctrl-icon
+  background-size: 37%
+
+.mapboxgl-ctrl button.mapboxgl-ctrl-compass .mapboxgl-ctrl-icon
+  background-size: 25% !important
 
 section#ourValues
   display: flex
@@ -50,33 +80,50 @@ section#ourValues
   display: flex
   flex-direction: row
   width: 100%
-  margin-right: 4rem
+  justify-content: space-between
+
+  h2
+    margin-bottom: 0
 
   @media screen and (min-width: 768px)
     flex-direction: column
+    justify-content: unset
     width: col(2)
+    padding-right: 4rem
 
 .valuesEmojis
   display: flex
   align-items: center
 
-  img:not(:last-child)
-    margin-right: 1rem
-    width: 2.5rem
-    height: 2.5rem
+  .twemojiReplace 
+
+    img
+      margin-right: 1rem
+      width: 2.5rem
+      height: 2.5rem
 
 .valuesContainer
   display: flex
+  margin-top: 2rem
   flex-wrap: wrap
   flex-direction: column
 
   @media screen and (min-width: 768px)
     flex-direction: row
     width: col(4)
+    margin-top: 0
 
 .valueEntry
   width: 100%
-  margin-bottom: 4rem
+  margin-bottom: 1.5rem
 
   @media screen and (min-width:768px)
     width: col(4)
+    margin-bottom: 4rem
+
+    &:nth-child(odd)
+      padding-right: 1rem
+
+    &:nth-child(even)
+      padding-left: 1rem
+

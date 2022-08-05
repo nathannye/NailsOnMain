@@ -23,7 +23,6 @@ block content
           data-src=home.data.top_image_right.url,
           alt=home.data.top_image_right.alt
         )
-
       .headerGradientContainer
       .topCurve
     main.homeContent
@@ -103,12 +102,12 @@ block content
                   .testimonialEntryContainer
                     .testimonialEntryContent
                       .testimonialInitialsContainer
-                        //- p= review.name_of_reviewer
+                        p 
                       .testimonialTextContainer
                         h3= review.name_of_reviewer
                         p= review.review_text
                       .testimonialEmoji
-                        p emoji here
+                        p.twemojiReplace= review.emoji
                     .mobileReviewIndicatorContainer
                       h4= i + 1
                         | /
@@ -119,5 +118,5 @@ block content
             h2= section.primary.heading
             each note in section.items
               .notesEntry
-                h3= note.note_title
+                //- h3= note.note_title
                 p= note.note_text

@@ -7,7 +7,6 @@ import gsap from 'gsap';
 import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import Nav from './components/Nav.js';
-import twemoji from 'twemoji';
 
 class App {
   constructor() {
@@ -18,7 +17,6 @@ class App {
     this.createPreloader();
     this.createNavigationToggle();
     this.addLinkListeners();
-    console.log(this.template);
   }
 
   createPreloader() {
@@ -47,6 +45,7 @@ class App {
     this.page.create();
     this.page.createSmoothScroll();
     this.page.animateIn();
+    this.page.parseEmojis();
 
     // this.home = new Home(),
     // this.about = new About(),
@@ -76,9 +75,6 @@ class App {
 
       const divContent = div.querySelector('#content');
       this.template = divContent.getAttribute('data-template');
-      // this.template = window.location.pathname;
-      console.log(this.template);
-
       this.content.setAttribute(
         'data-template',
         divContent.getAttribute('data-template')
@@ -91,6 +87,7 @@ class App {
       this.page.createSmoothScroll();
       this.page.animateIn();
       this.addLinkListeners();
+      this.page.parseEmojis();
     }
   }
 
@@ -101,11 +98,11 @@ class App {
   addLinkListeners() {
     const links = document.querySelectorAll('a:not(.nonNavLink)');
     links.forEach((link) => {
-      link.onclick = (event) => {
+      link.addEventListener('click', (event) => {
         event.preventDefault();
         const { href } = link;
         this.onChange(href);
-      };
+      });
     });
   }
 }
