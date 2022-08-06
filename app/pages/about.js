@@ -25,6 +25,7 @@ export default class About extends Page {
       style: 'mapbox://styles/nye-11/cl5ganty8002b15o5xfrcw9o8',
       center: [-83.41974, 42.72242],
       zoom: 17,
+      bearing: -135,
       pitch: 52,
     });
 

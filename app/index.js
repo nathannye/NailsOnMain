@@ -1,5 +1,6 @@
 import Home from 'pages/Home.js';
 import About from 'pages/About.js';
+import Missing from 'pages/Missing.js';
 import OurTeam from 'pages/Our-Team.js';
 import Services from 'pages/Services.js';
 import Preloader from './components/Preloader.js';
@@ -39,6 +40,7 @@ class App {
       about: new About(),
       'our-team': new OurTeam(),
       services: new Services(),
+      404: new Missing(),
     };
 
     this.page = this.pages[this.template];

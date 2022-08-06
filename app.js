@@ -60,6 +60,11 @@ app.get('/our-team', async (req, res) => {
   res.render('pages/our-team', { our_team });
 });
 
+app.get('*', async (req, res) => {
+  const missing = await client.getSingle('404_missing_page');
+  res.render('pages/404', { missing });
+});
+
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
