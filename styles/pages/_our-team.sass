@@ -27,6 +27,7 @@ header#teamHeader
   border-top-left-radius: 2rem
   background: $pale
   @include createClamp(2rem, 4rem, padding)
+  display: none
 
   span
     display: flex
@@ -69,5 +70,27 @@ button.closeInfoPopup
   left: 0
   top: 0
   width: 100vw
+  display: none
   z-index: z('nav')
   height: 100vh
+
+.teamMemojis
+  display: grid
+  grid-template-columns: repeat(3, 1fr) 
+
+.teamMemberContainer
+  border-radius: 700px
+  background: $purple
+  overflow: hidden
+  @include createClamp(4rem, 8rem, padding)
+  border: 1rem solid $dark
+  display: flex
+  height: 30rem
+  width: 30rem
+  justify-content: center
+  align-items: center
+
+  img
+    height: 100%
+    width: 100%
+

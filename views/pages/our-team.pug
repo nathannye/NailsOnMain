@@ -2,6 +2,7 @@ extends ../layout.pug
 
 block variables
   - var template = 'our-team';
+  //- - var metaDescription =  
 
 block content
   #ourTeamWrapper
@@ -17,10 +18,12 @@ block content
       .contentCurve
       main#teamContent
         section.topBlurb.hasEmoji
-          h2 stuff and things
-
+          h2= our_team.data.small_blurb
         section.teamMemojis
-          p stuff goes here that will take awhile to get
+          each person in team_members
+            .teamMemberContainer
+              img(data-src=person.data.memoji.url)
+              //- h2= person.data.name
 
         .teamMemberInfoPopup
           button.closeInfoPopup 

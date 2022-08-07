@@ -173,15 +173,13 @@ button.indicatorStrip
 .serviceDescriptionContainer 
 	width: 100%
 	margin-top: 4rem
-	display: flex
-	flex-direction: column
+	display: grid
+	gap: 4rem
 
 	@media screen and (min-width:768px)
 		width: col(4)
-		flex-direction: row
+		grid-template-columns: repeat(2, 1fr)
 		margin-top: 0
-		flex-grow: 1
-		flex-wrap: wrap
 
 .serviceDescription
 	width: 100%
@@ -191,15 +189,6 @@ button.indicatorStrip
 
 		@media screen and (min-width: 768px)
 			margin-bottom: 0
-
-	@media screen and (min-width: 768px)
-		width: calc(col(4) - 4rem)
-		
-	&:nth-child(odd)
-		margin-right: 0
-
-		@media screen and (min-width: 768px)
-			margin-right: 4rem
 
 .priceEntry
 	margin-top: 1.5rem

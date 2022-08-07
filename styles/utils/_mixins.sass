@@ -15,6 +15,10 @@ $totalColumns: 8
   justify-content: center
   align-items: center
 
+@mixin has3D
+  transform: perspective(300px)
+  transform-style: preserve-3d
+
 // Take col width, divide by columns, get %
 @function col($colWidth)
   $w: percentage(calc($colWidth / $totalColumns))
