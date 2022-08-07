@@ -22,7 +22,7 @@ export default class About extends Page {
 
   animateIn() {
     console.log('anim');
-    const tl = gsap.timeline({ w });
+    const tl = gsap.timeline({});
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
     });
