@@ -19,12 +19,16 @@ block content
       section#serviceList
         each service, i in s
           .serviceEntry
-            .serviceSmallTop
+            button.serviceSmallTop(aria-label='toggle dropdown')
+              span.topLine
               .headingWithThumbnailContainer
-                img.serviceImageThumbnail(data-src='./image.jpg', alt='')
+                img.serviceImageThumbnail(
+                  data-src=service.data.images[0].service_image.url,
+                  alt=''
+                )
                 h2= service.data.service_name
               h4= service.data.service_tagline
-              button.hasArrow.dropdown(aria-label='toggle dropdown')
+              .hasArrow.dropdown
             .serviceDetails
               .serviceImages
                 //- Make sure this works for mobile, switches to a draggable
@@ -45,6 +49,7 @@ block content
                     if service.data.images
                       each image in service.data.images
                         button.indicatorStrip
+                          .inner
               .serviceDescriptionContainer
                 each detail in service.data.service_details
                   .serviceDescription

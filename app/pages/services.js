@@ -28,12 +28,13 @@ export default class Services extends Page {
   }
 
   createDropdowns() {
-    gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(SplitText, ScrollTrigger);
     console.log('drops');
     const dur = 0.7;
     const ease = 'power2.out';
     this.elements.service.forEach((dropdown) => {
-      dropdown.btn = dropdown.querySelector('button.dropdown');
+      dropdown.clicker = dropdown.querySelector('button.serviceSmallTop');
+      dropdown.arrow = dropdown.querySelector('div.hasArrow');
       dropdown.info = dropdown.querySelector('.serviceDetails');
       dropdown.details = dropdown.querySelectorAll('.serviceDescription');
       // dropdown.thumbnail = dropdown.querySelector('img.serviceImageThumbnail');
@@ -63,7 +64,7 @@ export default class Services extends Page {
           0
         )
         .to(
-          dropdown.btn,
+          dropdown.arrow,
           {
             rotate: 180,
             duration: 0.35,
@@ -102,6 +103,12 @@ export default class Services extends Page {
 
         d.tl = gsap.timeline({
           delay: 0.2 + i / 4,
+          onComplete: () => {
+            ScrollTrigger.refresh();
+          },
+          onReverseComplete: () => {
+            ScrollTrigger.refresh();
+          },
         });
 
         d.tl
@@ -140,8 +147,13 @@ export default class Services extends Page {
       });
 
       dropdown.tl.reversed(true);
-      dropdown.btn.onclick = () => {
+      dropdown.clicker.onclick = () => {
         dropdown.tl.reversed() ? dropdown.tl.play() : dropdown.tl.reverse();
+
+        // setTimeout(() => {
+        //   ScrollTrigger.refresh();
+        //   console.log(`refreshed after ${dropdown.tl.duration()} seconds`);
+        // }, dropdown.tl.duration());
       };
     });
   }
@@ -153,26 +165,35 @@ export default class Services extends Page {
       // Below 768, apply this (mobile only)
       '(max-width: 768px)': () => {
         slider.forEach((s) => {
-          Draggable.create(s.querySelector('.serviceImagesSlider'), {
-            bounds: s.querySelector('.serviceImagesSliderContainer'),
-            type: 'x',
-            inertia: true,
-            edgeResistance: 0.4,
-          });
+          this.drag = Draggable.create(
+            s.querySelector('.serviceImagesSlider'),
+            {
+              bounds: s.querySelector('.serviceImagesSliderContainer'),
+              type: 'x',
+              inertia: true,
+              edgeResistance: 0.4,
+            }
+          );
         });
       },
       '(min-width: 769px)': () => {
+        // if (this.drag) {
+        //   this.drag.kill;
+        // }
         slider.forEach((s, i) => {
           s.img = s.querySelectorAll('figure');
           s.btn = s.querySelectorAll('button.indicatorStrip');
           s.img[0].classList.add('active');
-
+          s.btn[0].classList.add('active');
           s.btn.forEach((btn, index) => {
             btn.onclick = () => {
               s.img.forEach((img, i) => {
                 img.classList.remove('active');
               });
-
+              s.btn.forEach((button, i) => {
+                button.classList.remove('active');
+              });
+              s.btn[index].classList.add('active');
               s.img[index].classList.add('active');
             };
           });

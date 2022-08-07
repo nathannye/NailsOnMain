@@ -45,11 +45,14 @@ h3
 	margin-bottom: .5rem
 	letter-spacing: -.02em
 
-a, button
+a, button:not(button.serviceSmallTop)
 	@include createFontClamp(1.55rem, 1.75rem)
 	font-family: $sans
 	font-weight: 300
 	cursor: pointer 
+
+button:hover
+	cursor: pointer
 
 ul
 	li:not(:last-child)
@@ -129,6 +132,7 @@ header
 	margin-left: auto
 	margin-right: auto
 	height: 200vh
+	overflow: visible
 	// background-image: $conical
 	filter: blur(50px)
 	content: ''
