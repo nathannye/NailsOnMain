@@ -60,12 +60,21 @@ export default class Home extends Page {
 
   createTestimonialSlider() {
     gsap.registerPlugin(Draggable, InertiaPlugin);
+    // Set thing that stores positon of the cricle in crusor
+    let xTo = gsap.utils.pipe(
+      gsap.utils.clamp(-12, 12),
+      gsap.quickTo(this.elements.cursorCircle, 'x', {
+        duration: 0.4,
+        ease: 'circ.out',
+      })
+    );
 
     const tracker = InertiaPlugin.track(this.elements.cursor, 'x')[0];
     Draggable.create('#testimonialSlider', {
       type: 'x',
       inertia: true,
       edgeResistance: 0.4,
+      edgeResistance: 0.65,
       bounds: this.elements.reviewSliderContainer,
       onPress: () => {
         gsap.to(this.elements.allReviews, {
@@ -74,7 +83,16 @@ export default class Home extends Page {
           duration: 0.4,
         });
       },
+      onRelease: () => {
+        gsap.to(this.elements.allReviews, {
+          scale: 1,
+          ease: 'circ.inOut',
+          duration: 0.25,
+        });
+      },
       onDrag: () => {
+        // set it back when you start dragging
+        xTo(0);
         let velocityX = tracker.get('x');
         let maxVelocity = window.innerWidth;
         let minVelocity = maxVelocity * -1;
@@ -82,6 +100,7 @@ export default class Home extends Page {
         gsap.to(this.elements.cursorCircle, {
           x: v * 7,
         });
+        xTo(v * 10);
       },
       onDragEnd: () => {
         setTimeout(() => {
@@ -89,6 +108,8 @@ export default class Home extends Page {
             x: 0,
           });
         });
+        // AND WHEN YOU STOP, DO NOT MOVE THIS SHIT
+        xTo(0);
       },
     });
   }
@@ -217,6 +238,10 @@ export default class Home extends Page {
         this.elements.reviewerInitials[i].innerHTML = name.initials;
       }
     });
+  }
+
+  destroy() {
+    super.destroy();
   }
 
   animateIn() {

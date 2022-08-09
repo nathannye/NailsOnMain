@@ -10,7 +10,7 @@
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
     "frontend:build": "webpack --progress --config webpack.config.build.js",
-    "frontend:development": "webpack serve --progress --config webpack.config.development.js",
+    "frontend:development": "webpack serve --host 192.168.1.29 --progress --config webpack.config.development.js",
     "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "devDependencies": {
