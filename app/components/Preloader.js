@@ -105,6 +105,6 @@ export default class Preloader extends Component {
   }
 
   animateOut() {
-    console.log('out');
+    // console.log('out');
   }
 }

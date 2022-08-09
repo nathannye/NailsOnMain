@@ -30,7 +30,7 @@ class App {
   }
 
   createContent() {
-    this.content = document.querySelector('#content');
+    this.content = document.querySelector('.content');
     this.template = this.content.getAttribute('data-template');
   }
 
@@ -75,7 +75,7 @@ class App {
 
       div.innerHTML = html;
 
-      const divContent = div.querySelector('#content');
+      const divContent = div.querySelector('.content');
       this.template = divContent.getAttribute('data-template');
       this.content.setAttribute(
         'data-template',

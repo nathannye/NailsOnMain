@@ -84,7 +84,7 @@ export default class Page {
     if (!this.smooth) {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
-        wrapper: '#content',
+        wrapper: '.content',
         smooth: 1.8,
         effects: true,
       });
@@ -93,7 +93,7 @@ export default class Page {
       this.smooth.kill();
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
-        wrapper: '#content',
+        wrapper: '.content',
         effects: true,
         smooth: 1.8,
       });
@@ -123,16 +123,19 @@ export default class Page {
         callback: (icon, options) => {
           // create the image tag
           let img = document.createElement('img');
-
+          let parent = emoji.parentElement;
           // assign the image source
           let src = constructTwemojiURL(icon, options);
           img.setAttribute('data-src', src);
           img.alt = 'Twemoji';
 
           // append the tag to our document body
-          emojis[i].append(img);
+          parent.append(img);
+          // emojis[i].append(img);
         },
       });
+
+      emoji.innerHTML = '';
     });
   }
 }

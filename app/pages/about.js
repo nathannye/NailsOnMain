@@ -21,13 +21,10 @@ export default class About extends Page {
   }
 
   animateIn() {
-    console.log('anim');
     const tl = gsap.timeline({});
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
     });
-
-    console.log(split.words);
 
     split.lines.forEach((line, index) => {
       line.split = new SplitText(line, {
