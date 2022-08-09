@@ -6,6 +6,7 @@
 @use './pages/about'
 @use './pages/services'
 @use './pages/our-team'
+@use './pages/privacy'
 
 @use './components/nav'
 @use './components/cookie'
@@ -38,6 +39,10 @@ h2
 	letter-spacing: -.03em
 	margin-bottom: 1.5rem
 
+p + h2, ul + h2
+	margin-top: 4.5rem
+
+
 h3
 	@include createFontClamp(1.8rem, 2.25rem)
 	font-family: $sans
@@ -55,18 +60,42 @@ button:hover
 	cursor: pointer
 
 ul
+
 	li:not(:last-child)
 		margin-bottom: .5rem
+
+	li
+		position: relative
+
+		&:before
+			top: 0
+			bottom: 0
+			margin-top: auto
+			height: 0.5rem
+			width: 0.5rem
+			transform: rotate(45deg)
+			margin-bottom: auto
+			content: ''
+			position: absolute
+			display: block
+			background: $gry
+			left: -2rem
+
+p + ul
+	margin-top: 1rem
+
+p + p
+	margin-top: 1rem
 
 h4
 	text-transform: uppercase
 	letter-spacing: .06em
 	@include createFontClamp(1.3rem, 1.5rem)
 
-p
+p, ul, li
 	@include createFontClamp(1.7rem, 2rem)
 
-p, h4
+p, h4, ul, li
 	font-family: $sans
 	font-weight: 300
 	color: $gry
@@ -102,7 +131,7 @@ a
 	display: inline-block
 	border: 1px solid $pale
 
-section:not(section#content)
+section:not(section.content)
 	@include createClamp(11rem, 15rem, margin-bottom)
 	margin-right: auto
 	margin-left: auto
@@ -112,6 +141,8 @@ header
 	min-height: 88vh
 	z-index: z('header')
 	overflow: hidden
+	@include createClamp(2rem, 4rem, padding-left)
+	@include createClamp(2rem, 4rem, padding-right)
 	padding-top: 20rem
 
 	h1, h2, h3
@@ -173,7 +204,7 @@ main
 img, figure
 	border-radius: 2rem
 
-section#content main section.topBlurb
+section.content main section.topBlurb
 	margin-left: 0
 	width: 100%
 
@@ -182,8 +213,9 @@ section#content main section.topBlurb
 		width: col(4)
 
 .twemojiReplace
-	visibility: hidden
+	display: none
+
+.emojiContainer
 
 	img
 		border-radius: 0 !important
-		visibility: visible

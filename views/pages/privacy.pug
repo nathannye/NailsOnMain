@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+block variables
+  - var template = 'privacy';
+
+block content
+  #privacyWrapper 
+    header#privacyHeader
+      .headingContainer
+        h1 Privacy
+        h1 Policy
+      .contentCurve
+    .contentContainer
+      main#privacyContent
+        section.policy
+          != policy

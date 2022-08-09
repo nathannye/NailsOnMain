@@ -39,10 +39,11 @@ html(lang='en')
     include ./partials/nav
     include ./partials/cookie
 
-    .testimonialDraggerCursor
-      .dragArrow.left
-      .dragInstructionCircle
-      .dragArrow.right
+    if template = 'home'
+      .testimonialDraggerCursor
+        .dragArrow.left
+        .dragInstructionCircle
+        .dragArrow.right
 
     .teamMemberInfoPopup
       button.closeInfoPopup 
@@ -58,7 +59,7 @@ html(lang='en')
 
         .teamMemberOverlayBacker
 
-    section#content(data-template=template)
+    section.content(data-template=template)
       .scrollWrapper
         block content
 

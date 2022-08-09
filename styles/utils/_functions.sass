@@ -1,4 +1,4 @@
-$z-indexes: ('modal', 'cursor', 'nav', 'mobile-menu', 'main', 'header', 'footer', 'preloader')
+$z-indexes: ('modal', 'cursor', 'nav', 'mobile-menu', 'gradient','main', 'header', 'footer', 'preloader')
 
 @function z($element)
   @if index($z-indexes, $element)
@@ -12,7 +12,3 @@ $totalCols: 8
 
 @function gridCols($col)
   @return percentage($col/$totalCols)
-
-@for $i from 1 through $totalCols
-  .col-#{$i} 
-    // width: gridCols($i);  

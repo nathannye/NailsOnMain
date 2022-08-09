@@ -130,19 +130,67 @@ div.testimonialHeadingContainer
 
 div#testimonialSliderContainer
 	overflow-x: hidden
+	position: relative
+
+	&:after
+		background: linear-gradient(90deg, rgba(42,39,43, 1) 12%, rgba(42,39,43, 0) 100%)
+		height: 100%
+		right: 0
+		content: ''
+		transform: scaleX(-1)
+		top: 0
+		z-index: z('gradient')
+		display: block
+		width: 12vw
+		position: absolute
 
 div#testimonialSlider
-	display: flex
+	display: inline-flex
+	z-index: z('main') !important
+	position: relative
 	overflow-x: hidden
 
 	.testimonialEntryContainer
 		align-self: flex-start
-		margin-right: 2rem
+		@include createClamp(2rem, 5.5rem, margin-right)
 		width: 80vw
+		z-index: z('main')
+		position: relative
+
+		&:first-child .testimonialEmoji, &:nth-child(9) .testimonialEmoji
+			top: 0
+			transform: translateY(-50%)
+			right: 20%
+
+		&:nth-child(2) .testimonialEmoji, &:nth-child(8) .testimonialEmoji
+			bottom: 0
+			transform: translateY(calc(-50% + 1em)) !important
+			right: 38%
 		
+		&:nth-child(3) .testimonialEmoji, &:nth-child(11) .testimonialEmoji
+			top: 12%
+			transform: translateX(50%)
+			right: 0
+
+		&:nth-child(5) .testimonialEmoji, &:nth-child(10) .testimonialEmoji
+			bottom: 28%
+			left: 0
+			transform: translateX(-50%)
+
+		&:nth-child(11) .testimonialEmoji, &:nth-child(6) .testimonialEmoji
+			bottom: 28%
+			left: 0
+			transform: translateX(-50%)
+
+		&:nth-child(4) .testimonialEmoji, &:nth-child(7) .testimonialEmoji
+			bottom: 0
+			left: 19%
+			transform: translateY(calc(-50% + 1em)) !important
+
 		@media screen and (min-width: 768px)
-			margin-right: 4rem
-			width: 25vw
+			width: calc(25vw + 4rem)
+			max-width: 40rem
+			min-width: 25rem
 
 	@media screen and (min-width: 768px)
 
@@ -160,15 +208,14 @@ div#testimonialSlider
 	pointer-events: none
 	z-index: z('main')
 	transform: translate(-50%, -50%)
-	@include flexCenter
 	display: none
 
 	@media screen and (min-width: 768px)
-		display: block
+		@include flexCenter
 
 	.dragArrow
-		width: 2.5rem
-		height: 2.5rem
+		width: 1.75rem
+		height: 1.75rem
 		background-image: url('~/shared/nomArrow.svg')
 		background-repeat: no-repeat
 		background-size: 100%
@@ -180,9 +227,11 @@ div#testimonialSlider
 			transform: rotate(90deg)
 
 	.dragInstructionCircle
-		width: 5.25rem
-		height: 5.25rem
+		width: 4.75rem
+		height: 4.75rem
 		background: $pale
+		margin-right: 1.25rem
+		margin-left: 1.25rem
 		border-radius: 6.5rem
 
 .testimonialEntryContent
@@ -208,6 +257,7 @@ div#testimonialSlider
 		color: $dark
 
 .testimonialEmoji
+	position: absolute
 	width: 3.25rem
 	overflow: visible
 
@@ -225,8 +275,8 @@ section#servicesMarquee
 		left: 0
 		top: 0
 		content: ''
-		z-index: z('main')
-		background: linear-gradient(90deg, rgba(42,39,43, 1) 0%, rgba(42,39,43, 0) 100%)
+		z-index: z('gradient')
+		background: linear-gradient(90deg, rgba(42,39,43, 1) 12%, rgba(42,39,43, 0) 100%)
 		width: 12vw
 
 	&:before

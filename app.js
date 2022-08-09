@@ -2,6 +2,7 @@ import * as prismicH from '@prismicio/helpers';
 import client from './config/prismicConfig.js';
 import 'dotenv/config';
 import express from 'express';
+import pug from 'pug';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const app = express();
@@ -59,6 +60,13 @@ app.get('/our-team', async (req, res) => {
   const our_team = await client.getSingle('our_team');
   const team_members = await client.getAllByType('team_member');
   res.render('pages/our-team', { our_team, team_members });
+});
+
+app.get('/privacy', async (req, res) => {
+  const privacy = await client.getSingle('privacy_policy');
+  const policy = prismicH.asHTML(privacy.data.privacy_body);
+
+  res.render('pages/privacy', { privacy, policy });
 });
 
 app.get('*', async (req, res) => {

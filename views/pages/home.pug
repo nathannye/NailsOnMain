@@ -106,12 +106,14 @@ block content
                       .testimonialTextContainer
                         h3= review.name_of_reviewer
                         p= review.review_text
-                      .testimonialEmoji
-                        p.twemojiReplace= review.emoji
+
                     .mobileReviewIndicatorContainer
                       h4= i + 1
                         | /
                         = section.items.length
+
+                    .testimonialEmoji.emojiContainer
+                      p.twemojiReplace= review.emoji
 
         if section.slice_type == "note"
           section#notesAtBottom
