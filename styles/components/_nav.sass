@@ -27,9 +27,19 @@ nav.desktopNav
 	.navItems
 		display: flex
 		align-items: center
+
+		a
+			transition: $anim
+
+			&:hover
+				opacity: .35
+				transition: $anim
+
+			&.activePage
+				opacity: .35
 		
-		a.solidButton
-			margin: 0 0 0 1.5rem
+			&.solidButton
+				margin: 0 0 0 1.5rem
 
 button.mobileMenuButton
 	z-index: z('nav')
@@ -73,8 +83,27 @@ div.mobileMenuContainer
 		&:not(:last-child)
 			margin-bottom: 1.5rem
 
-		&.active
+		&.activePage
 			opacity: .5
+			position: relative
+
+			&:before
+				content: ''
+				background-size: 100%
+				width: 2.5rem
+				top: 6px
+				bottom: 0
+				margin-top: auto
+				margin-bottom: auto
+				left: -3.25rem
+				height: 2.5rem
+				display: block
+				position: absolute
+				transform: rotate(-90deg)
+				background-repeat: no-repeat
+				background-position: center center
+				background-image: url('~/shared/nomArrow.svg')
+
 			// @include hasStaticArrow(1.5rem)
 				
 	@media screen and (min-width: 768px)
@@ -90,3 +119,14 @@ div.mobileMenuContainer
 	
 	a:nth-child(3), a:nth-child(5)
 		align-self: flex-end
+
+.mobileNavContactItem
+	display: flex
+	flex-direction: row-reverse
+	align-items: center
+
+	img
+		width: 3.75rem
+		overflow: visible
+		margin-right: 1.5rem
+		@include has3D

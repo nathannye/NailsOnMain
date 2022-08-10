@@ -17,6 +17,7 @@ class App {
     this.createPages();
     this.createPreloader();
     this.createNavigationToggle();
+    this.nav.getActivePage({ template: this.template });
     this.addLinkListeners();
   }
 
@@ -27,6 +28,11 @@ class App {
 
   async onPreloaded() {
     this.preloader.destroy();
+  }
+
+  createNavigationToggle() {
+    this.nav = new Nav({ template: this.template });
+    console.log(this.template);
   }
 
   createContent() {
@@ -49,23 +55,12 @@ class App {
     this.page.animateIn();
     this.page.parseEmojis();
 
-    // this.home = new Home(),
-    // this.about = new About(),
-    // this.team = new OurTeam(),
-    // this.services = new Services(),
-
-    // this.pages = {
-    //   '/': this.home,
-    //   '/about': this.about,
-    //   '/our-team': this.team,
-    //   '/services': this.services
-    // };
-
     this.page = this.pages[this.template];
   }
 
   async onChange(url) {
     await this.page.animateOut();
+
     const request = await window.fetch(url);
     const page = this.pages[url];
 
@@ -85,16 +80,14 @@ class App {
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
       this.page.create();
+      this.nav.getActivePage(window.location.pathname);
       this.page.registerPlugins();
       this.page.createSmoothScroll();
       this.page.animateIn();
       this.addLinkListeners();
       this.page.parseEmojis();
+      // window.location.href = url;
     }
-  }
-
-  createNavigationToggle() {
-    this.nav = new Nav();
   }
 
   addLinkListeners() {

@@ -6,7 +6,7 @@ nav.desktopNav
     ul.navLinks
       each link in menu.data.links
         li
-        a(href=link.link.url)= link.link_label
+          a(href=link.link.url)= link.link_label
 
     a.solidButton.inverted.nonNavLink(href='tel:' + contact.data.phone_number) call us!
 
@@ -22,4 +22,7 @@ button.mobileMenuButton.solidButton
       each link in menu.data.links
         a.mobileNavLink(href=link.link.url)= link.link_label
 
-      a.mobileNavLink.hasEmoji(href='tel:' + contact.data.phone_number) Call us!
+      .mobileNavContactItem
+        .twemojiReplace
+          p ☎️
+        a.mobileNavLink.hasEmoji(href='tel:' + contact.data.phone_number) Call us!

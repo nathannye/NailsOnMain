@@ -3,7 +3,7 @@ import SplitText from 'gsap/src/SplitText.js';
 import Component from '../classes/Component.js';
 
 export default class Nav extends Component {
-  constructor() {
+  constructor({ template }) {
     super({
       element: '.mobileMenuContainer',
       elements: {
@@ -11,8 +11,11 @@ export default class Nav extends Component {
         links: '.mobileNavLink',
         menuLines: 'span.hamburgerLine',
         funny: '.mobileMenuContainer h3',
+        phone: '.mobileNavContactItem img',
+        desktopLinks: 'ul.navLinks li a',
       },
     });
+    this.getActivePage(template);
   }
 
   create() {
@@ -102,6 +105,18 @@ export default class Nav extends Component {
           duration: 0.25,
         },
         0.02
+      )
+      .from(
+        this.elements.phone,
+        {
+          autoAlpha: 0,
+          x: 7,
+          y: 18,
+          rotateX: -35,
+          transformOrigin: 'left center',
+          ease: 'power2.out',
+        },
+        0.56
       );
 
     this.elements.links.forEach((link, index) => {
@@ -130,6 +145,23 @@ export default class Nav extends Component {
       });
 
       this.mobileMenuAnim.add(link.tl, 0.24);
+    });
+  }
+  getActivePage(template) {
+    // Match URLified string against urls of links
+    template = '/' + template;
+
+    this.elements.links.forEach((link) => {
+      // link.classList.remove('activePage');
+      if (link.getAttribute('href') == template) {
+        link.classList.add('activePage');
+      }
+    });
+    this.elements.desktopLinks.forEach((link) => {
+      // link.classList.remove('activePage');
+      if (link.getAttribute('href') == template) {
+        link.classList.add('activePage');
+      }
     });
   }
 }

@@ -35,6 +35,7 @@ html(lang='en')
     )
     link(href='./main.css', rel='stylesheet')
     title titles
+
   body 
     include ./partials/nav
     include ./partials/cookie
@@ -58,7 +59,7 @@ html(lang='en')
 
         .teamMemberOverlayBacker
 
-    section#content(data-template=template)
+    section.content(data-template=template)
       .scrollWrapper
         block content
 

@@ -72,10 +72,6 @@ export default class Home extends Page {
     Draggable.create('#testimonialSlider', {
       type: 'x',
       inertia: true,
-<<<<<<< Updated upstream
-      edgeResistance: 0.4,
-=======
->>>>>>> Stashed changes
       edgeResistance: 0.65,
       bounds: this.elements.reviewSliderContainer,
       onPress: () => {
@@ -99,10 +95,6 @@ export default class Home extends Page {
         let maxVelocity = window.innerWidth;
         let minVelocity = maxVelocity * -1;
         let v = gsap.utils.mapRange(minVelocity, maxVelocity, -1, 1, velocityX);
-<<<<<<< Updated upstream
-        gsap.to(this.elements.cursorCircle, {
-          x: v * 7,
-        });
         xTo(v * 10);
       },
       onDragEnd: () => {
@@ -111,11 +103,9 @@ export default class Home extends Page {
             x: 0,
           });
         });
-=======
         xTo(v * 10);
       },
       onDragEnd: () => {
->>>>>>> Stashed changes
         // AND WHEN YOU STOP, DO NOT MOVE THIS SHIT
         xTo(0);
       },

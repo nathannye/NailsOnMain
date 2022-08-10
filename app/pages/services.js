@@ -29,7 +29,6 @@ export default class Services extends Page {
 
   createDropdowns() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
-    console.log('drops');
     const dur = 0.7;
     const ease = 'power2.out';
     this.elements.service.forEach((dropdown) => {
@@ -149,11 +148,6 @@ export default class Services extends Page {
       dropdown.tl.reversed(true);
       dropdown.clicker.onclick = () => {
         dropdown.tl.reversed() ? dropdown.tl.play() : dropdown.tl.reverse();
-
-        // setTimeout(() => {
-        //   ScrollTrigger.refresh();
-        //   console.log(`refreshed after ${dropdown.tl.duration()} seconds`);
-        // }, dropdown.tl.duration());
       };
     });
   }
