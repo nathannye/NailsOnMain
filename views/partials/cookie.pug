@@ -1,7 +1,12 @@
-.cookieNotification
-  p.hasEmoji we use them for dis
+.cookieNotificationContainer
+  .cookieTextContainer
+    .twemojiReplace
+      p 🍪
+    p.cookieParagraph= cookie.data.cookie_paragraph
   .cookieConsentOptions
     .cookieConsentButtons
-      button.allowCookies.solidButton yes
-      button.denyCookies.outlineButton no
-    a.underlineLink View policy
+      button.allowCookies.solidButton= cookie.data.cookie_accept_button_label
+        .acceptExplosionContainer
+      button.denyCookies.outlineBubble= cookie.data.cookie_deny_label
+        .denyExplosionContainer
+    a(href='/privacy') View Privacy Policy

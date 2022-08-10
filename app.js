@@ -25,9 +25,10 @@ app.get('/*', async (req, res, next) => {
   const contact = await client.getSingle('contact');
   const preloader = await client.getSingle('preloader');
   const year = new Date().getFullYear();
-
+  const cookie = await client.getSingle('cookie_notification');
   res.locals.year = year;
   res.locals.menu = menu;
+  res.locals.cookie = cookie;
   res.locals.footer = footer;
   res.locals.contact = contact;
   res.locals.preloader = preloader;

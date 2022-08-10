@@ -1,16 +1,81 @@
 @use './utils/forward' as *
 
-div.cookieNotification
-  position: fixed
-  display: none
-  bottom: 0
-  left: 0
-  width: 100%
-  background: $gry
+div.cookieNotificationContainer
+	position: fixed
+	display: flex
+	bottom: 2rem
+	align-items: flex-start
+	right: 2rem
+	left: 2rem
+	width: calc(100% - .75rem)
+	@include createClamp(2rem, 4rem, border-radius)
+	background: $gry
+	flex-direction: column
+	z-index: z('modal')
+	@include createClamp(2rem, 4rem, padding)
 
-// p.hasEmoji
-// .cookieConsentOptions
-// .cookieConsentButtons
-// button.allowCookies.solidButton
-// button.denyCookies.outlineButton
-// a.underlineLink View policy
+	@media screen and (min-width: 768px)
+		flex-direction: row
+		left: unset
+
+	p.cookieParagraph, a.outlineBubble
+		color: $dark
+		border-bott
+
+	.cookieTextContainer
+		display: flex
+		align-items: flex-start
+		flex-direction: column-reverse
+
+		// p.cookieParagraph
+
+		@media screen and (min-width: 768px)
+			flex-direction: row-reverse
+		
+	.cookieConsentButtons
+		display: flex
+		align-items: center
+		flex-grow: 1
+		position: relative
+
+		button
+			white-space: nowrap
+			margin-top: 0
+
+		& > button > div
+			position: absolute
+
+			img
+				position: absolute
+				width: 2.5rem
+				top: 0
+				left: 0
+				bottom: 0
+				right: 0
+				margin: auto
+
+		.denyCookies
+			margin-left: 0
+			@media screen and (min-width: 768px)
+				margin-left: 2rem
+
+		.outlineBubble
+			border: 1px solid $dark
+			color: $dark
+
+	img 
+		border-radius: 0
+		width: 3.25rem
+		margin-right: .75rem
+
+	@media screen and (min-width: 768px)
+		width: 40%
+		max-width: 90rem
+
+.cookieConsentOptions
+
+	& > a
+		margin-top: 1rem
+		display: block
+		text-align: right
+		color: $dark

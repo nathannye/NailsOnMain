@@ -2,6 +2,7 @@ import Home from 'pages/Home.js';
 import About from 'pages/About.js';
 import Missing from 'pages/Missing.js';
 import OurTeam from 'pages/Our-Team.js';
+import Cookie from './components/Cookie.js';
 import Services from 'pages/Services.js';
 import Preloader from './components/Preloader.js';
 import gsap from 'gsap';
@@ -15,6 +16,7 @@ class App {
     this.template = window.location.pathname;
     this.createContent();
     this.createPages();
+
     this.createPreloader();
     this.createNavigationToggle();
     this.nav.getActivePage({ template: this.template });
@@ -24,6 +26,10 @@ class App {
   createPreloader() {
     this.preloader = new Preloader();
     this.preloader.once('completed', this.onPreloaded.bind(this));
+  }
+
+  createCookie() {
+    this.cookie = new Cookie();
   }
 
   async onPreloaded() {
@@ -54,7 +60,7 @@ class App {
     this.page.createSmoothScroll();
     this.page.animateIn();
     this.page.parseEmojis();
-
+    this.createCookie();
     this.page = this.pages[this.template];
   }
 
