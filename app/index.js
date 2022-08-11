@@ -1,9 +1,9 @@
-import Home from 'pages/Home.js';
-import About from 'pages/About.js';
-import Missing from 'pages/Missing.js';
-import OurTeam from 'pages/Our-Team.js';
+import Home from './pagesHome.js';
+import About from './pagesAbout.js';
+import Missing from './pagesMissing.js';
+import OurTeam from './pagesOur-Team.js';
 import Cookie from './components/Cookie.js';
-import Services from 'pages/Services.js';
+import Services from './pagesServices.js';
 import Preloader from './components/Preloader.js';
 import Navigation from './components/Navigation.js';
 
