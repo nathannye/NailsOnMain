@@ -37,33 +37,33 @@ app.get('/*', async (req, res, next) => {
 });
 app.get('/home', async (req, res) => {
   const home = await client.getSingle('home');
-  res.render('./pageshome', { home });
+  res.render('./pages/home', { home });
 });
 
 app.get('/', async (req, res) => {
   const home = await client.getSingle('home');
-  res.render('./pageshome', { home });
+  res.render('./pages/home', { home });
 });
 
 app.get('/about', async (req, res) => {
   const about = await client.getSingle('about_us');
-  res.render('./pagesabout', { about });
+  res.render('./pages/about', { about });
 });
 
 app.get('/services', async (req, res) => {
   const services = await client.getSingle('services');
   const s = await client.getAllByType('service_entry');
-  res.render('./pagesservices', { services, s });
+  res.render('./pages/services', { services, s });
 });
 
 app.get('/our-team', async (req, res) => {
   const our_team = await client.getSingle('our_team');
-  res.render('./pagesour-team', { our_team });
+  res.render('./pages/our-team', { our_team });
 });
 
 app.get('*', async (req, res) => {
   const missing = await client.getSingle('404_missing_page');
-  res.render('./pages404', { missing });
+  res.render('./pages/404', { missing });
 });
 
 app.listen(port, () => {
