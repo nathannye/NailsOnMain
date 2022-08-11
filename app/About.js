@@ -32,7 +32,7 @@ export default class About extends Page {
       let info = {};
       info.name = person.querySelector('h2.name').innerHTML;
       info.memoji = person.querySelector('img');
-      info
+      info;
       info.info.peopleInfo.push(info);
 
       person.onclick = () => {
