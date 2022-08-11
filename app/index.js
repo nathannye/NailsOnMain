@@ -2,10 +2,10 @@ import Home from 'pages/Home.js';
 import About from 'pages/About.js';
 import Missing from 'pages/Missing.js';
 import OurTeam from 'pages/Our-Team.js';
-import Cookie from 'components/Cookie.js';
+import Cookie from './components/Cookie.js';
 import Services from 'pages/Services.js';
-import Preloader from 'components/Preloader.js';
-import Nav from 'components/Nav.js';
+import Preloader from './components/Preloader.js';
+import Nav from './components/Nav.js';
 
 class App {
   constructor() {
