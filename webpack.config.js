@@ -22,9 +22,6 @@ const config = {
   target: 'web',
 
   resolve: {
-    // alias: {
-    //   components: path.resolve(__dirname, './components'),
-    // },
     modules: [dirApp, dirShared, dirStyles, dirNode],
     extensions: ['.js'],
   },
