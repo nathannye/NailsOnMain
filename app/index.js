@@ -5,7 +5,7 @@ import OurTeam from 'pages/Our-Team.js';
 import Cookie from './components/Cookie.js';
 import Services from 'pages/Services.js';
 import Preloader from './components/Preloader.js';
-import Nav from './components/Nav.js';
+import Navigation from './components/Navigation.js';
 
 class App {
   constructor() {
@@ -34,7 +34,7 @@ class App {
   }
 
   createNavigationToggle() {
-    this.nav = new Nav({ template: this.template });
+    this.nav = new Navigation({ template: this.template });
     console.log(this.template);
   }
 
