@@ -29,6 +29,7 @@ const config = {
 
   resolve: {
     modules: [dirApp, dirShared, dirStyles, dirNode],
+    extensions: ['.js'],
   },
 
   plugins: [
