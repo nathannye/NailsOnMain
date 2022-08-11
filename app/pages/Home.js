@@ -1,4 +1,4 @@
-import Page from '../classes/Page.js';
+import Page from 'classes/Page.js';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import Draggable from 'gsap/Draggable.js';

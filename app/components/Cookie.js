@@ -1,4 +1,4 @@
-import Component from '../classes/Component.js';
+import Component from 'classes/Component.js';
 import gsap from 'gsap';
 import Physics2DPlugin from 'gsap/src/Physics2DPlugin.js';
 

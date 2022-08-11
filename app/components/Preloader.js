@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import SplitText from 'gsap/SplitText.js';
 import Flip from 'gsap/src/Flip.js';
 import { each } from 'lodash';
-import Component from '../classes/Component.js';
+import Component from 'classes/Component.js';
 
 export default class Preloader extends Component {
   constructor() {

@@ -4,7 +4,7 @@ import InertiaPlugin from 'gsap/InertiaPlugin.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import SplitText from 'gsap/SplitText.js';
 import _, { drop } from 'lodash';
-import Page from '../classes/Page.js';
+import Page from 'classes/Page.js';
 
 export default class Services extends Page {
   constructor() {

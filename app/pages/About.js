@@ -1,4 +1,4 @@
-import Page from '../classes/Page.js';
+import Page from 'classes/Page.js';
 import mapboxgl from 'mapbox-gl';
 import gsap from 'gsap';
 import SplitText from 'gsap/src/SplitText.js';

@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import SplitText from 'gsap/src/SplitText.js';
-import Page from '../classes/Page.js';
+import Page from 'classes/Page.js';
 
 export default class OurTeam extends Page {
   constructor() {

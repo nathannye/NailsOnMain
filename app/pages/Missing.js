@@ -1,4 +1,4 @@
-import Page from '../classes/Page.js';
+import Page from 'classes/Page.js';
 
 export default class Missing extends Page {
   constructor() {
