@@ -5,7 +5,6 @@
   "author": "Nathan Nye",
   "license": "ISC",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "backend:build": "node app.js",
     "backend:development": "nodemon app.js",
