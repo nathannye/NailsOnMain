@@ -75,6 +75,8 @@ export default class Preloader extends Component {
               scale: true,
               absolute: true,
             });
+
+            originalContainer.removeChild(this.elements.g);
           }
           // null,
           // 1

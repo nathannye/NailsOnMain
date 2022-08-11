@@ -20,17 +20,18 @@ block content
         section.topBlurb.hasEmoji
           h2= our_team.data.small_blurb
         section.teamMemojis
-          each person in team_members
-            .teamMemberContainer
-              img(data-src=person.data.memoji.url)
-              //- h2= person.data.name
+          each section in our_team.data.body
+            if section.slice_type == 'team_member'
+              .teamMemberContainer
+                img(data-src=section.primary.memoji.url)
+                //- h2= section.primary.name
 
         .teamMemberInfoPopup
           button.closeInfoPopup 
           .teamMemberContent 
             .memojiContainer
             span
-              h2 name
+              h2.name name
               h3 title
             p something about me
             .teamMemberSocial

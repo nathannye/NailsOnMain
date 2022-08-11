@@ -11,6 +11,10 @@ export default class About extends Page {
       elements: {
         map: '#mapboxContainer',
         heading: '#aboutHeader .headingContainer h1',
+        popupContainer: '.teamMemberInfoPopup',
+        closeButton: 'button.closeInfoPopup',
+        overlay: '.teamMemberOverlayBacker',
+        person: '.teamMemberContainer',
       },
     });
   }
@@ -18,6 +22,23 @@ export default class About extends Page {
   create() {
     super.create();
     this.createMap();
+    this.infoPopupAnim();
+  }
+
+  infoPopupAnim() {
+    const peopleInfo = [];
+
+    this.elements.person.forEach((person) => {
+      let info = {};
+      info.name = person.querySelector('h2.name').innerHTML;
+      info.memoji = person.querySelector('img');
+      info
+      info.info.peopleInfo.push(info);
+
+      person.onclick = () => {
+        console.log(person);
+      };
+    });
   }
 
   animateIn() {

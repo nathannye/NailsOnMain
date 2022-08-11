@@ -9,6 +9,9 @@ export default class Cookie extends Component {
       elements: {
         acceptExplodeContainer: '.acceptExplosionContainer',
         denyExplodeContainer: '.denyExplosionContainer',
+        buttons: '.cookieConsentOptions > *',
+        cookie: '.cookieTextContainer img',
+        para: 'p.cookieParagraph',
       },
     });
   }
@@ -18,10 +21,61 @@ export default class Cookie extends Component {
     this.registerPlugins();
     this.acceptExplodeAnim();
     this.denyExplodeAnim();
+    this.animateIn();
   }
 
   registerPlugins() {
     gsap.registerPlugin(Physics2DPlugin);
+  }
+
+  animateIn() {
+    let tl = gsap.timeline({
+      delay: 1.5,
+    });
+    const dur = 0.65;
+    const ease = 'elastic.out(.75, 0.75)';
+    tl.from(
+      this.element,
+      {
+        y: 15,
+        duration: dur,
+        autoAlpha: 0,
+        ease: ease,
+      },
+      0
+    )
+      .from(
+        this.elements.para,
+        {
+          y: 7,
+          duration: dur,
+          autoAlpha: 0,
+          stagger: 0.15,
+          ease: ease,
+        },
+        0.05
+      )
+      .from(
+        this.elements.cookie,
+        {
+          y: 7,
+          duration: dur,
+          autoAlpha: 0,
+          ease: ease,
+        },
+        0.09
+      )
+      .from(
+        this.elements.buttons,
+        {
+          y: 7,
+          duration: dur,
+          autoAlpha: 0,
+          stagger: 0.15,
+          ease: ease,
+        },
+        0.15
+      );
   }
 
   acceptExplodeAnim() {

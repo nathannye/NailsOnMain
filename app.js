@@ -58,8 +58,7 @@ app.get('/services', async (req, res) => {
 
 app.get('/our-team', async (req, res) => {
   const our_team = await client.getSingle('our_team');
-  const team_members = await client.getAllByType('team_member');
-  res.render('pages/our-team', { our_team, team_members });
+  res.render('pages/our-team', { our_team });
 });
 
 app.get('*', async (req, res) => {

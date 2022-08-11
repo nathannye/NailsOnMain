@@ -64,20 +64,30 @@ class App {
     this.page = this.pages[this.template];
   }
 
+  // onPopState() {
+  //   this.onChange({
+  //     url: window.location.pathname,
+  //     push: true,
+  //   });
+
+  //   console.log
+  // }
+
   async onChange(url) {
     await this.page.animateOut();
 
-    const request = await window.fetch(url);
-    const page = this.pages[url];
+    const res = await window.fetch(url);
 
-    if (request.status === 200) {
-      const html = await request.text();
+    if (res.status === 200) {
+      const html = await res.text();
       const div = document.createElement('div');
 
       div.innerHTML = html;
 
       const divContent = div.querySelector('.content');
+
       this.template = divContent.getAttribute('data-template');
+
       this.content.setAttribute(
         'data-template',
         divContent.getAttribute('data-template')
@@ -93,6 +103,8 @@ class App {
       this.addLinkListeners();
       this.page.parseEmojis();
       // window.location.href = url;
+    } else {
+      console.error(`response status: ${res.status}`);
     }
   }
 
@@ -102,7 +114,7 @@ class App {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         const { href } = link;
-        this.onChange(href);
+        this.onChange({ href });
       });
     });
   }
