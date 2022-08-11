@@ -8,8 +8,9 @@ const app = express();
 const port = 3000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+app.locals.basedir = app.get('views');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
