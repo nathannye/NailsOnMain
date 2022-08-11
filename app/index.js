@@ -8,7 +8,7 @@ import Preloader from './components/Preloader.js';
 import gsap from 'gsap';
 import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
-import Nav from 'components/Nav.js';
+import Nav from '/components/Nav.js';
 
 class App {
   constructor() {
