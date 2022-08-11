@@ -10,12 +10,6 @@ import 'dotenv/config';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
-// const TerserPlugin = require('terser-webpack-plugin');
-
 const IS_DEVELOPMENT = process.env.NODE_ENV === 'dev';
 
 const dirApp = path.join(__dirname, 'app');
@@ -28,9 +22,9 @@ const config = {
   target: 'web',
 
   resolve: {
-    alias: {
-      components: path.resolve(__dirname, './components'),
-    },
+    // alias: {
+    //   components: path.resolve(__dirname, './components'),
+    // },
     modules: [dirApp, dirShared, dirStyles, dirNode],
     extensions: ['.js'],
   },

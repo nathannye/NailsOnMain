@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import SplitText from 'gsap/src/SplitText.js';
-import Component from './classes/Component.js';
+import Component from 'classes/Component.js';
 
 export default class Nav extends Component {
   constructor({ template }) {
