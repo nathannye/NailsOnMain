@@ -1,0 +1,9 @@
+{
+  "name": "Beauty by Nails on Main",
+  "short_name": "Nails on Main",
+  "icons": [],
+  "theme_color": "#f4f1e4",
+  "background_color": "#2A272B",
+  "display": "standalone",
+  "start_url": "/"
+}
