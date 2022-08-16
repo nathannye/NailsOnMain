@@ -1,37 +1,60 @@
 @use './utils/forward' as *
 
 header.homeHeader
-	display: flex
-	justify-content: center
-	align-items: flex-start
 
-	.smallTextContainer
-		display: flex
-		align-items: baseline
-		justify-content: space-between
-
-	.nailsOnText
-		text-align: right
-
-	h2
-		text-align: right
+	.headerContentWrapper
+		max-width: 150rem
+		@include createClamp(2rem, 4rem, padding-left)
+		@include createClamp(2rem, 4rem, padding-right)
+		margin: 0 auto
 
 	img
 		height: 42rem
 		width: 100%
+		@include createClamp(2rem, 4rem, margin-top)
 		object-fit: cover
 
-.homeSplitLeft
-	@include createClamp(2rem, 4rem, margin-right)
+.homeSplitTop
+	@include createClamp(1rem, 2rem, padding-right)
+	display: flex
+	width: col(4)
+	justify-content: flex-end
 
-	img
-		margin-top: 2rem
+	.textContainer
+		text-align: right
+		
+		h2
+			margin-bottom: 0
 
-.homeSplitRight
-	margin-top: 9rem
+.homeSplitBottom
+	display: flex
+	align-items: flex-start
 
-	img
-		margin-top: 12rem
+	& > div
+		width: 50%
+
+	.bottomSplitRight
+		@include createClamp(1rem, 2rem, padding-left) 
+
+		.textContainer
+			display: inline-block
+
+			h1
+
+			h3
+				text-align: right
+
+	.bottomSplitLeft
+		@include createClamp(1rem, 2rem, padding-right)
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		align-items: flex-end
+
+		h1
+			text-align: right
+			line-height: 0.45
+			margin-bottom: calc(.45em)
 
 section#schedule
 	display: flex
@@ -71,43 +94,56 @@ div.scheduleEntry
 			font-weight: 600
 
 		h4
-			transform: translateX(3rem)
+			transform: translateX(2.25rem)
 			position: relative
 
-			&:before
-				content: ''
-				width: 1.25rem
-				height: 100%
-				position: absolute
-				left: -2rem
-				background-repeat: no-repeat
-				display: block
-				top: 50%
-				background-position: center center
-				transform: translateY(-50%) rotate(-90deg)
-				background-size: 100%
-				background-image: url('~/shared/nomArrow.svg')
+		&:before
+			content: ''
+			width: 1.25rem
+			height: 100%
+			position: absolute
+			left: 0
+			background-repeat: no-repeat
+			display: block
+			top: calc(50% + 3px)
+			background-position: center center
+			transform: translateY(-50%) rotate(-90deg)
+			background-size: 100%
+			background-image: url('~/shared/nomArrow.svg')
 
 	&:not(:last-child)
 		margin-bottom: 1.5rem
 
 section.imageDuo
 	display: flex
+	flex-direction: column
 	justify-content: center
 
-	figure 
-		width: col(4)
-		height: 50vh
+	figure
 		position: relative
+		width: col(6)
+		height: 50vh
 		overflow: hidden
 
 		img
 			object-fit: cover
 			width: 100%
-			height: 160%
-			position: absolute
-			bottom: 0
-			left: 0
+			height: 100%
+
+		&:first-child
+			justify-self: flex-start
+
+		&:last-child
+			align-self: flex-end
+
+		&:nth-child(1)
+			margin-bottom: 4rem
+
+			@media screen and (min-width: 768px)
+				margin-bottom: 0
+
+		@media screen and (min-width: 768px)
+			height: 70vh
 
 	figure:not(:last-child)
 		margin-right: 2rem
@@ -115,6 +151,17 @@ section.imageDuo
 
 		@media screen and (min-width: 768px)
 			margin-top: col(1)
+
+	@media screen and (min-width: 768px)
+		flex-direction: row
+		align-items: flex-end
+		
+
+		figure
+			width: col(8)
+
+			&:last-child
+				align-self: flex-start
 
 section#testimonials
 

@@ -5,8 +5,14 @@
     p.cookieParagraph= cookie.data.cookie_paragraph
   .cookieConsentOptions
     .cookieConsentButtons
-      button.allowCookies.solidButton= cookie.data.cookie_accept_button_label
+      button.allowCookies.solidButton(
+        aria-label='Allow cookies on this site',
+        title='Allow cookies'
+      )= cookie.data.cookie_accept_button_label
         .acceptExplosionContainer
-      button.denyCookies.outlineBubble= cookie.data.cookie_deny_label
+      button.denyCookies.outlineBubble(
+        aria-label='Deny cookies on this site',
+        title='Deny cookies'
+      )= cookie.data.cookie_deny_label
         .denyExplosionContainer
     a(href='/privacy') View Privacy Policy

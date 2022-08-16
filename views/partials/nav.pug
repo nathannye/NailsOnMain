@@ -1,4 +1,4 @@
-nav.desktopNav 
+nav.desktopNav(role='navigation', aria-label='main')
   .logo
     p logo
 
@@ -10,7 +10,10 @@ nav.desktopNav
 
     a.solidButton.inverted.nonNavLink(href='tel:' + contact.data.phone_number) call us!
 
-button.mobileMenuButton.solidButton
+button.mobileMenuButton.solidButton(
+  title='Toggle Menu',
+  aria-label='Toggle Menu'
+)
   .hamburgerContainer
     span.hamburgerLine
     span.hamburgerLine
@@ -18,7 +21,7 @@ button.mobileMenuButton.solidButton
 .mobileMenuContainer
   .mobileMenuContent
     h3 Where to next?
-    .mobileLinksContainer
+    .mobileLinksContainer(role='navigation', aria-label='main')
       each link in menu.data.links
         a.mobileNavLink(href=link.link.url)= link.link_label
 

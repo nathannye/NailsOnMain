@@ -15,7 +15,7 @@ footer
         ul.footerMenuLinksContainer
           each link in menu.data.links
             li
-              a.nakedLink(href=link.link.url)= link.link_label
+              a.nakedLink(href=link.link.url, title='call' + link.link.url)= link.link_label
 
       .footerSocialCol
         h3 Social

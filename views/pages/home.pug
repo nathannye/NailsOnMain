@@ -6,24 +6,29 @@ block variables
 block content
   #homeWrapper
     header.homeHeader 
-      .homeSplitLeft
-        .smallTextContainer
-          h4 est. 2010
-          h2 Beauty By
-        .nailsOnText 
-          h1 Nails
-          h1.onText on
-          img(
-            data-src=home.data.top_image_left.url,
-            alt=home.data.top_image_left.alt
-          )
-      .homeSplitRight
-        h1 Main
-        img(
-          data-src=home.data.top_image_right.url,
-          alt=home.data.top_image_right.alt
-        )
+      .headerContentWrapper
+        .homeSplitTop
+          .textContainer
+            h2 Beauty By
+            h1 Nails
+        .homeSplitBottom
+          .bottomSplitLeft
+            h1.onText on
+            img(
+              data-src=home.data.top_image_left.url,
+              alt=home.data.top_image_left.alt
+            )
+          .bottomSplitRight
+            .textContainer
+              h1 Main
+              h3 Est. 2010
+            img(
+              data-src=home.data.top_image_right.url,
+              alt=home.data.top_image_right.alt
+            )
+
       .headerGradientContainer
+        .gradient
       .topCurve
     main.homeContent
       each section in home.data.body
@@ -31,7 +36,11 @@ block content
           section#schedule
             .scheduleBlurb
               h2= section.primary.heading
-              a.solidButton.nonNavLink(href='tel:' + contact.data.phone_number)= section.primary.button_text
+              a.solidButton.nonNavLink(
+                href='tel:' + contact.data.phone_number,
+                title='call' + contact.data.phone_number,
+                aria-label='call' + contact.data.phone_number
+              )= section.primary.button_text
             #scheduleRows
               each item in section.items
                 .scheduleEntry
@@ -62,7 +71,7 @@ block content
               a.solidButton(href='/services')= section.primary.button_text
             //- each item, i in section.items
             span.marqueeRow
-              span Acrylics
+              span Massages
               span Manicures
               span Dips
               span Gels

@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
+import SplitText from 'gsap/src/SplitText.js';
+import Flip from 'gsap/src/Flip.js';
 import { each } from 'lodash';
 import twemoji from 'twemoji';
 
@@ -10,6 +12,7 @@ export default class Page {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
+      preloaders: '[data-src]',
     };
   }
 
@@ -34,7 +37,10 @@ export default class Page {
         }
       }
     });
+    // this.createPreloader();
   }
+
+  // createPreloader() {
 
   registerPlugins() {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);

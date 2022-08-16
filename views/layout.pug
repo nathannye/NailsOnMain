@@ -39,31 +39,37 @@ html(lang='en')
   body 
     include ./partials/nav
     include ./partials/cookie
+    include ./partials/preloader
+
+    if template == 'our-team'
+      each section in our_team.data.body
+        if section.slice_type == 'team_member' && section.primary.has_information == true
+          .teamMemberInfoPopup
+            button.closeInfoPopup 
+            .teamMemberContent
+              .memojiContainer
+              span
+                h2= section.primary.name
+                h3= section.primary.job_title
+              p= section.primary.description
+              .teamMemberSocial
+                h4 Come check out what I'm up to on social!
+                .memberSocialContainer
+                  each item in section.items
+                    a.social.solidButton(href=item.social_media_link.url)= item.social_media_link_label
+
+          .teamMemberOverlayBacker
 
     .testimonialDraggerCursor
       .dragArrow.left
       .dragInstructionCircle
       .dragArrow.right
 
-    .teamMemberInfoPopup
-      button.closeInfoPopup 
-      .teamMemberContent 
-        .memojiContainer
-        span
-          h2 name
-          h3 title
-        p something about me
-        .teamMemberSocial
-          h4 i love social bitch
-          a.solidButton(href='/') insta bitch
-
-        .teamMemberOverlayBacker
-
     section.content(data-template=template)
       .scrollWrapper
         block content
 
         include ./partials/footer
-        include ./partials/preloader
 
     script(src='main.js', type='module')
+    noscript Please turn on JavaScript in your browser to view this site.

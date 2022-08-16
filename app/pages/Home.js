@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
 import Draggable from 'gsap/Draggable.js';
 import InertiaPlugin from 'gsap/InertiaPlugin.js';
+import SplitText from 'gsap/src/SplitText.js';
 
 export default class Home extends Page {
   constructor() {
@@ -32,8 +33,11 @@ export default class Home extends Page {
         dates: '.scheduleEntry > h4',
         dateEntry: '.scheduleEntry',
         headerImages: 'header.homeHeader img',
-        headerLargeText:
-          'header.homeHeader .smallTextContainer h2, header.homeHeader .nailsOnText h1, .homeSplitRight h1',
+        nailsHead: 'header.homeHeader .homeSplitTop .textContainer h1',
+        beautyByHead: 'header.homeHeader .homeSplitTop h2',
+        onHead: 'header.homeHeader .bottomSplitLeft h1',
+        mainHead: 'header.homeHeader .bottomSplitRight h1',
+        estHead: 'header.homeHeader .bottomSplitRight h3',
       },
     });
   }
@@ -47,11 +51,87 @@ export default class Home extends Page {
     this.populateReviewInitials();
   }
 
+  animateIn() {
+    const headerTextLeft = [
+      this.elements.beautyByHead,
+      this.elements.nailsHead,
+      this.elements.onHead,
+    ];
+
+    const headerTextRight = [this.elements.mainHead, this.elements.estHead];
+
+    const tl = gsap.timeline({
+      delay: 1,
+    });
+
+    headerTextLeft.forEach((text, index) => {
+      text.split = new SplitText(text, {
+        type: 'chars',
+      });
+
+      text.tween = gsap.from(text.split.chars, {
+        autoAlpha: 0,
+        xPercent: -32,
+        yPercent: 64,
+        rotateX: -25,
+        duration: 0.7,
+        transformOrigin: 'left center',
+        ease: 'power2.out',
+        delay: index / 4,
+        stagger: 0.045,
+      });
+
+      tl.add(text.tween, 0);
+    });
+
+    headerTextRight.forEach((text, index) => {
+      text.split = new SplitText(text, {
+        type: 'chars',
+      });
+
+      text.tween = gsap.from(text.split.chars, {
+        autoAlpha: 0,
+        xPercent: 32,
+        yPercent: 64,
+        rotateX: -25,
+        duration: 0.7,
+        transformOrigin: 'left center',
+        ease: 'power2.out',
+        delay: index / 4,
+        stagger: -0.045,
+      });
+
+      tl.add(text.tween, 0);
+    });
+
+    tl.from(
+      this.elements.headerImages,
+      {
+        y: 50,
+        autoAlpha: 0,
+        ease: 'power2.out',
+        duration: 1,
+        stagger: 0.23,
+      },
+      0.475
+    );
+  }
   getActiveDate() {
-    const dates = document.querySelectorAll('.scheduleEntry');
-    const today = new Date().getDay();
-    dates.forEach((date, i) => {
-      if (i + 1 == today) {
+    var today = new Date();
+    today = today.toLocaleString('en-US', { weekday: 'long' });
+    const days = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ];
+
+    this.elements.dateEntry.forEach((date, i) => {
+      // Match name against array of days in the order we want, otherwise Sunday is 0 and it no work
+      if (i == days.indexOf(today)) {
         date.classList.add('todaysTheDay');
       }
     });
@@ -240,23 +320,5 @@ export default class Home extends Page {
 
   destroy() {
     super.destroy();
-  }
-
-  animateIn() {
-    let tl = gsap.timeline();
-
-    tl.from(this.elements.headerImages, {
-      y: 90,
-      autoAlpha: 0,
-      ease: 'expo.inOut',
-      duration: 1,
-      stagger: 0.1,
-    }).from(
-      this.elements.headerLargeText,
-      {
-        autoAlpha: 0,
-      },
-      0.1
-    );
   }
 }

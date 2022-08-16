@@ -9,11 +9,9 @@ import Nav from './components/Nav.js';
 
 class App {
   constructor() {
-    // this.addEventListeners();
     this.template = window.location.pathname;
     this.createContent();
     this.createPages();
-
     this.createPreloader();
     this.createNavigationToggle();
     this.nav.getActivePage({ template: this.template });
@@ -29,13 +27,12 @@ class App {
     this.cookie = new Cookie();
   }
 
-  async onPreloaded() {
+  onPreloaded() {
     this.preloader.destroy();
   }
 
   createNavigationToggle() {
     this.nav = new Nav({ template: this.template });
-    console.log(this.template);
   }
 
   createContent() {
@@ -56,22 +53,23 @@ class App {
     this.page.create();
 
     this.page.createSmoothScroll();
-    this.page.animateIn();
+
     this.page.parseEmojis();
     this.createCookie();
     this.page = this.pages[this.template];
+    setTimeout(() => {
+      this.page.animateIn();
+    }, 500);
   }
 
-  // onPopState() {
-  //   this.onChange({
-  //     url: window.location.pathname,
-  //     push: true,
-  //   });
+  onPopState() {
+    this.onChange({
+      url: window.location.pathname,
+      push: true,
+    });
+  }
 
-  //   console.log
-  // }
-
-  async onChange(url) {
+  async onChange(url, push = true) {
     await this.page.animateOut();
 
     const res = await window.fetch(url);
@@ -79,6 +77,10 @@ class App {
     if (res.status === 200) {
       const html = await res.text();
       const div = document.createElement('div');
+
+      if (push) {
+        window.history.pushState({}, '', url);
+      }
 
       div.innerHTML = html;
 
@@ -97,10 +99,13 @@ class App {
       this.nav.getActivePage(window.location.pathname);
       this.page.registerPlugins();
       this.page.createSmoothScroll();
-      this.page.animateIn();
-      this.addLinkListeners();
+
       this.page.parseEmojis();
-      // window.location.href = url;
+      this.addLinkListeners();
+      // this.createPreloader();
+      setTimeout(() => {
+        this.page.animateIn();
+      }, 500);
     } else {
       console.error(`response status: ${res.status}`);
     }
@@ -112,7 +117,7 @@ class App {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         const { href } = link;
-        this.onChange({ href });
+        this.onChange(href);
       });
     });
   }

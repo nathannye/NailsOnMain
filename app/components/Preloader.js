@@ -12,11 +12,10 @@ export default class Preloader extends Component {
         gradient: '.preloaderGradientContainer',
         g: '.gradient',
         title: '.preloaderContainer h2',
-        images: 'img',
+        assets: '[data-src]',
         number: '.preloaderNumber',
       },
     });
-
     this.length = 0;
   }
 
@@ -26,15 +25,16 @@ export default class Preloader extends Component {
   }
 
   createLoader() {
-    each(this.elements.images, (image) => {
-      image.onload = (_) => this.onAssetLoaded(image);
-      image.src = image.getAttribute('data-src');
+    each(this.elements.assets, (asset) => {
+      asset.onload = (_) => this.onAssetLoaded(asset);
+      asset.src = asset.getAttribute('data-src');
+      console.log(asset);
     });
   }
 
   onAssetLoaded(image) {
     this.length += 1;
-    var percentLoaded = this.length / this.elements.images.length;
+    var percentLoaded = this.length / this.elements.assets.length;
     this.elements.number.innerHTML = Math.round(percentLoaded * 100) + '%';
 
     if (percentLoaded == 1) {
@@ -45,9 +45,9 @@ export default class Preloader extends Component {
   onLoaded() {
     gsap.registerPlugin(Flip, SplitText);
     return new Promise((resolve) => {
-      const state = Flip.getState(this.elements.g);
-      let originalContainer = this.elements.gradient;
-      let backer = document.querySelector('.headerGradientContainer');
+      // const state = Flip.getState(this.elements.g);
+      // let originalContainer = this.elements.gradient;
+      // let backer = document.querySelector('.headerGradientContainer');
 
       this.animateOut = gsap.timeline({
         delay: 1.75,
@@ -61,26 +61,26 @@ export default class Preloader extends Component {
         .to(
           this.element,
           {
-            // autoAlpha: 0,
+            autoAlpha: 0,
           },
           0
         )
-        .call(
-          () => {
-            backer.appendChild(this.elements.g);
+        // .call(
+        //   () => {
+        //     backer.appendChild(this.elements.g);
 
-            Flip.from(state, {
-              duration: 4,
-              ease: 'expo.inOut',
-              scale: true,
-              absolute: true,
-            });
+        //     Flip.from(state, {
+        //       duration: 4,
+        //       ease: 'expo.inOut',
+        //       scale: true,
+        //       absolute: true,
+        //     });
 
-            // originalContainer.removeChild(this.elements.g);
-          }
-          // null,
-          // 1
-        )
+        //     // originalContainer.removeChild(this.elements.g);
+        //   }
+        //   // null,
+        //   // 1
+        // )
         .to(
           split.chars,
           {

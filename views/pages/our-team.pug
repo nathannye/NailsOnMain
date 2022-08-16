@@ -14,6 +14,7 @@ block content
         h1 Team
       .topCurve
     .headerGradientContainer
+      .gradient
     .contentContainer
       .contentCurve
       main#teamContent
@@ -22,20 +23,19 @@ block content
         section.teamMemojis
           each section in our_team.data.body
             if section.slice_type == 'team_member'
-              .teamMemberContainer
-                img(data-src=section.primary.memoji.url)
-                //- h2= section.primary.name
-
-        .teamMemberInfoPopup
-          button.closeInfoPopup 
-          .teamMemberContent 
-            .memojiContainer
-            span
-              h2.name 
-              h3 title
-            p something about me
-            .teamMemberSocial
-              h4 i love social bitch
-              a.solidButton(href='/') insta bitch
-
-        .teamMemberOverlayBacker
+              if section.primary.has_information == true
+                .teamMemberContainer.hasInfo(
+                  title='View' + section.primary.name + "'s information",
+                  aria-label='View' + section.primary.name + "'s information"
+                )
+                  //- img(data-src=section.primary.memoji.url)
+                  video(muted)
+                    source(src=section.primary.memoji_hover_video.url)
+                .teamMemberOverlayBacker
+              else
+                .teamMemberContainer
+                  //- img(data-src=section.primary.memoji.url)
+                  video(muted)
+                    source(src=section.primary.memoji_hover_video.url)
+                    //- source(data-src=section.primary.memoji_hover_video.url)
+                .teamMemberOverlayBacker

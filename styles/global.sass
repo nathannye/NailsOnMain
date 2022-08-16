@@ -11,6 +11,7 @@
 @use './components/nav'
 @use './components/cookie'
 @use './components/footer'
+@use './components/teamPopup'
 @use './components/preloader'
 
 html
@@ -32,7 +33,7 @@ h1
 	letter-spacing: -.03em  
 
 h2
-	@include createFontClamp(4rem, 5rem)
+	@include createFontClamp(3.5rem, 5rem)
 	line-height: 1.05
 	font-family: $serif
 	font-weight: 200
@@ -44,7 +45,7 @@ h3
 	font-family: $sans
 	font-weight: 400
 	margin-bottom: .5rem
-	letter-spacing: -.02em
+	letter-spacing: -.005em
 
 a, button:not(button.serviceSmallTop)
 	@include createFontClamp(1.55rem, 1.75rem)
@@ -106,7 +107,7 @@ a
 	background: transparent
 	text-transform: uppercase
 
-section:not(section.content)
+section:not(section.content):not(:last-child)
 	@include createClamp(11rem, 15rem, margin-bottom)
 	margin-right: auto
 	margin-left: auto
@@ -177,7 +178,11 @@ main
 img, figure
 	border-radius: 2rem
 
-section#content main section.topBlurb
+.contentContainer
+	background: $dark
+	@include createClamp(11rem, 15rem, padding-bottom)
+
+section.topBlurb
 	margin-left: 0
 	width: 100%
 

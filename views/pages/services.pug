@@ -10,6 +10,7 @@ block content
         h1 Our
         h1 Services
       .headerGradientContainer
+        .gradient
       .topCurve
     main.serviceContent
       section.topBlurb.hasEmoji
@@ -24,7 +25,7 @@ block content
               .headingWithThumbnailContainer
                 img.serviceImageThumbnail(
                   data-src=service.data.images[0].service_image.url,
-                  alt=''
+                  alt=service.data.images[0].alt
                 )
                 h2= service.data.service_name
               h4= service.data.service_tagline
@@ -47,8 +48,11 @@ block content
                     span.totalImageNumber= service.data.images.length
                   .desktopImageIndicator
                     if service.data.images
-                      each image in service.data.images
-                        button.indicatorStrip
+                      each image, i in service.data.images
+                        button.indicatorStrip(
+                          aria-label='show image ' + i,
+                          title='Show image'
+                        )
                           .inner
               .serviceDescriptionContainer
                 each detail in service.data.service_details

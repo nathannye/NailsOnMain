@@ -1,6 +1,8 @@
 import gsap from 'gsap';
 import SplitText from 'gsap/src/SplitText.js';
 import Page from 'classes/Page.js';
+import MemberPopup from 'components/MemberPopup.js';
+import ScrollTrigger from 'gsap/ScrollTrigger.js';
 
 export default class OurTeam extends Page {
   constructor() {
@@ -10,12 +12,64 @@ export default class OurTeam extends Page {
       elements: {
         heading: 'header#teamHeader .headingContainer h1',
         awesomeHeading: 'header#teamHeader .headingContainer h2',
+        people: '.teamMemberContainer',
+        peopleWithInfo: '.teamMemberContainer.hasInfo',
+        teamMemberInfoContainer: '.teamMemberInfoPopup',
+        videos: 'videos',
       },
     });
   }
 
   create() {
     super.create();
+    this.feedTeamMemberData();
+    this.animatePeopleVideos();
+  }
+
+  feedTeamMemberData() {
+    if (this.elements.peopleWithInfo instanceof Array) {
+      this.elements.peopleWithInfo.forEach((person, index) => {
+        person.popup = new MemberPopup({
+          target: this.elements.teamMemberInfoContainer.item(index),
+        });
+
+        person.onclick = () => {
+          person.popup.togglePersonPopup({
+            target: this.elements.teamMemberInfoContainer.item(index),
+          });
+        };
+      });
+    } else {
+      let person = new MemberPopup({
+        target: this.elements.teamMemberInfoContainer,
+      });
+      this.elements.peopleWithInfo.onclick = () => {
+        person.togglePersonPopup({
+          target: this.elements.teamMemberInfoContainer,
+        });
+      };
+    }
+  }
+
+  animatePeopleVideos() {
+    ScrollTrigger.matchMedia({
+      // Below 768, apply this (mobile only)
+      '(max-width: 768px)': () => {},
+      '(min-width: 769px)': () => {
+        this.elements.people.forEach((person) => {
+          person.video = person.querySelector('video');
+          person.onmouseover = () => {
+            if (person.video.paused) {
+              person.video.currentTime = 0;
+              person.video.play();
+              setTimeout(() => {
+                person.video.pause();
+              }, 1000 * (person.video.duration - 0.2));
+            }
+          };
+        });
+      },
+    });
   }
 
   animateIn() {
