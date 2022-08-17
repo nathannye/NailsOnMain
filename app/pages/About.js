@@ -1,7 +1,7 @@
 import Page from 'classes/Page.js';
 import mapboxgl from 'mapbox-gl';
 import gsap from 'gsap';
-import SplitText from 'gsap/src/SplitText.js';
+import SplitText from 'gsap/SplitText.js';
 
 export default class About extends Page {
   constructor() {
@@ -23,13 +23,9 @@ export default class About extends Page {
     super.create();
     this.createMap();
   }
-
-  registerPlugins() {
-    gsap.registerPlugins(SplitText);
-  }
-
   animateIn() {
-    const tl = gsap.timeline({});
+    // gsap.registerPlugins(SplitText);
+    const tl = gsap.timeline();
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
     });

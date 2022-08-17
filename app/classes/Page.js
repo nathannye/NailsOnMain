@@ -1,8 +1,6 @@
 import gsap from 'gsap';
 import ScrollSmoother from 'gsap/src/ScrollSmoother.js';
 import ScrollTrigger from 'gsap/ScrollTrigger.js';
-import SplitText from 'gsap/src/SplitText.js';
-import Flip from 'gsap/src/Flip.js';
 import { each } from 'lodash';
 import twemoji from 'twemoji';
 
@@ -12,7 +10,6 @@ export default class Page {
     this.selector = element;
     this.selectorChildren = {
       ...elements,
-      preloaders: '[data-src]',
     };
   }
 
@@ -37,10 +34,7 @@ export default class Page {
         }
       }
     });
-    // this.createPreloader();
   }
-
-  // createPreloader() {
 
   registerPlugins() {
     gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
@@ -68,21 +62,16 @@ export default class Page {
   animateIn() {
     return new Promise((resolve) => {
       this.tl = gsap.timeline({
-        onStart: () => {},
+        delay: 0.4,
         onComplete: resolve,
       });
 
-      this.tl
-        .call(function () {
-          window.scrollTo({ top: 0 });
-        }, 0)
-
-        .fromTo(
-          '.scrollWrapper',
-          { autoAlpha: 0, y: -35 },
-          { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power3.out' },
-          0.05
-        );
+      this.tl.fromTo(
+        '.scrollWrapper',
+        { autoAlpha: 0, y: -35 },
+        { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+        0.05
+      );
     });
   }
   createSmoothScroll() {
@@ -129,10 +118,11 @@ export default class Page {
         callback: (icon, options) => {
           // create the image tag
           let img = document.createElement('img');
+          img.classList.add('emoji');
           let parent = emoji.parentElement;
           // assign the image source
           let src = constructTwemojiURL(icon, options);
-          img.setAttribute('data-src', src);
+          img.src = src;
           img.alt = 'Twemoji';
 
           // append the tag to our document body

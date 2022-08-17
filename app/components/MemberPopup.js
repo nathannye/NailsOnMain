@@ -68,20 +68,4 @@ export default class MemberPopup extends Component {
   }
 
   animateOut() {}
-
-  // infoPopupAnim() {
-  //   const peopleInfo = [];
-
-  //   this.elements.people.forEach((person) => {
-  //     let info = {};
-  //     info.name = person.querySelector('h2.name').innerHTML;
-  //     info.memoji = person.querySelector('img');
-  //     info;
-  //     info.info.peopleInfo.push(info);
-
-  //     person.onclick = () => {
-  //       console.log(person);
-  //     };
-  //   });
-  // }
 }

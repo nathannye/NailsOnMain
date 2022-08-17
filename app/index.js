@@ -99,13 +99,11 @@ class App {
       this.nav.getActivePage(window.location.pathname);
       this.page.registerPlugins();
       this.page.createSmoothScroll();
-
-      this.page.parseEmojis();
       this.addLinkListeners();
-      // this.createPreloader();
+      this.page.parseEmojis();
       setTimeout(() => {
         this.page.animateIn();
-      }, 500);
+      }, 800);
     } else {
       console.error(`response status: ${res.status}`);
     }

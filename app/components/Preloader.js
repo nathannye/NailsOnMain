@@ -106,7 +106,5 @@ export default class Preloader extends Component {
     this.element.parentNode.removeChild(this.element);
   }
 
-  animateOut() {
-    // console.log('out');
-  }
+  animateOut() {}
 }

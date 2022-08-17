@@ -57,6 +57,7 @@
     "gsap": "npm:@gsap/shockingly@^3.10.4",
     "include-media": "^1.4.10",
     "mapbox-gl": "^2.9.2",
+    "nginx": "^1.0.8",
     "node-fetch": "^3.2.8",
     "nodemon": "^2.0.19",
     "path": "^0.12.7",

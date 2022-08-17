@@ -91,12 +91,36 @@ a
 	color: $pale
 	text-transform: uppercase
 	border-radius: 6rem
+	overflow: hidden
 	border: none
-	font-weight: 500,
+	position: relative
+	font-weight: 500
+	transition: $bounce
 
 	&.inverted
 		color: $purple
 		background: $pale
+		transition: $bounce
+
+	@media (hover: hover)
+
+		&:hover
+			background: $dark
+			color: $pale
+			outline: 1px solid $pale
+			transition: $bounce
+			transform: scale(1.04)
+
+		&.inverted
+
+			&:hover
+				background: $dark
+				color: $pale
+				outline: 1px solid $pale
+				transition: $bounce
+				transform: scale(1.04)
+				
+
 
 .outlineBubble
 	border-radius: 6rem 
@@ -122,6 +146,8 @@ header
 	h1, h2, h3
 		transform: perspective(300px)
 		transform-style: preserve-3d
+		& > div
+			visibility: hidden
 
 	&:not(.homeHeader)
 		padding-bottom: 10rem

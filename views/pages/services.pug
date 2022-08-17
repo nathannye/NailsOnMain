@@ -2,8 +2,8 @@ extends ../layout.pug
 
 block variables
   - var template = 'services';
-  - var metaTitle = service.data.meta_title;
-  - var metaDescription = service.data.meta_description;
+  - var metaTitle = services.data.meta_title;
+  - var metaDescription = services.data.meta_description;
 
 block content
   #servicesWrapper
@@ -16,9 +16,9 @@ block content
       .topCurve
     main.serviceContent
       section.topBlurb.hasEmoji
-        h2 Colors? Designs? Just a good old fashioned mani-pedi? We do it all!
-        .emoji
-
+        h2= services.data.top_blurb
+          .twemojiReplace
+            p= services.data.emoji
       section#serviceList
         each service, i in s
           .serviceEntry
@@ -26,7 +26,7 @@ block content
               span.topLine
               .headingWithThumbnailContainer
                 img.serviceImageThumbnail(
-                  data-src=service.data.images[0].service_image.url,
+                  src=service.data.images[0].service_image.url,
                   alt=service.data.images[0].alt
                 )
                 h2= service.data.service_name
@@ -41,7 +41,7 @@ block content
                       each image in service.data.images
                         figure
                           img(
-                            data-src=image.service_image.url,
+                            src=image.service_image.url,
                             alt=image.service_image.alt
                           )
                   .mobileImageIndicator
