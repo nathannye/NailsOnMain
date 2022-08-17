@@ -4,7 +4,7 @@ export default class Missing extends Page {
   constructor() {
     super({
       id: 'missing',
-      element: '#404Wrapper',
+      element: '#errorWrapper',
     });
   }
   create() {

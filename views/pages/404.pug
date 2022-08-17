@@ -2,7 +2,10 @@ extends ../layout.pug
 
 block variables
   - var template = '404';
+  - var metaTitle = 'Page not found';
+  - var metaDescription = '';
 
 block content
-  #404Wrapper
-    h1= missing.data.heading
+  #errorWrapper
+    main
+      h1= missing.data.heading

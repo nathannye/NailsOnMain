@@ -7,7 +7,7 @@ html(lang='en')
     //- Meta
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='description', content='stuff')
+    meta(name='description', content='Nails on Main | ' + metaDescription)
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     base(href='/')
     meta(name='theme-color', content='')
@@ -17,24 +17,27 @@ html(lang='en')
     link(rel='mask-icon', href='./icons/safari-pinned-tab.svg', color='')
     link(rel='apple-touch-icon', sizes='180x180', href='#/icons/')
     //- Twitter Meta
-    meta(name='twitter:title', content='')
+    meta(name='twitter:title', content='Nails on Main | ' + metaTitle)
     meta(name='twitter:card', content='summary_large_image')
-    meta(name='twitter:description', content='')
+    meta(
+      name='twitter:description',
+      content='Nails on Main | ' + metaDescription
+    )
     meta(name='twitter:image', content='')
     //- Facebook Meta
     meta(name='og:type', content='website')
-    meta(name='og:title', content='')
+    meta(name='og:title', content='Nails on Main | ' + metaTitle)
     meta(name='og:locale', content='en_US')
     meta(name='og:card', content='')
-    meta(name='og:description', content='')
+    meta(name='og:description', content='Nails on Main | ' + metaDescription)
     meta(name='og:image', content='')
-    meta(name='og:url', content='')
+    meta(name='og:url', content='https://www.nomclarkston.com')
     link(
       href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css',
       rel='stylesheet'
     )
     link(href='./main.css', rel='stylesheet')
-    title titles
+    title= 'Nails on Main | ' + metaTitle
 
   body 
     include ./partials/nav

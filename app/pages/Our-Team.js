@@ -54,7 +54,8 @@ export default class OurTeam extends Page {
   animatePeopleVideos() {
     ScrollTrigger.matchMedia({
       // Below 768, apply this (mobile only)
-      '(max-width: 768px)': () => {},
+      '(max-width: 768px)': () => { },
+      // Above 769, desktop only
       '(min-width: 769px)': () => {
         this.elements.people.forEach((person) => {
           person.video = person.querySelector('video');

@@ -91,7 +91,7 @@ export default class Page {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '.content',
-        smooth: 1.8,
+        smooth: 0.65,
         effects: true,
       });
     } else if (this.smooth) {
@@ -101,7 +101,7 @@ export default class Page {
         content: '.scrollWrapper',
         wrapper: '.content',
         effects: true,
-        smooth: 1.8,
+        smooth: 0.65,
       });
     }
 
