@@ -12,7 +12,7 @@
     "frontend:build": "webpack --config webpack.config.build.js",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
     "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\"",
-    "cloudflare": "webpack --config webpack.config.build.js && (pm2 start app.js)"
+    "cloudflare": "pm2 start app.js && webpack --config webpack.config.build.js"
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",
