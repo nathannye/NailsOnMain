@@ -68,30 +68,18 @@ export default class Home extends Page {
       text.split = new SplitText(text, {
         type: 'chars',
       });
-      text.tween = gsap.timeline();
 
-      text.tween
-        .from(
-          text.split.chars,
-          {
-            xPercent: -32,
-            yPercent: 64,
-            rotateX: -25,
-            duration: 0.7,
-            transformOrigin: 'left center',
-            ease: 'power2.out',
-            delay: index / 4,
-            stagger: 0.045,
-          },
-          0
-        )
-        .to(
-          text.split.chars,
-          {
-            autoAlpha: 1,
-          },
-          0
-        );
+      text.tween = gsap.from(text.split.chars, {
+        autoAlpha: 0,
+        xPercent: -32,
+        yPercent: 64,
+        rotateX: -25,
+        duration: 0.7,
+        transformOrigin: 'left center',
+        ease: 'power2.out',
+        delay: index / 4,
+        stagger: 0.045,
+      });
 
       tl.add(text.tween, 0);
     });
