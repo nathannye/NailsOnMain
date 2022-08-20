@@ -60,7 +60,7 @@ class App {
     this.page = this.pages[this.template];
     setTimeout(() => {
       this.page.animateIn();
-    }, 1000);
+    }, 1700);
   }
 
   onPopState() {

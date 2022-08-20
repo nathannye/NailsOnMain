@@ -15,6 +15,7 @@ export default class Services extends Page {
         service: '.serviceEntry',
         sliderContainer: '.serviceImagesSliderContainer',
         slider: '.serviceImagesSlider',
+        heading: 'header.servicesHeader .headingContainer h1',
         images: '.serviceImages',
         sliderButtons: '.desktopImageIndicator',
       },
@@ -27,6 +28,55 @@ export default class Services extends Page {
     this.createSliders();
   }
 
+  animateIn() {
+    const tl = gsap.timeline({});
+    const split = new SplitText(this.elements.heading, {
+      type: 'words, lines',
+    });
+    split.lines.forEach((line, index) => {
+      line.split = new SplitText(line, {
+        type: 'chars',
+      });
+      // If its even (0,2,4), create an up and left animation
+      if (index % 2 == 0) {
+        let tween = gsap.from(
+          line.split.chars,
+          {
+            autoAlpha: 0,
+            x: -17,
+            y: 24,
+            rotateX: -35,
+            duration: 0.7,
+            transformOrigin: 'left center',
+            ease: 'power2.out',
+            delay: index / 9,
+            stagger: 0.045,
+          },
+          0
+        );
+        tl.add(tween, 0);
+      } else if (index % 2 == 1) {
+        // if its odd (1,3,5...), create an up and right
+        let tween = gsap.from(
+          line.split.chars,
+          {
+            autoAlpha: 0,
+            x: 17,
+            y: 24,
+            rotateX: -35,
+            duration: 0.8,
+            transformOrigin: 'left center',
+            ease: 'power2.out',
+            delay: index / 9,
+            stagger: 0.025,
+          },
+          0
+        );
+        tl.add(tween, 0);
+      }
+    });
+  }
+
   createDropdowns() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
     const dur = 0.7;
@@ -36,14 +86,12 @@ export default class Services extends Page {
       dropdown.arrow = dropdown.querySelector('div.hasArrow');
       dropdown.info = dropdown.querySelector('.serviceDetails');
       dropdown.details = dropdown.querySelectorAll('.serviceDescription');
-      // dropdown.thumbnail = dropdown.querySelector('img.serviceImageThumbnail');
-      // dropdown.imgContainer = dropdown.querySelector('.serviceImagesSlider');
-
-      // gsap.set(dropdown.imgContainer, {
-      //   clipPath: 'circle(0% at 0% 0%)',
-      // });
-
       let h = dropdown.info.offsetHeight;
+      
+      window.onresize = () => {
+        h = dropdown.info.offsetHeight;
+      };
+
       gsap.set(dropdown.info, {
         height: 0,
       });
@@ -71,26 +119,6 @@ export default class Services extends Page {
           },
           0
         );
-      // .to(
-      //   dropdown.thumbnail,
-      //   {
-      //     duration: 0.75,
-      //     ease: 'expo.inOut',
-      //     yPercent: 100,
-      //     autoAlpha: 0,
-      //     rotate: 25,
-      //   },
-      //   0.25
-      // )
-      // .to(
-      //   dropdown.imgContainer,
-      //   {
-      //     clipPath: 'circle(90% at 0%,0%)',
-      //     duration: 0.75,
-      //     ease: 'expo.inOut',
-      //   },
-      //   0.25
-      // );
       // for any entry underneath a service
       dropdown.details.forEach((d, i) => {
         d.heading = d.querySelector('h3');
@@ -165,15 +193,12 @@ export default class Services extends Page {
               bounds: s.querySelector('.serviceImagesSliderContainer'),
               type: 'x',
               inertia: true,
-              edgeResistance: 0.4,
+              edgeResistance: 0.65,
             }
           );
         });
       },
-      '(min-width: 769px)': () => {
-        // if (this.drag) {
-        //   this.drag.kill;
-        // }
+      '(min-width: 768px)': () => {
         slider.forEach((s, i) => {
           s.img = s.querySelectorAll('figure');
           s.btn = s.querySelectorAll('button.indicatorStrip');

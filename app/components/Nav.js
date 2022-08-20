@@ -49,7 +49,7 @@ export default class Nav extends Component {
         {
           rotate: 90,
           ease: 'expo.inOut',
-          duration: 0.7,
+          duration: 0.5,
           y: this.elements.button.offsetWidth / 4,
           x: this.elements.button.offsetHeight / -2,
           transformOrigin: 'center center',
@@ -72,9 +72,9 @@ export default class Nav extends Component {
           y: 3.75,
           rotate: 45,
           transformOrigin: 'center center',
-          duration: 0.89,
+          duration: 0.6,
           delay: 0.1,
-          ease: 'elastic.out(1.2, 0.75)',
+          ease: 'expo.inOut',
         },
         0
       )
@@ -85,9 +85,9 @@ export default class Nav extends Component {
           y: -3.75,
           rotate: -45,
           transformOrigin: 'center center',
-          duration: 0.89,
+          duration: 0.6,
           delay: 0.1,
-          ease: 'elastic.out(1.25, 0.75)',
+          ease: 'expo.inOut',
         },
         0
       )
@@ -116,7 +116,7 @@ export default class Nav extends Component {
           transformOrigin: 'left center',
           ease: 'power2.out',
         },
-        0.56
+        0.6
       );
 
     this.elements.links.forEach((link, index) => {

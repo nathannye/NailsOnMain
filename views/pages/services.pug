@@ -34,20 +34,20 @@ block content
               .hasArrow.dropdown
             .serviceDetails
               .serviceImages
-                //- Make sure this works for mobile, switches to a draggable
                 .serviceImageContainer
                   .serviceImagesSliderContainer
                     .serviceImagesSlider
-                      each image in service.data.images
-                        figure
-                          img(
-                            src=image.service_image.url,
-                            alt=image.service_image.alt
-                          )
-                  .mobileImageIndicator
-                    span.currentImageNumber= i
-                    span.separator /
-                    span.totalImageNumber= service.data.images.length
+                      each image, i in service.data.images
+                        .container
+                          figure
+                            img(
+                              src=image.service_image.url,
+                              alt=image.service_image.alt
+                            )
+                          .mobileImageIndicator
+                            span.currentImageNumber= i + 1
+                            span.separator /
+                            span.totalImageNumber= service.data.images.length
                   .desktopImageIndicator
                     if service.data.images
                       each image, i in service.data.images

@@ -44,6 +44,7 @@ nav.desktopNav
 button.mobileMenuButton
 	z-index: z('nav')
 	position: fixed
+	background: $pale
 	top: 2rem
 	margin-top: 0 !important
 	left: 2rem
@@ -53,7 +54,7 @@ button.mobileMenuButton
 		width: 3rem
 		display: block
 		height: 1px
-		background: $pale
+		background: $dark
 
 		&:last-child
 			margin-top: .75rem
@@ -73,7 +74,7 @@ div.mobileMenuContainer
 	z-index: z('mobile-menu')
 	padding-left: 2rem
 	padding-right: 2rem
-	padding-bottom: 6rem
+	padding-bottom: 12rem
 
 	a
 		font-family: $serif
