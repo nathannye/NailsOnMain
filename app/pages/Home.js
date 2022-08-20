@@ -155,17 +155,17 @@ export default class Home extends Page {
       edgeResistance: 0.65,
       bounds: this.elements.reviewSliderContainer,
       onPress: () => {
-        gsap.to(this.elements.allReviews, {
-          scale: 0.97,
+        gsap.to(this.elements.cursorCircle, {
+          scale: 0.85,
           ease: 'expo.inOut',
           duration: 0.4,
         });
       },
       onRelease: () => {
-        gsap.to(this.elements.allReviews, {
+        gsap.to(this.elements.cursorCircle, {
           scale: 1,
-          ease: 'circ.inOut',
-          duration: 0.25,
+          ease: 'expo.inOut',
+          duration: 0.3,
         });
       },
       onDrag: () => {

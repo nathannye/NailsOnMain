@@ -48,6 +48,7 @@ html(lang='en')
       each section in our_team.data.body
         if section.slice_type == 'team_member' && section.primary.has_information == true
           .teamMemberInfoPopup
+            .topCurve
             button.closeInfoPopup 
             .teamMemberContent
               .memojiContainer
@@ -60,7 +61,6 @@ html(lang='en')
                 .memberSocialContainer
                   each item in section.items
                     a.social.solidButton(href=item.social_media_link.url)= item.social_media_link_label
-
           .teamMemberOverlayBacker
 
     .testimonialDraggerCursor

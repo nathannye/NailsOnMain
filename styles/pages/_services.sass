@@ -124,17 +124,17 @@ img.serviceImageThumbnail
 		display: block
 
 	figure
-		transition: $anim
+		transition: $animExtended
 		opacity: 0
 
 		&.active
-			transition: $anim
+			transition: $animExtended
 			opacity: 1
 
 			img
 				transform: translateX(0%) scale(1)
 				transform-origin: center center
-				transition: $anim
+				transition: $animExtended
 
 	img
 		position: relative
@@ -212,7 +212,7 @@ button.indicatorStrip
 		height: .35rem
 
 	&:hover
-		flex-grow: 2
+		opacity: .5
 		transition: $anim
 
 	&.active	
@@ -244,3 +244,6 @@ button.indicatorStrip
 .priceEntry
 	margin-top: 1.5rem
 	margin-right: 1rem
+
+.pricesContainer
+	margin-top: 1rem

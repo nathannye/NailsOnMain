@@ -28,7 +28,6 @@ export default class Preloader extends Component {
     each(this.elements.assets, (asset) => {
       asset.onload = (_) => this.onAssetLoaded(asset);
       asset.src = asset.getAttribute('data-src');
-      console.log(asset);
     });
   }
 

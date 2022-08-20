@@ -85,7 +85,7 @@ export default class About extends Page {
       bearing: -135,
       pitch: 52,
     });
-    map.scrollZoom.disable();
+    // map.scrollZoom.disable();
     map.addControl(new mapboxgl.NavigationControl());
   }
 }

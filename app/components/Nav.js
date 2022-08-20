@@ -149,16 +149,14 @@ export default class Nav extends Component {
   }
   getActivePage(template) {
     // Match URLified string against urls of links
-    template = '/' + template;
-
     this.elements.links.forEach((link) => {
-      // link.classList.remove('activePage');
+      link.classList.remove('activePage');
       if (link.getAttribute('href') == template) {
         link.classList.add('activePage');
       }
     });
     this.elements.desktopLinks.forEach((link) => {
-      // link.classList.remove('activePage');
+      link.classList.remove('activePage');
       if (link.getAttribute('href') == template) {
         link.classList.add('activePage');
       }

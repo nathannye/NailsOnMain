@@ -15,6 +15,7 @@ class App {
     this.createPreloader();
     this.createNavigationToggle();
     this.nav.getActivePage({ template: this.template });
+    // this.nav.getActivePage();
     this.addLinkListeners();
   }
 
@@ -59,7 +60,7 @@ class App {
     this.page = this.pages[this.template];
     setTimeout(() => {
       this.page.animateIn();
-    }, 500);
+    }, 1000);
   }
 
   onPopState() {
@@ -95,15 +96,16 @@ class App {
 
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
-      this.page.create();
+      this.page.scrollToTop();
       this.nav.getActivePage(window.location.pathname);
+      this.page.create();
       this.page.registerPlugins();
       this.page.createSmoothScroll();
       this.addLinkListeners();
       this.page.parseEmojis();
-      setTimeout(() => {
-        this.page.animateIn();
-      }, 800);
+      // setTimeout(() => {
+      this.page.animateIn();
+      // }, 800);
     } else {
       console.error(`response status: ${res.status}`);
     }

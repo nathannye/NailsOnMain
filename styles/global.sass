@@ -63,7 +63,8 @@ ul
 h4
 	text-transform: uppercase
 	letter-spacing: .06em
-	@include createFontClamp(1.3rem, 1.5rem)
+	font-weight: 500
+	@include createFontClamp(1.4rem, 1.7rem)
 
 p
 	@include createFontClamp(1.7rem, 2rem)
@@ -120,19 +121,18 @@ a
 				transition: $bounce
 				transform: scale(1.04)
 				
-
-
 .outlineBubble
 	border-radius: 6rem 
-	font-size: 1.1rem
 	padding: 1.25rem 2.25rem
 	display: inline-block
+	font-weight: 500
+	font-size: 1.35rem
 	border: 1px solid $pale
 	background: transparent
 	text-transform: uppercase
 
-section:not(section.content):not(:last-child)
-	@include createClamp(11rem, 15rem, margin-bottom)
+section:not(section.content)
+	@include createClamp(12rem, 18rem, margin-bottom)
 	margin-right: auto
 	margin-left: auto
 

@@ -13,6 +13,10 @@ export default class Page {
     };
   }
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   create() {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -47,12 +51,12 @@ export default class Page {
       });
 
       this.tl.to(
-        '.scrollWrapper',
+        '.content',
         {
           autoAlpha: 0,
           y: -35,
-          ease: 'power4.in',
-          duration: 0.75,
+          ease: 'power2.in',
+          duration: 0.6,
         },
         0
       );
@@ -62,14 +66,19 @@ export default class Page {
   animateIn() {
     return new Promise((resolve) => {
       this.tl = gsap.timeline({
-        delay: 0.4,
+        delay: 0.75,
         onComplete: resolve,
       });
 
       this.tl.fromTo(
-        '.scrollWrapper',
+        '.content',
         { autoAlpha: 0, y: -35 },
-        { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+        },
         0.05
       );
     });
@@ -81,6 +90,7 @@ export default class Page {
         content: '.scrollWrapper',
         wrapper: '.content',
         smooth: 0.65,
+        normalizeScroll: true,
         effects: true,
       });
     } else if (this.smooth) {
@@ -89,6 +99,7 @@ export default class Page {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '.content',
+        normalizeScroll: true,
         effects: true,
         smooth: 0.65,
       });
