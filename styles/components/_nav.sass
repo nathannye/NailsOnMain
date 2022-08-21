@@ -11,6 +11,10 @@ nav.desktopNav
 	width: 100%
 	padding: 2rem 4rem
 
+	img.logo
+		width: 3.75rem
+		
+
 	@media screen and (min-width: 768px)
 		display: flex
 
@@ -41,20 +45,34 @@ nav.desktopNav
 			&.solidButton
 				margin: 0 0 0 1.5rem
 
-button.mobileMenuButton
-	z-index: z('nav')
+.mobileNavHeader
+	display: flex
 	position: fixed
+	z-index: z('nav')
+	top: 0
+	left: 0
+	justify-content: space-between
+	padding-top: 2rem
+	width: 100%
+	@include createClamp(2rem, 4rem, padding-left)
+	@include createClamp(2rem, 4rem, padding-right)
+
+	.logo
+		width: 4.5rem
+
+.logo
+	border-radius: 0 !important
+
+button.mobileMenuButton
 	background: $pale
-	top: 2rem
 	margin-top: 0 !important
-	left: 2rem
-	padding: 1.75rem 3.5rem !important
+	padding: 1.5rem 3.5rem !important
 
 	span.hamburgerLine
 		width: 3rem
 		display: block
-		height: 1px
-		background: $dark
+		height: 1.5px
+		background: $purple
 
 		&:last-child
 			margin-top: .75rem

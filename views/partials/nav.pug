@@ -1,6 +1,5 @@
 nav.desktopNav(role='navigation', aria-label='main')
-  .logo
-    p logo
+  img.logo(src='whiteLettermark.svg')
 
   .navItems
     ul.navLinks
@@ -10,13 +9,15 @@ nav.desktopNav(role='navigation', aria-label='main')
 
     a.solidButton.inverted.nonNavLink(href='tel:' + contact.data.phone_number) call us!
 
-button.mobileMenuButton.solidButton(
-  title='Toggle Menu',
-  aria-label='Toggle Menu'
-)
-  .hamburgerContainer
-    span.hamburgerLine
-    span.hamburgerLine
+.mobileNavHeader
+  img.logo(src='whiteLettermark.svg')
+  button.mobileMenuButton.solidButton(
+    title='Toggle Menu',
+    aria-label='Toggle Menu'
+  )
+    .hamburgerContainer
+      span.hamburgerLine
+      span.hamburgerLine
 
 .mobileMenuContainer
   .mobileMenuContent
