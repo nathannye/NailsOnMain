@@ -29,10 +29,15 @@ export default class Services extends Page {
   }
 
   animateIn() {
-    const tl = gsap.timeline({});
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
     });
+    const tl = gsap.timeline({
+      onComplete: () => {
+        split.revert();
+      },
+    });
+
     split.lines.forEach((line, index) => {
       line.split = new SplitText(line, {
         type: 'chars',
@@ -79,7 +84,7 @@ export default class Services extends Page {
 
   createDropdowns() {
     gsap.registerPlugin(SplitText, ScrollTrigger);
-    const dur = 0.7;
+    const dur = 0.5;
     const ease = 'power2.out';
     this.elements.service.forEach((dropdown) => {
       dropdown.clicker = dropdown.querySelector('button.serviceSmallTop');
@@ -87,7 +92,7 @@ export default class Services extends Page {
       dropdown.info = dropdown.querySelector('.serviceDetails');
       dropdown.details = dropdown.querySelectorAll('.serviceDescription');
       let h = dropdown.info.offsetHeight;
-      
+
       window.onresize = () => {
         h = dropdown.info.offsetHeight;
       };
@@ -155,7 +160,7 @@ export default class Services extends Page {
               autoAlpha: 0,
               duration: dur,
               ease: ease,
-              stagger: 0.075,
+              stagger: 0.035,
             },
             0.08
           )

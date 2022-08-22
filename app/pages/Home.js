@@ -62,6 +62,9 @@ export default class Home extends Page {
 
     const tl = gsap.timeline({
       delay: 1,
+      // onComplete: () => {
+      //   split.revert();
+      // },
     });
 
     headerTextLeft.forEach((text, index) => {

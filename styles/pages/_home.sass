@@ -34,7 +34,7 @@ header.homeHeader
 		width: 50%
 
 	.bottomSplitRight
-		@include createClamp(1rem, 2rem, padding-left) 
+		@include createClamp(.5rem, 1rem, padding-left) 
 
 		.textContainer
 			display: inline-block
@@ -45,7 +45,7 @@ header.homeHeader
 				text-align: right
 
 	.bottomSplitLeft
-		@include createClamp(1rem, 2rem, padding-right)
+		@include createClamp(.5rem, 1rem, padding-right)
 		display: flex
 		flex-direction: column
 		justify-content: flex-end
@@ -199,7 +199,7 @@ div#testimonialSlider
 
 	.testimonialEntryContainer
 		align-self: flex-start
-		@include createClamp(2rem, 5.5rem, margin-right)
+		@include createClamp(2rem, 4rem, margin-right)
 		width: 80vw
 		z-index: z('main')
 		position: relative
@@ -367,13 +367,14 @@ section#notesAtBottom
 	display: flex
 	align-items: flex-start
 	flex-direction: column
-	padding-right: 4rem
+	margin-right: auto
+	margin-left: auto
+
+	h2
+		padding-right: 4rem
 
 	@media screen and (min-width: 768px)
 		flex-direction: row
-
-		h2
-			width: col(3)
-
+		
 		.notesEntry
 			width: col(3)

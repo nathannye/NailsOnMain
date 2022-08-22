@@ -74,13 +74,18 @@ export default class OurTeam extends Page {
   }
 
   animateIn() {
-    const tl = gsap.timeline({});
     const headingSplit = new SplitText(this.elements.heading, {
       type: 'words',
     });
-
     const awesomeSplit = new SplitText(this.elements.awesomeHeading, {
       type: 'chars',
+    });
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        headingSplit.revert();
+        awesomeSplit.revert();
+      },
     });
 
     awesomeSplit.anim = gsap.from(awesomeSplit.chars, {

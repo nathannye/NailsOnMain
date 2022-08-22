@@ -49,7 +49,7 @@ export default class Preloader extends Component {
       // let backer = document.querySelector('.headerGradientContainer');
 
       this.animateOut = gsap.timeline({
-        delay: 1.75,
+        // delay: 1.75,
       });
 
       let split = new SplitText(this.elements.title, {

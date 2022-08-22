@@ -1,16 +1,16 @@
 nav.desktopNav(role='navigation', aria-label='main')
-  img.logo(src='whiteLettermark.svg')
+  img.logo(src='whiteLettermark.svg', atl='logo')
 
   .navItems
     ul.navLinks
       each link in menu.data.links
         li
-          a(href=link.link.url)= link.link_label
+          a.navLink(href=link.link.url)= link.link_label
 
     a.solidButton.inverted.nonNavLink(href='tel:' + contact.data.phone_number) call us!
 
 .mobileNavHeader
-  img.logo(src='whiteLettermark.svg')
+  img.logo(src='whiteLettermark.svg', atl='logo')
   button.mobileMenuButton.solidButton(
     title='Toggle Menu',
     aria-label='Toggle Menu'
@@ -24,7 +24,7 @@ nav.desktopNav(role='navigation', aria-label='main')
     h3 Where to next?
     .mobileLinksContainer(role='navigation', aria-label='main')
       each link in menu.data.links
-        a.mobileNavLink(href=link.link.url)= link.link_label
+        a.mobileNavLink.navLink(href=link.link.url)= link.link_label
 
       .mobileNavContactItem
         .twemojiReplace

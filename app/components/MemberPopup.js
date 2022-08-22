@@ -26,21 +26,17 @@ export default class MemberPopup extends Component {
 
   togglePersonPopup(target) {
     target = target.target;
-    target.cover = document.querySelector('.teamMemberOverlayBacker');
-    console.log(target.cover);
+
     target.name = target.querySelector('h2');
+    target.cover = document.querySelector('.teamMemberOverlayBacker');
     target.close = target.querySelector('button.closeInfoPopup');
     if (target.tl) {
-      console.log('has tl');
       target.tl.play();
       target.close.onclick = () => {
         target.tl.reverse();
       };
     } else {
       target.tl = gsap.timeline({});
-      target.name.split = new SplitText(target.name, {
-        type: 'chars',
-      });
 
       target.close.onclick = () => {
         target.tl.reverse();
@@ -133,19 +129,19 @@ export default class MemberPopup extends Component {
                 ease: 'expo.inOut',
               },
               0
-            )
-            .from(
-              target.name.split.chars,
-              {
-                y: 24,
-                x: -12,
-                duration: 0.65,
-                stagger: 0.045,
-                autoAlpha: 0,
-                ease: 'expo.out',
-              },
-              0
             );
+          // .from(
+          //   target.name.split.chars,
+          //   {
+          //     y: 24,
+          //     x: -12,
+          //     duration: 0.65,
+          //     stagger: 0.045,
+          //     autoAlpha: 0,
+          //     ease: 'expo.out',
+          //   },
+          //   0
+          // );
         },
       });
     }

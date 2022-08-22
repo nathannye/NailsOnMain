@@ -50,7 +50,7 @@ export default class Nav extends Component {
           rotate: -90,
           ease: 'expo.inOut',
           duration: 0.5,
-          y: this.elements.button.offsetWidth / -4,
+          y: this.elements.button.offsetWidth / 4,
           x: this.elements.button.offsetHeight / 2,
           transformOrigin: 'center center',
         },

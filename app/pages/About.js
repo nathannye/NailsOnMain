@@ -24,10 +24,13 @@ export default class About extends Page {
     this.createMap();
   }
   animateIn() {
-    // gsap.registerPlugins(SplitText);
-    const tl = gsap.timeline();
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
+    });
+    const tl = gsap.timeline({
+      onComplete: () => {
+        split.revert();
+      },
     });
 
     split.lines.forEach((line, index) => {
@@ -75,8 +78,7 @@ export default class About extends Page {
   }
 
   createMap() {
-    mapboxgl.accessToken =
-      'pk.eyJ1IjoibnllLTExIiwiYSI6ImNsNmF0dTQxdzEwNGEza3Foa2ZmdG05azEifQ.eQOEPfnfljR2sKdnNpaVXQ';
+    mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
     const map = new mapboxgl.Map({
       container: this.elements.map,
       style: 'mapbox://styles/nye-11/cl5ganty8002b15o5xfrcw9o8',

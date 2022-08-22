@@ -38,11 +38,11 @@ block content
           section#schedule
             .scheduleBlurb
               h2= section.primary.heading
-              a.solidButton.nonNavLink(
+              a.solidButton(
                 href='tel:' + contact.data.phone_number,
                 title='call' + contact.data.phone_number,
                 aria-label='call' + contact.data.phone_number
-              )= section.primary.button_text
+              )= contact.data.phone_number
             #scheduleRows
               each item in section.items
                 .scheduleEntry
@@ -70,7 +70,7 @@ block content
         if section.slice_type == "services_sidescroller"
           section#servicesMarquee
             .servicesLink
-              a.solidButton(href='/services')= section.primary.button_text
+              a.solidButton.navLink(href='/services')= section.primary.button_text
             //- each item, i in section.items
             span.marqueeRow
               span Massages

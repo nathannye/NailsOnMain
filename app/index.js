@@ -112,7 +112,7 @@ class App {
   }
 
   addLinkListeners() {
-    const links = document.querySelectorAll('a:not(.nonNavLink)');
+    const links = document.querySelectorAll('a.navLink');
     links.forEach((link) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
