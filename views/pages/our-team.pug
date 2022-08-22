@@ -26,17 +26,18 @@ block content
             if section.slice_type == 'team_member'
               if section.primary.has_information == true
                 .teamMemberContainer.hasInfo(
-                  title='View' + section.primary.name + "'s information",
-                  aria-label='View' + section.primary.name + "'s information"
+                  title='View ' + section.primary.name + "'s information",
+                  aria-label='View ' + section.primary.name + "'s information"
                 )
-                  //- img(src=section.primary.memoji.url)
-                  video(muted)
-                    source(src=section.primary.memoji_hover_video.url)
-                .teamMemberOverlayBacker
+                  video(muted, disableRemotePlayback, playsinline)
+                    source(
+                      src=section.primary.memoji_hover_video.url,
+                      type='video/mp4'
+                    )
               else
                 .teamMemberContainer
-                  //- img(src=section.primary.memoji.url)
-                  video(muted)
-                    source(src=section.primary.memoji_hover_video.url)
-                    //- source(src=section.primary.memoji_hover_video.url)
-                .teamMemberOverlayBacker
+                  video(muted, disableRemotePlayback, playsinline)
+                    source(
+                      src=section.primary.memoji_hover_video.url,
+                      type='video/mp4'
+                    )

@@ -10,9 +10,9 @@ export default class Preloader extends Component {
       element: '.preloaderContainer',
       elements: {
         gradient: '.preloaderGradientContainer',
-        g: '.gradient',
         title: '.preloaderContainer h2',
         assets: '[data-src]',
+        emoji: '.preloaderTextContainer .emoji',
         number: '.preloaderNumber',
       },
     });
@@ -44,12 +44,8 @@ export default class Preloader extends Component {
   onLoaded() {
     gsap.registerPlugin(Flip, SplitText);
     return new Promise((resolve) => {
-      // const state = Flip.getState(this.elements.g);
-      // let originalContainer = this.elements.gradient;
-      // let backer = document.querySelector('.headerGradientContainer');
-
       this.animateOut = gsap.timeline({
-        // delay: 1.75,
+        delay: 1.75,
       });
 
       let split = new SplitText(this.elements.title, {
@@ -58,38 +54,44 @@ export default class Preloader extends Component {
 
       this.animateOut
         .to(
-          this.element,
-          {
-            autoAlpha: 0,
-          },
-          0
-        )
-        // .call(
-        //   () => {
-        //     backer.appendChild(this.elements.g);
-
-        //     Flip.from(state, {
-        //       duration: 4,
-        //       ease: 'expo.inOut',
-        //       scale: true,
-        //       absolute: true,
-        //     });
-
-        //     // originalContainer.removeChild(this.elements.g);
-        //   }
-        //   // null,
-        //   // 1
-        // )
-        .to(
           split.chars,
           {
             autoAlpha: 0,
-            y: -5,
-            stagger: 0.02,
-            duration: 0.5,
-            ease: 'expo.in',
+            y: -15,
+            rotateX: 25,
+            stagger: 0.025,
+            duration: 0.65,
+            ease: 'expo.inOut',
           },
           0
+        )
+        .to(
+          this.elements.emoji,
+          {
+            scale: 0.675,
+            autoAlpha: 0,
+            ease: 'back.inOut(2)',
+            duration: 0.4,
+          },
+          0.35
+        )
+        .to(
+          this.elements.gradient,
+          {
+            scale: 1.25,
+            autoAlpha: 0,
+            ease: 'expo.out',
+            duration: 0.75,
+          },
+          0.35
+        )
+        .to(
+          this.element,
+          {
+            autoAlpha: 0,
+            duration: 0.6,
+          },
+          0.4
         )
         .call(
           (_) => {

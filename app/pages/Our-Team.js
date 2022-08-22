@@ -63,9 +63,6 @@ export default class OurTeam extends Page {
             if (person.video.paused) {
               person.video.currentTime = 0;
               person.video.play();
-              setTimeout(() => {
-                person.video.pause();
-              }, 1000 * (person.video.duration - 0.2));
             }
           };
         });

@@ -32,7 +32,7 @@ export default class Home extends Page {
         reviewSliderContainer: '#testimonialSliderContainer',
         dates: '.scheduleEntry > h4',
         dateEntry: '.scheduleEntry',
-        headerImages: 'header.homeHeader img',
+        headerImages: '.imageContainerHeader',
         nailsHead: 'header.homeHeader .homeSplitTop .textContainer h1',
         beautyByHead: 'header.homeHeader .homeSplitTop h2',
         onHead: 'header.homeHeader .bottomSplitLeft h1',
@@ -114,7 +114,7 @@ export default class Home extends Page {
         autoAlpha: 0,
         ease: 'power2.out',
         duration: 1,
-        stagger: 0.23,
+        stagger: 0.17,
       },
       0.475
     );

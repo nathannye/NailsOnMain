@@ -8,11 +8,22 @@ header.homeHeader
 		@include createClamp(2rem, 4rem, padding-right)
 		margin: 0 auto
 
-	img
+	.imageContainerHeader
 		height: 42rem
 		width: 100%
 		@include createClamp(2rem, 4rem, margin-top)
 		object-fit: cover
+		overflow: hidden
+		border-radius: 2rem
+
+		@media screen and (min-width: 768px)
+			border-radius: 4rem	
+
+		img
+			width: 100%
+			height: 120%
+			object-fit: cover
+			border-radius: 0
 
 .homeSplitTop
 	@include createClamp(1rem, 2rem, padding-right)
@@ -128,7 +139,7 @@ section.imageDuo
 		img
 			object-fit: cover
 			width: 100%
-			height: 100%
+			height: 130%
 
 		&:first-child
 			justify-self: flex-start
@@ -186,7 +197,7 @@ div#testimonialSliderContainer
 		content: ''
 		transform: scaleX(-1)
 		top: 0
-		z-index: z('gradient')
+		z-index: z('main')
 		display: block
 		width: 12vw
 		position: absolute

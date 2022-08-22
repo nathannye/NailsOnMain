@@ -1,80 +1,89 @@
 @use './utils/forward' as *
 
 footer
-  width: 100%
-  background: $purple
-  padding-top: 4rem
-  padding-bottom: 2rem
-  padding-left: 4rem 
-  @include createClamp(2rem, 4rem, padding-left)
-  @include createClamp(2rem, 4rem, padding-right)
-  display: flex
-  z-index: z('footer')
-  flex-direction: column
-  align-items: flex-start
+	width: 100%
+	background: $purple
+	padding-top: 4rem
+	padding-bottom: 2rem
+	padding-left: 4rem 
+	@include createClamp(2rem, 4rem, padding-left)
+	@include createClamp(2rem, 4rem, padding-right)
+	display: flex
+	z-index: z('footer')
+	flex-direction: column
+	align-items: flex-start
 
-  @media screen and (min-width: 768px)
-    flex-direction: row
+	p.copyright
+		@include createFontClamp(1.55rem, 1.75rem)
+	
+	.solidButton
+		margin-top: 0
 
-  a.solidButton
-    background: $pale
-    color: $purple
+	@media screen and (min-width: 768px)
+		flex-direction: row
+
+		.solidButton
+			margin-top: initial 
+
+	a.solidButton
+		background: $pale
+		color: $purple
 
 .footerHeadingContainer
-  flex-grow: .375
-  margin-bottom: 4rem
-  
-  @media screen and (min-width:768px)
-    margin-bottom: 0
-    padding-right: 4rem
-    width: col(3)
+	flex-grow: .375
+	margin-bottom: 4rem
+	
+	@media screen and (min-width:768px)
+		margin-bottom: 0
+		padding-right: 4rem
+		width: col(3)
 
 .footerContentContainer
-  width: 100%
+	width: 100%
 
-  @media screen and (min-width:768px)
-    flex-grow: .5
-    width: unset
+	@media screen and (min-width:768px)
+		flex-grow: .5
+		width: unset
 
 .privacyPolicy
-  opacity: 0
-  pointer-events: none
+	opacity: 0
+	pointer-events: none
 
 .footerCols
-  display: flex
-  align-items: flex-start
-  justify-content: space-between
-  flex-direction: column
+	display: flex
+	align-items: flex-start
+	justify-content: space-between
+	flex-direction: column
 
-  & > div:not(:last-child)
-    margin-bottom: 3rem
+	& > div:not(:last-child)
+		margin-bottom: 3rem
 
-    @media screen and (min-width:768px)
-      margin-bottom: 0
+		@media screen and (min-width:768px)
+			margin-bottom: 0
 
-  .footerLocationCol
-    width: 100%
+	.footerLocationCol
+		width: 100%
 
-    br
-      display: none
+		br
+			display: none
 
-  @media screen and (min-width:768px)
-    flex-direction: row
+	@media screen and (min-width:768px)
+		flex-direction: row
 
-    .footerLocationCol, a.credit, .footerSocialCol, p.copyright
-      width: 25%
+		.footerLocationCol, a.credit, .footerSocialCol, p.copyright
+			width: 25%
 
-    .footerMenuCol, a.privacyPolicy
-      width: 11%
+		.footerMenuCol, a.privacyPolicy
+			width: 11%
 
 .footerMenuLinksContainer
-  display: flex
-  flex-direction: column
+	display: flex
+	flex-direction: column
 
 .footerLowerInfo
-  display: flex
-  justify-content: space-between
-  margin-top: 4rem
+	display: flex
+	justify-content: space-between
+	margin-top: 4rem
 
-  @media screen and (min-width:768px)
-    margin-top: 10rem
+	@media screen and (min-width:768px)
+		margin-top: 10rem

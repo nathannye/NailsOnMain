@@ -12,7 +12,3 @@ $totalCols: 8
 
 @function gridCols($col)
   @return percentage($col/$totalCols)
-
-@for $i from 1 through $totalCols
-  .col-#{$i} 
-    // width: gridCols($i);  

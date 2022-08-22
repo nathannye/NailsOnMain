@@ -26,7 +26,6 @@ export default class MemberPopup extends Component {
 
   togglePersonPopup(target) {
     target = target.target;
-
     target.name = target.querySelector('h2');
     target.cover = document.querySelector('.teamMemberOverlayBacker');
     target.close = target.querySelector('button.closeInfoPopup');
@@ -60,7 +59,7 @@ export default class MemberPopup extends Component {
             .to(
               target.cover,
               {
-                opacity: 0.6,
+                opacity: 0.82,
                 display: 'block',
                 duration: 0.3,
                 ease: 'power2.inOut',
@@ -72,20 +71,8 @@ export default class MemberPopup extends Component {
               {
                 opacity: 1,
                 y: '0',
-                duration: 0.65,
-                ease: 'expo.out',
-              },
-              0
-            )
-            .from(
-              target.name.split.chars,
-              {
-                y: 24,
-                x: -12,
-                duration: 0.65,
-                stagger: 0.045,
-                autoAlpha: 0,
-                ease: 'expo.out',
+                duration: 0.5,
+                ease: 'power2.out',
               },
               0
             );
@@ -103,7 +90,7 @@ export default class MemberPopup extends Component {
             .to(
               target.cover,
               {
-                opacity: 0.6,
+                opacity: 0.82,
                 display: 'block',
                 duration: 0.3,
                 ease: 'power2.inOut',
@@ -115,33 +102,11 @@ export default class MemberPopup extends Component {
               {
                 opacity: 1,
                 y: '0',
-                duration: 0.65,
-                ease: 'expo.inOut',
-              },
-              0
-            )
-            .to(
-              target,
-              {
-                opacity: 1,
-                x: '0',
-                duration: 0.65,
-                ease: 'expo.inOut',
+                duration: 0.5,
+                ease: 'power2.out',
               },
               0
             );
-          // .from(
-          //   target.name.split.chars,
-          //   {
-          //     y: 24,
-          //     x: -12,
-          //     duration: 0.65,
-          //     stagger: 0.045,
-          //     autoAlpha: 0,
-          //     ease: 'expo.out',
-          //   },
-          //   0
-          // );
         },
       });
     }

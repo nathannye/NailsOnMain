@@ -89,8 +89,8 @@ export default class Page {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '.content',
-        smooth: 0.65,
-        normalizeScroll: true,
+        smooth: 0.5,
+        // normalizeScroll: true,
         effects: true,
       });
     } else if (this.smooth) {
@@ -99,9 +99,9 @@ export default class Page {
       this.smooth = ScrollSmoother.create({
         content: '.scrollWrapper',
         wrapper: '.content',
-        normalizeScroll: true,
+        // normalizeScroll: true,
         effects: true,
-        smooth: 0.65,
+        smooth: 0.5,
       });
     }
 

@@ -16,18 +16,22 @@ block content
         .homeSplitBottom
           .bottomSplitLeft
             h1.onText on
-            img(
-              src=home.data.top_image_left.url,
-              alt=home.data.top_image_left.alt
-            )
+            .imageContainerHeader
+              img(
+                src=home.data.top_image_left.url,
+                alt=home.data.top_image_left.alt,
+                data-speed='auto'
+              )
           .bottomSplitRight
             .textContainer
               h1 Main
               h3 Est. 2010
-            img(
-              src=home.data.top_image_right.url,
-              alt=home.data.top_image_right.alt
-            )
+            .imageContainerHeader
+              img(
+                src=home.data.top_image_right.url,
+                alt=home.data.top_image_right.alt,
+                data-speed='auto'
+              )
 
       .headerGradientContainer
         .gradient
@@ -60,12 +64,14 @@ block content
             figure
               img(
                 src=section.primary.left_image.url,
-                alt=section.primary.left_image.alt
+                alt=section.primary.left_image.alt,
+                data-speed='auto'
               )
             figure
               img(
                 src=section.primary.right_image.url,
-                alt=section.primary.right_image.alt
+                alt=section.primary.right_image.alt,
+                data-speed='auto'
               )
         if section.slice_type == "services_sidescroller"
           section#servicesMarquee
