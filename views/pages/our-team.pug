@@ -5,6 +5,26 @@ block variables
   - var metaTitle = our_team.data.meta_title;
   - var metaDescription = our_team.data.meta_description;
 
+block members
+  each section in our_team.data.body
+    if section.slice_type == 'team_member' && section.primary.has_information == true
+      .teamMemberInfoContainer
+        .teamMemberInfoPopup
+          .topCurve
+          button.closeInfoPopup 
+          .teamMemberContent
+            .memojiContainer
+            span
+              h2= section.primary.name
+              h3= section.primary.job_title
+            p= section.primary.description
+            .teamMemberSocial
+              h4 Come check out what I'm up to on social!
+              .memberSocialContainer
+                each item in section.items
+                  a.social.solidButton(href=item.social_media_link.url)= item.social_media_link_label
+        .teamMemberOverlayBacker
+
 block content
   #ourTeamWrapper
     header#teamHeader

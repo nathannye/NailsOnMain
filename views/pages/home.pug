@@ -5,6 +5,11 @@ block variables
   - var metaTitle = home.data.meta_title;
   - var metaDescription = home.data.meta_description;
 
+block members
+
+block title
+  title= metaTitle
+
 block content
   #homeWrapper
     header.homeHeader 
@@ -111,7 +116,7 @@ block content
             .testimonialHeadingContainer
               h2= section.primary.heading
               //- need to generate this link from g-business
-              a.solidButton(href='/')= section.primary.button_text
+              //- a.solidButton(href='/')= section.primary.button_text
 
             #testimonialSliderContainer
               #testimonialSlider

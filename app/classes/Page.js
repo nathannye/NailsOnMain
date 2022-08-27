@@ -66,21 +66,15 @@ export default class Page {
   animateIn() {
     return new Promise((resolve) => {
       this.tl = gsap.timeline({
-        delay: 0.75,
+        delay: 0.25,
         onComplete: resolve,
       });
-
-      this.tl.fromTo(
-        '.content',
-        { autoAlpha: 0, y: -35 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.7,
-          ease: 'power3.out',
-        },
-        0.05
-      );
+      this.tl.to('.content', {
+        autoAlpha: 1,
+        y: 0,
+        ease: 'power2.in',
+        duration: 0.6,
+      });
     });
   }
   createSmoothScroll() {

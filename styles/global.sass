@@ -7,6 +7,7 @@
 @use './pages/services'
 @use './pages/our-team'
 @use './pages/privacy'
+@use './pages/error'
 
 @use './components/nav'
 @use './components/cookie'
@@ -26,7 +27,7 @@ body
 
 // Typography
 h1
-	@include createFontClamp(8rem, 16rem)
+	@include createFontClamp(7rem, 16rem)
 	font-family: $serif
 	font-weight: 200
 	line-height: 1
@@ -140,7 +141,7 @@ section:not(section.content)
 
 header
 	position: relative
-	min-height: 82vh
+	min-height: 92vh
 	z-index: z('header')
 	overflow: hidden
 	padding-top: 17rem

@@ -261,36 +261,39 @@ div#testimonialSlider
 		.testimonialEntryContainer:nth-child(3)
 			align-self: flex-end
 
-.testimonialDraggerCursor
-	position: fixed
-	pointer-events: none
-	z-index: z('main')
-	transform: translate(-50%, -50%)
-	display: none
 
-	@media (hover:hover)
-		@include flexCenter
+@media (hover:hover)
 
-	.dragArrow
-		width: 1.75rem
-		height: 1.75rem
-		background-image: url('~/shared/nomArrow.svg')
-		background-repeat: no-repeat
-		background-size: 100%
+	.testimonialDraggerCursor
+		position: fixed
+		visibility: hidden
+		pointer-events: none
+		z-index: z('main')
+		transform: translate(-50%, -50%)
+		display: flex
+		justify-content: center
+		align-items: center
 
-		&.right
-			transform: rotate(-90deg)
-		
-		&.left
-			transform: rotate(90deg)
+		.dragArrow
+			width: 1.75rem
+			height: 1.75rem
+			background-image: url('~/shared/nomArrow.svg')
+			background-repeat: no-repeat
+			background-size: 100%
 
-	.dragInstructionCircle
-		width: 4.75rem
-		height: 4.75rem
-		background: $pale
-		margin-right: 1.25rem
-		margin-left: 1.25rem
-		border-radius: 6.5rem
+			&.right
+				transform: rotate(-90deg)
+			
+			&.left
+				transform: rotate(90deg)
+
+		.dragInstructionCircle
+			width: 4.75rem
+			height: 4.75rem
+			background: $pale
+			margin-right: 1.25rem
+			margin-left: 1.25rem
+			border-radius: 6.5rem
 
 .testimonialEntryContent
 	border: solid 1px $pale

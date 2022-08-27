@@ -14,8 +14,8 @@ export default class OurTeam extends Page {
         awesomeHeading: 'header#teamHeader .headingContainer h2',
         people: '.teamMemberContainer',
         peopleWithInfo: '.teamMemberContainer.hasInfo',
-        teamMemberInfoContainer: '.teamMemberInfoPopup',
-        videos: 'videos',
+        teamMemberInfoContainer: '.teamMemberInfoContainer',
+        videos: 'video',
       },
     });
   }

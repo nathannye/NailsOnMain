@@ -6,7 +6,7 @@ import SplitText from 'gsap/src/SplitText.js';
 export default class MemberPopup extends Component {
   constructor({ target }) {
     super({
-      element: '.teamMemberInfoPopup',
+      element: '.teamMemberInfoContainer',
       elements: {
         container: '.teamMemberInfoPopup',
         overlay: '.teamMemberOverlayBacker',
@@ -27,7 +27,8 @@ export default class MemberPopup extends Component {
   togglePersonPopup(target) {
     target = target.target;
     target.name = target.querySelector('h2');
-    target.cover = document.querySelector('.teamMemberOverlayBacker');
+    target.cover = target.querySelector('.teamMemberOverlayBacker');
+    target.content = target.querySelector('.teamMemberInfoPopup');
     target.close = target.querySelector('button.closeInfoPopup');
     if (target.tl) {
       target.tl.play();
@@ -57,22 +58,29 @@ export default class MemberPopup extends Component {
               0
             )
             .to(
-              target.cover,
-              {
-                opacity: 0.82,
-                display: 'block',
-                duration: 0.3,
-                ease: 'power2.inOut',
-              },
-              0
-            )
-            .to(
               target,
               {
-                opacity: 1,
-                y: '0',
                 duration: 0.5,
+                opacity: 1,
+              },
+              0.04
+            )
+            .to(
+              target.content,
+              {
+                opacity: 1,
+                duration: 0.4,
+                y: 0,
                 ease: 'power2.out',
+              },
+              0.1
+            )
+            .to(
+              target.cover,
+              {
+                opacity: 0.75,
+                duration: 0.3,
+                ease: 'power2.inOut',
               },
               0
             );
@@ -88,22 +96,29 @@ export default class MemberPopup extends Component {
               0
             )
             .to(
-              target.cover,
-              {
-                opacity: 0.82,
-                display: 'block',
-                duration: 0.3,
-                ease: 'power2.inOut',
-              },
-              0
-            )
-            .to(
               target,
               {
-                opacity: 1,
-                y: '0',
                 duration: 0.5,
+                opacity: 1,
+              },
+              0.04
+            )
+            .to(
+              target.content,
+              {
+                opacity: 1,
+                duration: 0.4,
+                y: 0,
                 ease: 'power2.out',
+              },
+              0.1
+            )
+            .to(
+              target.cover,
+              {
+                opacity: 0.75,
+                duration: 0.3,
+                ease: 'power2.inOut',
               },
               0
             );

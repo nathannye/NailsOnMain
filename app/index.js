@@ -15,8 +15,12 @@ class App {
     this.createPreloader();
     this.createNavigationToggle();
     this.nav.getActivePage({ template: this.template });
-    // this.nav.getActivePage();
+    this.addEventListeners();
     this.addLinkListeners();
+  }
+
+  addEventListeners() {
+    window.addEventListener('popstate', this.onPopState.bind(this));
   }
 
   createPreloader() {
@@ -41,6 +45,12 @@ class App {
     this.template = this.content.getAttribute('data-template');
   }
 
+  onPopState() {
+    this.onChange({
+      url: window.location.pathname,
+      push: true,
+    });
+  }
   createPages() {
     this.pages = {
       home: new Home(),
@@ -63,14 +73,7 @@ class App {
     }, 1700);
   }
 
-  onPopState() {
-    this.onChange({
-      url: window.location.pathname,
-      push: true,
-    });
-  }
-
-  async onChange(url, push = true) {
+  async onChange({ url, push = true }) {
     await this.page.animateOut();
 
     const res = await window.fetch(url);
@@ -81,6 +84,7 @@ class App {
 
       if (push) {
         window.history.pushState({}, '', url);
+        console.log(window.location.pathname);
       }
 
       div.innerHTML = html;
@@ -88,7 +92,7 @@ class App {
       const divContent = div.querySelector('.content');
 
       this.template = divContent.getAttribute('data-template');
-
+      // this.nav.getActivePage(window.location.pathname);
       this.content.setAttribute(
         'data-template',
         divContent.getAttribute('data-template')
@@ -97,7 +101,7 @@ class App {
       this.content.innerHTML = divContent.innerHTML;
       this.page = this.pages[this.template];
       this.page.scrollToTop();
-      this.nav.getActivePage(window.location.pathname);
+
       this.page.create();
       this.page.registerPlugins();
       this.page.createSmoothScroll();
@@ -114,11 +118,17 @@ class App {
   addLinkListeners() {
     const links = document.querySelectorAll('a.navLink');
     links.forEach((link) => {
-      link.addEventListener('click', (event) => {
+      // link.addEventListener('click', (event) => {
+      //   event.preventDefault();
+      //   const { href } = link;
+      //   this.onChange({ url: href });
+      // });
+      link.onclick = (event) => {
         event.preventDefault();
+
         const { href } = link;
-        this.onChange(href);
-      });
+        this.onChange({ url: href });
+      };
     });
   }
 }

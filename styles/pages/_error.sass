@@ -1,0 +1,26 @@
+#errorWrapper
+  min-height: 100vh
+
+  main
+    display: flex
+    height: 100vh
+    width: 100%
+    max-width: 100rem
+    justify-content: center
+    align-items: center
+
+    .contentContainer
+      display: flex
+      flex-direction: column
+
+      .emoji
+        width: 5rem
+        margin-left: auto
+        margin-right: auto
+        margin-top: 1.5rem
+
+      img
+        border-radius: 0 !important 
+
+    @media screen and (min-width: 768px)
+      flex-direction: row

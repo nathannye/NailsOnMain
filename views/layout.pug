@@ -36,30 +36,14 @@ html(lang='en')
     )
     link(href='./main.css', rel='stylesheet')
     title= 'Beauty By Nails on Main | ' + metaTitle
+    block title
 
-  body 
+  body
     include ./partials/nav
     include ./partials/cookie
     include ./partials/preloader
 
-    if template == 'our-team'
-      each section in our_team.data.body
-        if section.slice_type == 'team_member' && section.primary.has_information == true
-          .teamMemberInfoPopup
-            .topCurve
-            button.closeInfoPopup 
-            .teamMemberContent
-              .memojiContainer
-              span
-                h2= section.primary.name
-                h3= section.primary.job_title
-              p= section.primary.description
-              .teamMemberSocial
-                h4 Come check out what I'm up to on social!
-                .memberSocialContainer
-                  each item in section.items
-                    a.social.solidButton(href=item.social_media_link.url)= item.social_media_link_label
-          .teamMemberOverlayBacker
+    block members
 
     .testimonialDraggerCursor
       .dragArrow.left

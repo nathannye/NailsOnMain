@@ -174,13 +174,14 @@ export default class Services extends Page {
             },
             '<'
           );
-
         dropdown.tl.add(d.tl, 0);
       });
 
       dropdown.tl.reversed(true);
       dropdown.clicker.onclick = () => {
-        dropdown.tl.reversed() ? dropdown.tl.play() : dropdown.tl.reverse();
+        dropdown.tl.reversed()
+          ? dropdown.tl.play()
+          : dropdown.tl.timeScale(1.5).reverse();
       };
     });
   }

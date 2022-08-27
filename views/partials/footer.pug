@@ -22,7 +22,7 @@ footer
         ul.footerSocialLinksContainer
           each link in contact.data.social_media
             li
-              a.nakedLink(href=link.social_media_link.url)= link.social_media_label
+              a.nakedLink(href=link.social_media_link.url, target='_blank')= link.social_media_label
     .footerLowerInfo
       a.nakedLink.credit(
         href='https://nye.design/',

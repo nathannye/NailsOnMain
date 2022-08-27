@@ -1,17 +1,23 @@
 @use './utils/forward' as *
 
+.teamMemberInfoContainer
+	width: 100%
+	height: 100vh
+	display: none
+	z-index: z('modal')
+	position: fixed
+	top: 0
+	right: 0
+
 .teamMemberInfoPopup
 	position: fixed
 	bottom: 0
 	right: 0
-	display: none
 	overflow-y: visible
-	height: 65vh
-	opacity: .4
-	width: 100vw
+	height: 55vh
+	width: 100%
 	opacity: 0
 	transform: translateY(15%)
-	z-index: z('modal')
 	background: $pale
 	@include createClamp(2rem, 4rem, padding)
 
@@ -21,17 +27,16 @@
 		bottom: unset
 
 	@media screen and (min-width: 768px)
-		transform: translateX(35%)
 
 		.topCurve
-			@include createClamp(-8rem, -4rem, left)
+			left: -8rem
 			bottom: 0
 			top: 0
 			margin-top: auto
 			margin-bottom: auto
 			clip-path: ellipse(100% 50% at 100% 50%)
-			height: 110%
-			@include createClamp(5.25rem, 12rem, width)
+			height: 130%
+			@include createClamp(5.25rem, 11rem, width)
 
 	button.closeInfoPopup
 		position: absolute
@@ -61,10 +66,17 @@
 
 	@media screen and (min-width: 768px)
 		width: col(4)
-		height: 100vh
-		max-width: 55rem
-		border-top-right-radius: 0rem
-		border-top-left-radius: 0rem
+		height: 50vh
+		right: 8rem
+		top: 0
+		bottom: 0
+		margin-top: auto
+		margin-bottom: auto
+		max-width: 40rem
+		border-radius: 4rem
+
+		.topCurve
+			display: none
 	
 	h2, h3, p, h4
 		color: $dark
@@ -86,6 +98,6 @@ button.closeInfoPopup
 	left: 0
 	top: 0
 	width: 100vw
-	display: none
-	z-index: z('nav')
+	// display: none
+	z-index: -1
 	height: 100vh
