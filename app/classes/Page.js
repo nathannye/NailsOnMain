@@ -19,7 +19,6 @@ export default class Page {
 
   create() {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
     this.element = document.querySelector(this.selector);
     this.elements = {};
     each(this.selectorChildren, (e, i) => {
@@ -51,12 +50,11 @@ export default class Page {
       });
 
       this.tl.to(
-        '.content',
+        '.scrollWrapper',
         {
           autoAlpha: 0,
-          y: -35,
-          ease: 'power2.in',
-          duration: 0.6,
+          ease: 'power4.in',
+          duration: 0.75,
         },
         0
       );
@@ -66,15 +64,15 @@ export default class Page {
   animateIn() {
     return new Promise((resolve) => {
       this.tl = gsap.timeline({
-        delay: 0.25,
         onComplete: resolve,
       });
-      this.tl.to('.content', {
-        autoAlpha: 1,
-        y: 0,
-        ease: 'power2.in',
-        duration: 0.6,
-      });
+
+      this.tl.fromTo(
+        '.scrollWrapper',
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 1.2, ease: 'power3.out' },
+        0.05
+      );
     });
   }
   createSmoothScroll() {
@@ -84,7 +82,6 @@ export default class Page {
         content: '.scrollWrapper',
         wrapper: '.content',
         smooth: 0.5,
-        // normalizeScroll: true,
         effects: true,
       });
     } else if (this.smooth) {

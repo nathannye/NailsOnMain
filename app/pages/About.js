@@ -78,7 +78,8 @@ export default class About extends Page {
   }
 
   createMap() {
-    mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
+    mapboxgl.accessToken =
+      'pk.eyJ1IjoibnllLTExIiwiYSI6ImNsMG9zeGRuOTE4MHMza3Rrcm5qcjVoZzgifQ.gB3lktc24CQYcAauqQ40Fw';
     const map = new mapboxgl.Map({
       container: this.elements.map,
       style: 'mapbox://styles/nye-11/cl5ganty8002b15o5xfrcw9o8',
@@ -87,7 +88,6 @@ export default class About extends Page {
       bearing: -135,
       pitch: 52,
     });
-    // map.scrollZoom.disable();
     map.addControl(new mapboxgl.NavigationControl());
   }
 }

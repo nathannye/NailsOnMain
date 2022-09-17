@@ -9,6 +9,8 @@ import Nav from './components/Nav.js';
 
 class App {
   constructor() {
+    this.w = window.innerWidth;
+    this.updateWidth();
     this.template = window.location.pathname;
     this.createContent();
     this.createPages();
@@ -19,8 +21,14 @@ class App {
     this.addLinkListeners();
   }
 
+  updateWidth() {
+    this.w = window.innerWidth;
+  }
+
   addEventListeners() {
     window.addEventListener('popstate', this.onPopState.bind(this));
+
+    window.addEventListener('resize', this.updateWidth());
   }
 
   createPreloader() {
@@ -92,7 +100,7 @@ class App {
       const divContent = div.querySelector('.content');
 
       this.template = divContent.getAttribute('data-template');
-      // this.nav.getActivePage(window.location.pathname);
+
       this.content.setAttribute(
         'data-template',
         divContent.getAttribute('data-template')
@@ -104,7 +112,12 @@ class App {
 
       this.page.create();
       this.page.registerPlugins();
-      this.page.createSmoothScroll();
+      // mobile no smooth
+      if (this.w > 768 && this.smooth) {
+        this.smooth = null;
+      } else if (this.w < 768) {
+        this.page.createSmoothScroll();
+      }
       this.addLinkListeners();
       this.page.parseEmojis();
       // setTimeout(() => {
