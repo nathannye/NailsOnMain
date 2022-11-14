@@ -6,6 +6,7 @@ import Cookie from './components/Cookie.js';
 import Services from './pages/Services.js';
 import Preloader from './components/Preloader.js';
 import Nav from './components/Nav.js';
+import Lenis from '@studio-freight/lenis';
 
 class App {
   constructor() {
@@ -16,6 +17,7 @@ class App {
     this.createPages();
     this.createPreloader();
     this.createNavigationToggle();
+    this.createLenis();
     this.nav.getActivePage({ template: this.template });
     this.addEventListeners();
     this.addLinkListeners();
@@ -59,6 +61,28 @@ class App {
       push: true,
     });
   }
+
+  createLenis() {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      direction: 'vertical', // vertical, horizontal
+      gestureDirection: 'vertical', // vertical, horizontal, both
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
+
   createPages() {
     this.pages = {
       home: new Home(),
@@ -71,7 +95,7 @@ class App {
     this.page = this.pages[this.template];
     this.page.create();
 
-    this.page.createSmoothScroll();
+    // this.page.createSmoothScroll();
 
     this.page.parseEmojis();
     this.createCookie();
