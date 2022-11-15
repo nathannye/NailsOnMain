@@ -128,7 +128,6 @@ export default class MemberPopup extends Component {
 
     target.close.onclick = () => {
       target.tl.reversed() ? target.tl.play() : target.tl.reverse();
-      console.log(target.tl.reversed());
     };
   }
 

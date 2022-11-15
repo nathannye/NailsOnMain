@@ -116,7 +116,6 @@ class App {
 
       if (push) {
         window.history.pushState({}, '', url);
-        console.log(window.location.pathname);
       }
 
       div.innerHTML = html;

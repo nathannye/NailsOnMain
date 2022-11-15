@@ -18,9 +18,15 @@
 html
 	background: $dark
 	color: $pale
-	font-size: 62.5%
+	font-size: calc(0.55em + 0.5vw)
 	font-family: $sans
 	overflow-x: hidden
+
+	@media screen and (min-width: 768px)
+		font-size: calc(0.5em + 0.5vw)
+
+	@media screen and (min-width: 1440px)
+		font-size: calc(0.4em + 0.5vw)
 
 body
 	overflow-x: hidden
@@ -31,16 +37,16 @@ body
 
 // Typography
 h1
-	@include createFontClamp(7rem, 16rem)
+	font-size: 9rem
 	font-family: $serif
 	font-weight: 200
 	line-height: 1
-	letter-spacing: -.03em  
+	letter-spacing: -.04em  
 	will-change: transform
 	font-kerning: none
 
 h2
-	@include createFontClamp(3.5rem, 5rem)
+	font-size: 3.75rem
 	line-height: 1.05
 	font-kerning: none
 	font-family: $serif
@@ -49,14 +55,14 @@ h2
 	margin-bottom: 1.5rem
 
 h3
-	@include createFontClamp(1.8rem, 2.25rem)
+	font-size: 1.6rem
 	font-family: $sans
 	font-weight: 400
 	margin-bottom: .5rem
 	letter-spacing: -.005em
 
 a, button:not(button.serviceSmallTop)
-	@include createFontClamp(1.55rem, 1.75rem)
+	font-size: 1.25rem
 	font-family: $sans
 	font-weight: 300
 	cursor: pointer 
@@ -68,14 +74,18 @@ ul
 	li:not(:last-child)
 		margin-bottom: .5rem
 
+	li
+		font-size: 1.25rem
+
 h4
 	text-transform: uppercase
 	letter-spacing: .06em
 	font-weight: 500
-	@include createFontClamp(1.4rem, 1.7rem)
+	font-size: 1.25rem
 
 p
-	@include createFontClamp(1.7rem, 2rem)
+	font-size: 1.6rem
+	line-height: 1.4
 
 p, h4
 	font-family: $sans
@@ -92,9 +102,9 @@ a
 		color: $gry
 
 .solidButton
-	margin-top: 1.5rem
-	padding: 1.35rem 2.75rem
-	font-size: 1.3rem
+	margin-top: 1rem
+	padding: 1rem 1.75rem
+	font-size: 1rem
 	background: $purple
 	letter-spacing: .045em
 	color: $pale
@@ -131,16 +141,16 @@ a
 				
 .outlineBubble
 	border-radius: 6rem 
-	padding: 1.25rem 2.25rem
+	padding: 1.15rem 2rem
 	display: inline-block
 	font-weight: 500
-	font-size: 1.35rem
+	font-size: 1.25rem
 	border: 1px solid $pale
 	background: transparent
 	text-transform: uppercase
 
 section:not(section.content)
-	@include createClamp(12rem, 18rem, margin-bottom)
+	margin-bottom: 12rem
 	margin-right: auto
 	margin-left: auto
 
@@ -192,9 +202,9 @@ header
 main
 	background: $dark
 	padding-top: 1.5rem
-	@include createClamp(2rem, 4rem, padding-left)
+	padding-right: 2rem
 	z-index: z('main')
-	@include createClamp(2rem, 4rem, padding-right)
+	padding-left: 2rem
 	max-width: 150rem
 	margin-left: auto
 	position: relative
