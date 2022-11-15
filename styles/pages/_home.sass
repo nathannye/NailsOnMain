@@ -17,7 +17,7 @@ header.homeHeader
 		border-radius: 2rem
 
 		@media screen and (min-width: 768px)
-			border-radius: 4rem	
+			border-radius: 2rem	
 
 		img
 			width: 100%
@@ -28,11 +28,17 @@ header.homeHeader
 .homeSplitTop
 	padding-right: 2rem
 	display: flex
-	width: col(4)
-	justify-content: flex-end
+	justify-content: flex-start
+
+	@media screen and (min-width: 768px)
+		width: col(4)
+		justify-content: flex-end
 
 	.textContainer
-		text-align: right
+		text-align: left
+
+		@media screen and (min-width: 768px)
+			text-align: right
 		
 		h2
 			margin-bottom: 0
@@ -139,6 +145,7 @@ section.imageDuo
 		img
 			object-fit: cover
 			width: 100%
+			object-position: top
 			height: 130%
 
 		&:first-child

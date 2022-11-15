@@ -14,6 +14,8 @@ export default class Home extends Page {
         marqueeRows: '.marqueeRow',
         cursor: '.testimonialDraggerCursor',
         arrowLeft: '.dragArrow.left',
+        parallaxImage: '.parallax img',
+        parallaxContainer: '.parallax',
         cursorCircle: '.dragInstructionCircle',
         arrowRight: '.dragArrow.right',
         testimonials: '#testimonials',
@@ -32,6 +34,9 @@ export default class Home extends Page {
         reviewSliderContainer: '#testimonialSliderContainer',
         dates: '.scheduleEntry > h4',
         dateEntry: '.scheduleEntry',
+        top: 'header .topCurve, main',
+        header: '.headerContentWrapper',
+        curve: '.topCurve',
         headerImages: '.imageContainerHeader',
         nailsHead: 'header.homeHeader .homeSplitTop .textContainer h1',
         beautyByHead: 'header.homeHeader .homeSplitTop h2',
@@ -49,6 +54,8 @@ export default class Home extends Page {
     this.createMarquee();
     this.createCursor();
     this.populateReviewInitials();
+    this.createParallaxImages();
+    this.parallaxHeader();
   }
 
   animateIn() {
@@ -61,7 +68,7 @@ export default class Home extends Page {
     const headerTextRight = [this.elements.mainHead, this.elements.estHead];
 
     const tl = gsap.timeline({
-      delay: 1,
+      delay: 0.6,
       // onComplete: () => {
       //   split.revert();
       // },
@@ -77,11 +84,11 @@ export default class Home extends Page {
         xPercent: -32,
         yPercent: 64,
         rotateX: -25,
-        duration: 0.7,
+        duration: 0.65,
         transformOrigin: 'left center',
         ease: 'power2.out',
         delay: index / 4,
-        stagger: 0.045,
+        stagger: 0.04,
       });
 
       tl.add(text.tween, 0);
@@ -97,11 +104,11 @@ export default class Home extends Page {
         xPercent: 32,
         yPercent: 64,
         rotateX: -25,
-        duration: 0.7,
+        duration: 0.65,
         transformOrigin: 'left center',
         ease: 'power2.out',
         delay: index / 4,
-        stagger: -0.045,
+        stagger: -0.04,
       });
 
       tl.add(text.tween, 0);
@@ -110,13 +117,13 @@ export default class Home extends Page {
     tl.from(
       this.elements.headerImages,
       {
-        y: 50,
+        yPercent: 10,
         autoAlpha: 0,
-        ease: 'power2.out',
-        duration: 1,
+        ease: 'expo.out',
+        duration: 1.1,
         stagger: 0.17,
       },
-      0.475
+      0.3
     );
   }
   getActiveDate() {
@@ -137,6 +144,45 @@ export default class Home extends Page {
       if (i == days.indexOf(today)) {
         date.classList.add('todaysTheDay');
       }
+    });
+  }
+
+  parallaxHeader() {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        start: 'top bottom',
+        end: 'bottom top',
+        trigger: this.elements.curve,
+        scrub: true,
+      },
+    });
+    tl.to(
+      this.elements.top,
+      {
+        y: -220,
+      },
+      0
+    );
+  }
+
+  createParallaxImages() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    this.elements.parallaxImage.forEach((el, i) => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          start: 'top bottom',
+          end: 'bottom top',
+          trigger: this.elements.parallaxContainer[i],
+          scrub: true,
+        },
+      });
+      tl.fromTo(
+        el,
+        { yPercent: 0, scale: 1.1 },
+        { yPercent: -20, scale: 1 },
+        0
+      );
     });
   }
 
@@ -161,14 +207,14 @@ export default class Home extends Page {
         gsap.to(this.elements.cursorCircle, {
           scale: 0.85,
           ease: 'expo.inOut',
-          duration: 0.4,
+          duration: 0.25,
         });
       },
       onRelease: () => {
         gsap.to(this.elements.cursorCircle, {
           scale: 1,
           ease: 'expo.inOut',
-          duration: 0.3,
+          duration: 0.25,
         });
       },
       onDrag: () => {

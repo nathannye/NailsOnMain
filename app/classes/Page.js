@@ -75,29 +75,8 @@ export default class Page {
       );
     });
   }
-  createSmoothScroll() {
-    // if it hasn't been created, make it
-    if (!this.smooth) {
-      this.smooth = ScrollSmoother.create({
-        content: '.scrollWrapper',
-        wrapper: '.content',
-        smooth: 0.5,
-        effects: true,
-      });
-    } else if (this.smooth) {
-      // if it has been created, kill it, and make a new one
-      this.smooth.kill();
-      this.smooth = ScrollSmoother.create({
-        content: '.scrollWrapper',
-        wrapper: '.content',
-        // normalizeScroll: true,
-        effects: true,
-        smooth: 0.5,
-      });
-    }
 
-    ScrollTrigger.refresh();
-  }
+
 
   parseEmojis() {
     function constructTwemojiURL(icon, options) {

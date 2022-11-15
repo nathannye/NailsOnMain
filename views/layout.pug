@@ -44,10 +44,11 @@ html(lang='en')
 
     block members
 
-    .testimonialDraggerCursor
-      .dragArrow.left
-      .dragInstructionCircle
-      .dragArrow.right
+    if (template = 'home')
+      .testimonialDraggerCursor
+        .dragArrow.left
+        .dragInstructionCircle
+        .dragArrow.right
 
     section.content(data-template=template)
       .scrollWrapper

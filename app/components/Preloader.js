@@ -45,7 +45,7 @@ export default class Preloader extends Component {
     gsap.registerPlugin(Flip, SplitText);
     return new Promise((resolve) => {
       this.animateOut = gsap.timeline({
-        delay: 1.75,
+        delay: 1.2,
       });
 
       let split = new SplitText(this.elements.title, {
@@ -61,7 +61,7 @@ export default class Preloader extends Component {
             rotateX: 25,
             stagger: 0.025,
             duration: 0.65,
-            ease: 'expo.inOut',
+            ease: 'expo.in',
           },
           0
         )
@@ -70,7 +70,7 @@ export default class Preloader extends Component {
           {
             scale: 0.675,
             autoAlpha: 0,
-            ease: 'back.inOut(2)',
+            ease: 'back.in(2)',
             duration: 0.4,
           },
           0.35
@@ -80,7 +80,7 @@ export default class Preloader extends Component {
           {
             scale: 1.25,
             autoAlpha: 0,
-            ease: 'expo.out',
+            ease: 'expo.in',
             duration: 0.75,
           },
           0.35

@@ -18,7 +18,7 @@ block content
         .homeSplitBottom
           .bottomSplitLeft
             h1.onText on
-            .imageContainerHeader
+            .imageContainerHeader.parallax
               img(
                 src=home.data.top_image_left.url,
                 alt=home.data.top_image_left.alt,
@@ -28,7 +28,7 @@ block content
             .textContainer
               h1 Main
               h3 Est. 2010
-            .imageContainerHeader
+            .imageContainerHeader.parallax
               img(
                 src=home.data.top_image_right.url,
                 alt=home.data.top_image_right.alt,
@@ -63,17 +63,15 @@ block content
 
         if section.slice_type == 'two_images'
           section.imageDuo
-            figure
+            figure.parallax
               img(
                 src=section.primary.left_image.url,
-                alt=section.primary.left_image.alt,
-                data-speed='auto'
+                alt=section.primary.left_image.alt
               )
-            figure
+            figure.parallax
               img(
                 src=section.primary.right_image.url,
-                alt=section.primary.right_image.alt,
-                data-speed='auto'
+                alt=section.primary.right_image.alt
               )
         if section.slice_type == "services_sidescroller"
           section#servicesMarquee
