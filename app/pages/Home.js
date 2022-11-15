@@ -181,8 +181,8 @@ export default class Home extends Page {
       });
       tl.fromTo(
         el,
-        { yPercent: 0, scale: 1.1 },
-        { yPercent: -20, scale: 1 },
+        { yPercent: 0, scale: 1.325 },
+        { yPercent: -28, scale: 1 },
         0
       );
     });
