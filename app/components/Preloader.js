@@ -91,7 +91,7 @@ export default class Preloader extends Component {
             autoAlpha: 0,
             duration: 0.6,
           },
-          0.4
+          0.7
         )
         .call(
           (_) => {

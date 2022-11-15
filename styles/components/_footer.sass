@@ -3,18 +3,14 @@
 footer
 	width: 100%
 	background: $purple
-	padding-top: 4rem
-	padding-bottom: 2rem
-	padding-left: 4rem 
-	@include createClamp(2rem, 4rem, padding-left)
-	@include createClamp(2rem, 4rem, padding-right)
+	padding: 4rem 2rem 2rem 2rem
 	display: flex
 	z-index: z('footer')
 	flex-direction: column
 	align-items: flex-start
 
 	p.copyright
-		@include createFontClamp(1.55rem, 1.75rem)
+		font-size: 1.25rem
 	
 	.solidButton
 		margin-top: 0

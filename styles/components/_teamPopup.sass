@@ -19,11 +19,11 @@
 	opacity: 0
 	transform: translateY(15%)
 	background: $pale
-	@include createClamp(2rem, 4rem, padding)
+	padding: 2rem
 
 	.topCurve
 		background: $pale
-		@include createClamp(-4rem, -2rem, top)
+		top: -2rem
 		bottom: unset
 
 	@media screen and (min-width: 768px)
@@ -36,7 +36,7 @@
 			margin-bottom: auto
 			clip-path: ellipse(100% 50% at 100% 50%)
 			height: 130%
-			@include createClamp(5.25rem, 11rem, width)
+			width: 6rem
 
 	button.closeInfoPopup
 		position: absolute
