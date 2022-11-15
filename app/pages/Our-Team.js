@@ -16,39 +16,60 @@ export default class OurTeam extends Page {
         peopleWithInfo: '.teamMemberContainer.hasInfo',
         teamMemberInfoContainer: '.teamMemberInfoContainer',
         videos: 'video',
+        top: 'header .topCurve, main',
+        header: '.headerContentWrapper',
+        curve: '.topCurve',
       },
     });
   }
 
   create() {
     super.create();
+    this.parallaxHeader();
     this.feedTeamMemberData();
     this.animatePeopleVideos();
   }
 
-  feedTeamMemberData() {
-    if (this.elements.peopleWithInfo instanceof Array) {
-      this.elements.peopleWithInfo.forEach((person, index) => {
-        person.popup = new MemberPopup({
-          target: this.elements.teamMemberInfoContainer.item(index),
-        });
+  parallaxHeader() {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        start: 'top bottom',
+        end: 'bottom top',
+        trigger: this.elements.curve,
+        scrub: true,
+      },
+    });
+    tl.to(
+      this.elements.top,
+      {
+        y: -220,
+      },
+      0
+    );
+  }
 
-        person.onclick = () => {
-          person.popup.togglePersonPopup({
-            target: this.elements.teamMemberInfoContainer.item(index),
-          });
-        };
-      });
-    } else {
-      let person = new MemberPopup({
-        target: this.elements.teamMemberInfoContainer,
-      });
-      this.elements.peopleWithInfo.onclick = () => {
-        person.togglePersonPopup({
-          target: this.elements.teamMemberInfoContainer,
-        });
-      };
-    }
+  feedTeamMemberData() {
+    // if (this.elements.peopleWithInfo instanceof Array) {
+    //   this.elements.peopleWithInfo.forEach((person, index) => {
+    //     person.popup = new MemberPopup({
+    //       target: this.elements.teamMemberInfoContainer.item(index),
+    //     });
+    //     person.onclick = () => {
+    //       person.popup.togglePersonPopup({
+    //         target: this.elements.teamMemberInfoContainer.item(index),
+    //       });
+    //     };
+    //   });
+    // } else {
+    //   let person = new MemberPopup({
+    //     target: this.elements.teamMemberInfoContainer,
+    //   });
+    //   this.elements.peopleWithInfo.onclick = () => {
+    //     person.togglePersonPopup({
+    //       target: this.elements.teamMemberInfoContainer,
+    //     });
+    //   };
+    // }
   }
 
   animatePeopleVideos() {

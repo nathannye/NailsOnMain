@@ -18,6 +18,9 @@ export default class Services extends Page {
         heading: 'header.servicesHeader .headingContainer h1',
         images: '.serviceImages',
         sliderButtons: '.desktopImageIndicator',
+        top: 'header .topCurve, main',
+        header: '.headerContentWrapper',
+        curve: '.topCurve',
       },
     });
   }
@@ -26,6 +29,25 @@ export default class Services extends Page {
     super.create();
     this.createDropdowns();
     this.createSliders();
+    this.parallaxHeader();
+  }
+
+  parallaxHeader() {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        start: 'top bottom',
+        end: 'bottom top',
+        trigger: this.elements.curve,
+        scrub: true,
+      },
+    });
+    tl.to(
+      this.elements.top,
+      {
+        y: -220,
+      },
+      0
+    );
   }
 
   animateIn() {

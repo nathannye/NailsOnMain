@@ -15,14 +15,37 @@ export default class About extends Page {
         closeButton: 'button.closeInfoPopup',
         overlay: '.teamMemberOverlayBacker',
         person: '.teamMemberContainer',
+        top: 'header .topCurve, main',
+        header: '.headerContentWrapper',
+        curve: '.topCurve',
       },
     });
   }
 
   create() {
     super.create();
+    this.parallaxHeader();
     this.createMap();
   }
+
+  parallaxHeader() {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        start: 'top bottom',
+        end: 'bottom top',
+        trigger: this.elements.curve,
+        scrub: true,
+      },
+    });
+    tl.to(
+      this.elements.top,
+      {
+        y: -220,
+      },
+      0
+    );
+  }
+
   animateIn() {
     const split = new SplitText(this.elements.heading, {
       type: 'words, lines',
