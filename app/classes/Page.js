@@ -46,10 +46,7 @@ export default class Page {
   animateOut() {
     return new Promise((resolve) => {
       let tl = gsap.timeline({
-        onComplete: () => {
-          resolve();
-          tl.revert();
-        },
+        onComplete: resolve,
       });
 
       tl.to(
@@ -67,10 +64,7 @@ export default class Page {
   animateIn() {
     return new Promise((resolve) => {
       let tl = gsap.timeline({
-        onComplete: () => {
-          resolve();
-          tl.revert();
-        },
+        onComplete: resolve,
       });
       tl.from(
         '.scrollWrapper',

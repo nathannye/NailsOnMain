@@ -139,6 +139,8 @@ export default class Home extends Page {
       'Sunday',
     ];
 
+    console.log(this.elements);
+
     this.elements.dateEntry.forEach((date, i) => {
       // Match name against array of days in the order we want, otherwise Sunday is 0 and it no work
       if (i == days.indexOf(today)) {
