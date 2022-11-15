@@ -21,8 +21,7 @@ block content
             .imageContainerHeader.parallax
               img(
                 src=home.data.top_image_left.url,
-                alt=home.data.top_image_left.alt,
-                data-speed='auto'
+                alt=home.data.top_image_left.alt
               )
           .bottomSplitRight
             .textContainer
@@ -31,8 +30,7 @@ block content
             .imageContainerHeader.parallax
               img(
                 src=home.data.top_image_right.url,
-                alt=home.data.top_image_right.alt,
-                data-speed='auto'
+                alt=home.data.top_image_right.alt
               )
 
       .headerGradientContainer
@@ -66,12 +64,14 @@ block content
             figure.parallax
               img(
                 src=section.primary.left_image.url,
-                alt=section.primary.left_image.alt
+                alt=section.primary.left_image.alt,
+                loading='lazy'
               )
             figure.parallax
               img(
                 src=section.primary.right_image.url,
-                alt=section.primary.right_image.alt
+                alt=section.primary.right_image.alt,
+                loading='lazy'
               )
         if section.slice_type == "services_sidescroller"
           section#servicesMarquee

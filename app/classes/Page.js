@@ -45,11 +45,14 @@ export default class Page {
 
   animateOut() {
     return new Promise((resolve) => {
-      this.tl = gsap.timeline({
-        onComplete: resolve,
+      let tl = gsap.timeline({
+        onComplete: () => {
+          resolve();
+          tl.revert();
+        },
       });
 
-      this.tl.to(
+      tl.to(
         '.scrollWrapper',
         {
           autoAlpha: 0,
@@ -63,20 +66,19 @@ export default class Page {
 
   animateIn() {
     return new Promise((resolve) => {
-      this.tl = gsap.timeline({
-        onComplete: resolve,
+      let tl = gsap.timeline({
+        onComplete: () => {
+          resolve();
+          tl.revert();
+        },
       });
-
-      this.tl.fromTo(
+      tl.from(
         '.scrollWrapper',
-        { autoAlpha: 0 },
         { autoAlpha: 1, duration: 1.2, ease: 'power3.out' },
-        0.05
+        0
       );
     });
   }
-
-
 
   parseEmojis() {
     function constructTwemojiURL(icon, options) {

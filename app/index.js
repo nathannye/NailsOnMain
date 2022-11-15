@@ -102,7 +102,7 @@ class App {
     this.page = this.pages[this.template];
     setTimeout(() => {
       this.page.animateIn();
-    }, 1700);
+    }, 1100);
   }
 
   async onChange({ url, push = true }) {
@@ -135,12 +135,6 @@ class App {
 
       this.page.create();
       this.page.registerPlugins();
-      // mobile no smooth
-      if (this.w > 768 && this.smooth) {
-        this.smooth = null;
-      } else if (this.w < 768) {
-        this.page.createSmoothScroll();
-      }
       this.addLinkListeners();
       this.page.parseEmojis();
       // setTimeout(() => {
