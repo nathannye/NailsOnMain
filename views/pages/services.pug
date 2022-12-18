@@ -64,7 +64,10 @@ block content
                     p= detail.service_description
                     .pricesContainer
                       h4.priceEntry.outlineBubble 
-                        span starts at $
+                        if service.data.fixed_pricing
+                          span starts at $
+                        else
+                          span $
                         span= detail.starting_price
                       if detail.addition
                         h4.priceEntry.outlineBubble 
