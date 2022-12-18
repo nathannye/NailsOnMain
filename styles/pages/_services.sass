@@ -115,7 +115,7 @@ img.serviceImageThumbnail
 	width: calc(100vw - 4rem)
 
 	@media screen and (min-width: 768px)
-		width: col(2) 
+		width: col(4) 
 		padding-right: 4rem
 
 .serviceImagesSliderContainer
@@ -216,7 +216,6 @@ img.serviceImageThumbnail
 
 .serviceDetailsContainer
 	display: flex
-	justify-content: flex-start
 	align-items: flex-start
 	margin-top: 2rem
 	will-change: height
@@ -225,7 +224,6 @@ img.serviceImageThumbnail
 
 	@media screen and (min-width: 768px)
 		flex-direction: row
-
 
 .desktopImageIndicator
 	display: none
@@ -275,7 +273,6 @@ button.indicatorStrip
 			opacity: .5
 			transition: $anim
 
-
 .serviceGrid
 	width: 100%
 	margin-top: 4rem
@@ -283,9 +280,14 @@ button.indicatorStrip
 	gap: 4rem
 
 	@media screen and (min-width:768px)
-		width: col(6)
 		grid-template-columns: repeat(2, 1fr)
 		margin-top: 0
+		gap: 4rem
+
+.serviceDescriptionContainer
+	width: 100%
+	@media screen and (min-width:768px)
+		width: col(6)
 
 .serviceDescription
 	width: 100%

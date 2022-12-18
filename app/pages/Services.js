@@ -197,6 +197,7 @@ export default class Services extends Page {
 
       dropdown.tl.reversed(true);
       dropdown.clicker.onclick = () => {
+        h = dropdown.info.offsetHeight;
         dropdown.tl.reversed()
           ? dropdown.tl.play()
           : dropdown.tl.timeScale(1.5).reverse();
@@ -211,35 +212,43 @@ export default class Services extends Page {
       // Below 768, apply this (mobile only)
       '(max-width: 768px)': () => {
         slider.forEach((s) => {
-          this.drag = Draggable.create(
-            s.querySelector('.serviceImagesSlider'),
-            {
-              bounds: s.querySelector('.serviceImagesSliderContainer'),
-              type: 'x',
-              inertia: true,
-              edgeResistance: 0.65,
-            }
-          );
+          let children = s.querySelectorAll('figure');
+
+          if (children.length > 1) {
+            this.drag = Draggable.create(
+              s.querySelector('.serviceImagesSlider'),
+              {
+                bounds: s.querySelector('.serviceImagesSliderContainer'),
+                type: 'x',
+                inertia: true,
+                edgeResistance: 0.65,
+              }
+            );
+          }
         });
       },
       '(min-width: 768px)': () => {
         slider.forEach((s, i) => {
-          s.img = s.querySelectorAll('figure');
-          s.btn = s.querySelectorAll('button.indicatorStrip');
-          s.img[0].classList.add('active');
-          s.btn[0].classList.add('active');
-          s.btn.forEach((btn, index) => {
-            btn.onclick = () => {
-              s.img.forEach((img, i) => {
-                img.classList.remove('active');
-              });
-              s.btn.forEach((button, i) => {
-                button.classList.remove('active');
-              });
-              s.btn[index].classList.add('active');
-              s.img[index].classList.add('active');
-            };
-          });
+          let children = s.querySelectorAll('figure');
+
+          if (children.length > 1) {
+            s.img = s.querySelectorAll('figure');
+            s.btn = s.querySelectorAll('button.indicatorStrip');
+            s.img[0].classList.add('active');
+            s.btn[0].classList.add('active');
+            s.btn.forEach((btn, index) => {
+              btn.onclick = () => {
+                s.img.forEach((img, i) => {
+                  img.classList.remove('active');
+                });
+                s.btn.forEach((button, i) => {
+                  button.classList.remove('active');
+                });
+                s.btn[index].classList.add('active');
+                s.img[index].classList.add('active');
+              };
+            });
+          }
 
           // Match clicked position, to position in img array
         });
