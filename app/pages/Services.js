@@ -151,12 +151,9 @@ export default class Services extends Page {
         d.heading = d.querySelector('h3');
         d.para = d.querySelector('p');
         d.prices = d.querySelectorAll('.priceEntry');
-        d.split = new SplitText(d.para, {
-          type: 'lines',
-        });
 
         d.tl = gsap.timeline({
-          delay: 0.2 + i / 4,
+          delay: 0.15 + i / 8,
           onComplete: () => {
             ScrollTrigger.refresh();
           },
@@ -176,13 +173,12 @@ export default class Services extends Page {
             0
           )
           .from(
-            d.split.lines,
+            d.para,
             {
               y: 8,
               autoAlpha: 0,
               duration: dur,
               ease: ease,
-              stagger: 0.035,
             },
             0.08
           )
@@ -192,7 +188,7 @@ export default class Services extends Page {
               autoAlpha: 0,
               duration: dur,
               ease: 'none',
-              stagger: 0.1,
+              stagger: 0.05,
             },
             '<'
           );

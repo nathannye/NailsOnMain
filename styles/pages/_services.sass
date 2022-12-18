@@ -201,7 +201,20 @@ img.serviceImageThumbnail
 				transition: $animExtended
 				transform: scale(1)
 
+.notice
+	display: flex
+	align-items: baseline
+	margin-top: 7rem
+	font-weight: 700
+
+	h3
+		margin-left: 1rem
+		font-weight: 600
+
 .serviceDetails
+	overflow-y: hidden
+
+.serviceDetailsContainer
 	display: flex
 	justify-content: flex-start
 	align-items: flex-start
@@ -263,14 +276,14 @@ button.indicatorStrip
 			transition: $anim
 
 
-.serviceDescriptionContainer 
+.serviceGrid
 	width: 100%
 	margin-top: 4rem
 	display: grid
 	gap: 4rem
 
 	@media screen and (min-width:768px)
-		width: col(4)
+		width: col(6)
 		grid-template-columns: repeat(2, 1fr)
 		margin-top: 0
 
@@ -284,8 +297,10 @@ button.indicatorStrip
 			margin-bottom: 0
 
 .priceEntry
-	margin-top: 1.5rem
 	margin-right: 1rem
 
+	&:not(:first-child)
+		margin-top: 1rem
+
 .pricesContainer
-	margin-top: 1rem
+	margin-top: .5rem

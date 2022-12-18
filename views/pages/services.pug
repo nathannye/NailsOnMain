@@ -34,43 +34,48 @@ block content
               h4= service.data.service_tagline
               .hasArrow.dropdown
             .serviceDetails
-              .serviceImages
-                .serviceImageContainer
-                  .serviceImagesSliderContainer
-                    .serviceImagesSlider
-                      each image, i in service.data.images
-                        .container
-                          figure
-                            img(
-                              src=image.service_image.url,
-                              alt=image.service_image.alt
-                            )
-                          .mobileImageIndicator
-                            span.currentImageNumber= i + 1
-                            span.separator /
-                            span.totalImageNumber= service.data.images.length
-                  .desktopImageIndicator
-                    if service.data.images
-                      each image, i in service.data.images
-                        button.indicatorStrip(
-                          aria-label='show image ' + i,
-                          title='Show image'
-                        )
-                          .inner
-              .serviceDescriptionContainer
-                each detail in service.data.service_details
-                  .serviceDescription
-                    h3= detail.service_subhead
-                    p= detail.service_description
-                    .pricesContainer
-                      h4.priceEntry.outlineBubble 
-                        if service.data.fixed_pricing
-                          span starts at $
-                        else
-                          span $
-                        span= detail.starting_price
-                      if detail.addition
-                        h4.priceEntry.outlineBubble 
-                          span= detail.addition
-                          span &#32;—&#32;$
-                          span= detail.addition_pricing
+              .serviceDetailsContainer
+                .serviceImages
+                  .serviceImageContainer
+                    .serviceImagesSliderContainer
+                      .serviceImagesSlider
+                        each image, i in service.data.images
+                          .container
+                            figure
+                              img(
+                                src=image.service_image.url,
+                                alt=image.service_image.alt
+                              )
+                            .mobileImageIndicator
+                              span.currentImageNumber= i + 1
+                              span.separator /
+                              span.totalImageNumber= service.data.images.length
+                    .desktopImageIndicator
+                      if service.data.images
+                        each image, i in service.data.images
+                          button.indicatorStrip(
+                            aria-label='show image ' + i,
+                            title='Show image'
+                          )
+                            .inner
+                .serviceDescriptionContainer
+                  .serviceGrid
+                    each detail in service.data.service_details
+                      .serviceDescription
+                        h3= detail.service_subhead
+                        p= detail.service_description
+                        .pricesContainer
+                          h4.priceEntry.outlineBubble 
+                            if service.data.fixed_pricing
+                              span starts at $
+                            else
+                              span $
+                            span= detail.starting_price
+                          if detail.addition
+                            h4.priceEntry.outlineBubble 
+                              span= detail.addition
+                              span &#32;—&#32;$
+                              span= detail.addition_pricing
+                  if service.data.notice
+                    .notice Note:
+                      h3= service.data.notice
