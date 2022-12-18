@@ -59,6 +59,17 @@ block content
                     if item.store_status === false
                       span Closed
 
+        if section.slice_type == 'hiring'
+          section#hiring
+            .hiringHeads
+              h2= section.primary.heading
+              h3= section.primary.note
+            ul
+              each position in section.items
+                li.position
+                  span= position.position
+                  span.twemojiReplace= position.emoji
+
         if section.slice_type == 'two_images'
           section.imageDuo
             figure.parallax
@@ -87,13 +98,13 @@ block content
               span Pedicures
               span Frenches
               span Designs
-              span Polish
+              span Lashes
             span.marqueeRow
               span Fills
-              span Massages
+              span Brows
               span Dips
               span Milk-Honey Pedi
-              span Acrylics
+              span Haircuts
             span.marqueeRow
               span Gel Polish
               span Acrylic Sets

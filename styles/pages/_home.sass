@@ -73,6 +73,35 @@ header.homeHeader
 			line-height: 0.45
 			margin-bottom: calc(.45em)
 
+#hiring
+	display: flex
+	align-self: flex-start
+	justify-content: space-between
+	flex-direction: row
+
+	@media screen and (min-width: 768px)
+		width: col(3)
+		// flex-direction: row
+		margin-bottom: 0rem
+
+	.hiringHeads
+		margin-bottom: 2rem
+		margin-right: 2rem
+
+	li
+		display: flex
+		align-items: center
+
+	span
+		order: 2
+
+	li img
+		width: 3rem
+		order: 1
+		border-radius: 0
+		margin-right: 1rem
+
+
 section#schedule
 	display: flex
 	flex-direction: column
@@ -81,8 +110,7 @@ section#schedule
 	width: 100%
 
 	@media screen and (min-width: 768px)
-		flex-direction: row
-		width: col(6)
+		width: col(3)
 	
 .scheduleBlurb
 	margin-bottom: 4rem
