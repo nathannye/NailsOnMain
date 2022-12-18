@@ -64,6 +64,11 @@ block content
             .hiringHeads
               h2= section.primary.heading
               h3= section.primary.note
+              a.solidButton(
+                href='tel:' + contact.data.phone_number,
+                title='call' + contact.data.phone_number,
+                aria-label='call' + contact.data.phone_number
+              ) call us!
             ul
               each position in section.items
                 li.position
