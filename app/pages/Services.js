@@ -212,43 +212,35 @@ export default class Services extends Page {
       // Below 768, apply this (mobile only)
       '(max-width: 768px)': () => {
         slider.forEach((s) => {
-          let children = s.querySelectorAll('figure');
-
-          if (children.length > 1) {
-            this.drag = Draggable.create(
-              s.querySelector('.serviceImagesSlider'),
-              {
-                bounds: s.querySelector('.serviceImagesSliderContainer'),
-                type: 'x',
-                inertia: true,
-                edgeResistance: 0.65,
-              }
-            );
-          }
+          this.drag = Draggable.create(
+            s.querySelector('.serviceImagesSlider'),
+            {
+              bounds: s.querySelector('.serviceImagesSliderContainer'),
+              type: 'x',
+              inertia: true,
+              edgeResistance: 0.65,
+            }
+          );
         });
       },
       '(min-width: 768px)': () => {
         slider.forEach((s, i) => {
-          let children = s.querySelectorAll('figure');
-
-          if (children.length > 1) {
-            s.img = s.querySelectorAll('figure');
-            s.btn = s.querySelectorAll('button.indicatorStrip');
-            s.img[0].classList.add('active');
-            s.btn[0].classList.add('active');
-            s.btn.forEach((btn, index) => {
-              btn.onclick = () => {
-                s.img.forEach((img, i) => {
-                  img.classList.remove('active');
-                });
-                s.btn.forEach((button, i) => {
-                  button.classList.remove('active');
-                });
-                s.btn[index].classList.add('active');
-                s.img[index].classList.add('active');
-              };
-            });
-          }
+          s.img = s.querySelectorAll('figure');
+          s.btn = s.querySelectorAll('button.indicatorStrip');
+          s.img[0].classList.add('active');
+          s.btn[0].classList.add('active');
+          s.btn.forEach((btn, index) => {
+            btn.onclick = () => {
+              s.img.forEach((img, i) => {
+                img.classList.remove('active');
+              });
+              s.btn.forEach((button, i) => {
+                button.classList.remove('active');
+              });
+              s.btn[index].classList.add('active');
+              s.img[index].classList.add('active');
+            };
+          });
 
           // Match clicked position, to position in img array
         });
